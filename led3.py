@@ -4,8 +4,8 @@ import sys ## for param
 
 ##### CONSTANTS ##########
 LED_RED = 7
-LED_BLUE = xx
-LED_GREN = xx
+LED_BLUE = 11
+LED_GREN = 14
 
 ON = 'on';
 OFF = 'off';
