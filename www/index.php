@@ -1,3 +1,6 @@
+<?php
+require('ctrl.php'); 
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,15 +9,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
-    <title>Signin Template for Bootstrap</title>
+    <title>Raspberry Internet LED Controller</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
     <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -29,16 +37,16 @@
   <body>
 
     <div class="container">
-
-      <form class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" class="form-control" placeholder="Email address" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
-        <label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      </form>
+		<div class="main-area panel panel-default well">
+			<div class="panel-heading">Raspberry Internet LED Controller</div>
+			 <div class="panel-body">
+				<?php foreach ($leds as $led => $pin) { ?>
+				<a href="index.php?action=on&led=<?php echo $pin?>" class="btn btn-primary btn-block btn-large"><?php echo $led;?> On</a>
+				<a href="index.php?action=off&led=<?php echo $pin?>" class="btn btn-primary btn-block btn-large"><?php echo $led;?> Off </a><br />
+				<?php }	?>
+				<a href="index.php?action=reset&led=0" class="btn btn-danger btn-block btn-btn-large">Reset</a><br />
+			</div>
+		</div>
 
     </div> <!-- /container -->
 
