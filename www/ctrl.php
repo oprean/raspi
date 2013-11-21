@@ -13,6 +13,6 @@ if (!empty($_GET)) {
 	$led = isset($_GET['led'])?$_GET['led']:'';
 	$action = isset($_GET['action'])?$_GET['action']:'';
 
-	exec('sudo ../python led3.py '.$led.' '.$action);
+	exec('sudo python ../led3.py '.$led.' '.$action);
 }
 ?>
