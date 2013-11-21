@@ -13,16 +13,17 @@ CLEAN = 'reset';
 
 #################### SETUP ########################
 GPIO.setmode(GPIO.BOARD) ## Use board pin numbering
+GPIO.setwarnings(False)
 ###################################################
 
 led = sys.argv[1];
 action = sys.argv[2];
 
-GPIO.setup(led, GPIO.OUT)
+GPIO.setup(int(led), GPIO.OUT)
 
 if action == CLEAN:
     GPIO.cleanup()
 elif action == ON:
-    GPIO.output(led,True)
+    GPIO.output(int(led),False)
 elif action == OFF:
-    GPIO.output(led,False)
+    GPIO.output(int(led),True)
