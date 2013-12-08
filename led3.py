@@ -3,9 +3,9 @@ import time ## Import 'time' library. Allows us to use 'sleep'
 import sys ## for param
 
 ##### CONSTANTS ##########
-LED_RED = 7
+LED_RED = 12
 LED_BLUE = 11
-LED_GREN = 14
+LED_YELLOW = 13
 
 ON = 'on';
 OFF = 'off';
@@ -24,6 +24,6 @@ GPIO.setup(int(led), GPIO.OUT)
 if action == CLEAN:
     GPIO.cleanup()
 elif action == ON:
-    GPIO.output(int(led),False)
-elif action == OFF:
     GPIO.output(int(led),True)
+elif action == OFF:
+    GPIO.output(int(led),False)
