@@ -10,7 +10,7 @@
             this.render();
         },
         render : function() {
-            $(this.el).append("<button id='socket1'>veioza</button>");
+            $(this.el).append("<button id='socket1'>veioza1</button>");
             $(this.el).append("<button id='socket2'>ventilator</button>");
         },
 
