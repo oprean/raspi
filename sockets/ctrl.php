@@ -1,12 +1,17 @@
-<?php 
+<?php
+include('wiringpi.php');
+
+$s1s = wiringpi::digitalRead(17);
+$s2s = wiringpi::digitalRead(11); 
+
 $status = array(
 	array(
 		'id' => 'socket1',
-		'status' => 'on'
+		'status' => $s1s
 	),
 	array(
 		'id' => 'socket2',
-		'status' => 'off'
+		'status' => $s2s
 	)
 );
 
