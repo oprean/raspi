@@ -3,7 +3,7 @@ import time ## Import 'time' library. Allows us to use 'sleep'
 import sys ## for param
 
 ##### CONSTANTS ##########
-LED_RED = 12
+LED_RED = 23
 LED_BLUE = 11
 LED_YELLOW = 13
 
@@ -13,7 +13,7 @@ CLEAN = 'reset';
 
 #################### SETUP ########################
 GPIO.setmode(GPIO.BOARD) ## Use board pin numbering
-GPIO.setwarnings(False)
+#GPIO.setwarnings(False)
 ###################################################
 
 led = sys.argv[1];

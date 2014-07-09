@@ -1,5 +1,5 @@
 <?php
-define('RED', 12);
+define('RED', 23);
 define('BLUE', 11);
 define('YELLOW', 13);
 
