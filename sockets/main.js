@@ -1,37 +1,77 @@
 (function($) {
 
-	var Socket = Backbone.Model.extend({});
-
-	var Sockets = Backbone.Collection.extend({
-		model : Socket,
-		url: '/raspi/sockets/ctrl.php'
+	var Socket = Backbone.Model.extend({
+        urlRoot: '/ctrl.php',
+        defaults: {
+            name: '',
+            pin: -1,
+            id: -1,
+            state: -1
+        }
 	});
+	
+    var Sockets = Backbone.Collection.extend({
+        model : Socket,
+        url: '/raspi/sockets/ctrl.php'
+    });
+    
+    var SocketView = Backbone.View.extend({
+        tagName: 'li',
+        
+        events: {
+          'click span.toggle':  'toggle',
+        },
+        initialize: function(){
+            _.bindAll(this, 'render', 'toggle');
+            this.model.bind('change', this.render);
+        },
+        render: function(){
+            $(this.el).html('<span style="color:black;">'+ this.model.get('name') + ' ' + this.model.get('state')+'</span> &nbsp; &nbsp; <span class="toggle" style="font-family:sans-serif; color:blue; cursor:pointer;">[toggle]</span>');
+            return this; // for chainable calls, like .render().el
+        },
+        
+        toggle: function(){
+            var model = this.model; 
+            $.getJSON('/raspi/sockets/ctrl.php?action=toggle&pin=' + this.model.get('pin'), function(data) {
+                var serverData = {
+                    id: data.id,
+                    pin: data.pin,
+                    name: data.name,
+                    state: data.state
+                };
+                model.set(serverData);
+            });    
+        },
+    });
 
-	var ListView = Backbone.View.extend({
+	var SocketsView = Backbone.View.extend({
 		el : $('body'),
-		events : {
-			'click button#socket1' : 'toggleSocket',
-			'click button#socket2' : 'toggleSocket'
-		},
+		
 		initialize : function() {
-			_.bindAll(this, 'render', 'toggleSocket');
-			var sockets = new Sockets();
-			sockets.fetch();
-			sockets.bind('reset', function () { console.log(sockets); });
+			_.bindAll(this, 'render', 'appendSocket');
+			this.sockets = new Sockets();
+			this.sockets.fetch();
+			this.sockets.bind('reset', function () {  });
+			this.sockets.bind('add', this.appendSocket); // collection event binder
 			this.render();
 		},
+		
 		render : function() {
-			$(this.el).append("<button id='socket1'>veioza</button>");
-			$(this.el).append("<button id='socket2'>ventilator</button>");
-			$(this.el).append("<div id='result'></div>");
+		     $(this.el).append("<ul></ul>");
+            _(this.sockets.models).each(function(socket){
+                console.log(socket); 
+                self.appendSocket(socket);
+            }, this);
 		},
-
-		toggleSocket : function(e) {
-			socket = $(e.target).attr('id');
-			$.get('/raspi/sockets/ctrl.php?socket=' + socket, function(data) {
-				$('#result').html(data);
-			});
-		}
+		
+        appendSocket: function(item){
+            var socketView = new SocketView({
+                model: item
+            });
+            $('ul', this.el).append(socketView.render().el);
+        }
 	});
-	var listView = new ListView();
+	
+	// main starts here!
+	var socketsView = new SocketsView();
 })(jQuery);
