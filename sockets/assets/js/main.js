@@ -19,14 +19,16 @@
         tagName: 'li',
         
         events: {
-          'click span.toggle':  'toggle',
+          'click a.toggle':  'toggle',
         },
         initialize: function(){
             _.bindAll(this, 'render', 'toggle');
             this.model.bind('change', this.render);
         },
         render: function(){
-            $(this.el).html('<span style="color:black;">'+ this.model.get('name') + ' ' + this.model.get('state')+'</span> &nbsp; &nbsp; <span class="toggle" style="font-family:sans-serif; color:blue; cursor:pointer;">[toggle]</span>');
+            var cssBtnType = (this.model.get('state') == 1)?'btn-danger':'btn-default';
+            var btnText = (this.model.get('state') == 1)?' on':' off';
+            $(this.el).html('<a class="btn btn-block btn-large toggle ' + cssBtnType + '">' + this.model.get('name') + btnText + '</a>');
             return this; // for chainable calls, like .render().el
         },
         
