@@ -45,7 +45,7 @@
     });
 
 	var SocketsView = Backbone.View.extend({
-		el : $('body'),
+		el : $("#sockets"),
 		
 		initialize : function() {
 			_.bindAll(this, 'render', 'appendSocket');
