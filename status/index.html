@@ -7,7 +7,7 @@
     <meta name="description" content="Socket controller">
     <meta name="author" content="Sergiu Oprean">
 
-    <title>RaspberryPi Sockets Controller</title>
+    <title>RaspberryPi GPIO Status Controller</title>
 
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
@@ -22,11 +22,18 @@
 
   	<div class="container">
 		<div class="main-area panel panel-default well">
-			<div class="panel-heading" style="text-align: center">RaspberryPi Sockets Controller</div>
-			 <div id="sockets" class="panel-body">
+			<div class="panel-heading" style="text-align: center">RaspberryPi GPIO Status Controller</div>
+			 <div id="gpios" class="panel-body">
 			</div>
 		</div>
     </div> <!-- /container -->
+  	
+	<script id="gpioPinTemplate" type="text/template">
+	   <div class="gpio">
+	        <div class="name"><%= ppin %></div>
+	        <div class="title"><%= name %></div>
+	  </div>
+	</script>
   	
 	<!-- backbone stuff-->
 	<script src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>

@@ -6,18 +6,25 @@ $s1s = wiringpi::digitalRead(17);
 $s2s = wiringpi::digitalRead(11); 
 */
 
-class Socket {
+class GPIOPin {
 	
 	const ON = 1;
 	const OFF = 0;
-	public $id;
-	public $pin;
+	const OUT = 1;
+	const IN = 0;
+	const UK = 2; // unknown
+	public $ppin;
+	public $bpin;
+	public $wpin;
+	public $mode;
 	public $state;
 	public $name;
 	
 	public function __construct($pin, $name = null, $state = null) {
-		$this->id = $pin;
-		$this->pin = $pin;
+		$this->ppin = $pin;
+		$this->bpin = $pin;
+		$this->wpin = $pin;
+		$this->mode = self::UK;
 		$this->name = $name;
 		$this->state = ($state === null)?wiringpi::digitalRead($this->pin):$state;
 	}
@@ -37,7 +44,7 @@ class Socket {
 }
 
 class SocketCtrl {
-	const SOCKET_CONFIG_JSON = 'sockets.json';
+	const SOCKET_CONFIG_JSON = 'gpio.json';
 	public $sockets;
 
 	public function __construct() {
@@ -48,7 +55,7 @@ class SocketCtrl {
 	private function init() {
 		$sockets = json_decode(file_get_contents(SocketCtrl::SOCKET_CONFIG_JSON));
 		foreach ($sockets as $socketCfg) {
-			$s = new Socket($socketCfg->pin, $socketCfg->name, $socketCfg->state);					// remove ', $socketCfg->state' on production
+			$s = new GPIOPin($socketCfg->ppin, $socketCfg->name, $socketCfg->state);					// remove ', $socketCfg->state' on production
 			$this->sockets[] = $s;
 		}
 	}
