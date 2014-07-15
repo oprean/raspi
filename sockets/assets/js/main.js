@@ -34,15 +34,21 @@
         
         toggle: function(){
             var model = this.model; 
-            $.getJSON('/raspi/sockets/ctrl.php?action=toggle&pin=' + this.model.get('pin'), function(data) {
-                var serverData = {
-                    id: data.id,
-                    pin: data.pin,
-                    name: data.name,
-                    state: data.state
-                };
-                model.set(serverData);
-            });    
+            $.ajaxSetup ({ cache: false}); 
+            $.ajax({
+            	url: '/raspi/sockets/ctrl.php?action=toggle&pin=' + this.model.get('pin'),
+            	dataType: "json",
+            	success: function(data) {
+	                var serverData = {
+	                    id: data.id,
+	                    pin: data.pin,
+	                    name: data.name,
+	                    state: data.state
+	                };
+	                //alert(data.state);
+	                model.set(serverData);
+            	}
+            })    
         },
     });
 

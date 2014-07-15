@@ -1,10 +1,6 @@
 <?php
-
-/*include('wiringpi.php');
-
-$s1s = wiringpi::digitalRead(17);
-$s2s = wiringpi::digitalRead(11); 
-*/
+ini_set("enable_dl","On");
+include('wiringpi.php');
 
 class Socket {
 	
@@ -15,22 +11,26 @@ class Socket {
 	public $state;
 	public $name;
 	
-	public function __construct($pin, $name = null, $state = null) {
+	public function __construct($pin, $name = null) {
 		$this->id = $pin;
 		$this->pin = $pin;
 		$this->name = $name;
-		$this->state = ($state === null)?wiringpi::digitalRead($this->pin):$state;
+		//wiringpi::digitalWrite($this->pin, 1);
+		//echo $this->pin.'->'.wiringpi::digitalRead($this->pin);
+		$this->state = wiringpi::digitalRead($this->pin);
+
 	}
 	
 	// for testing only!
-	public function _toggleState() {
+	public function toggleState() {
 		$state = wiringpi::digitalRead($this->pin);
 		$newState = ($state == Socket::ON)?Socket::OFF:Socket::ON;
-		$this->state = wiringpi::digitalWrite($newState);
+		wiringpi::digitalWrite($this->pin, $newState);
+		$this->state = wiringpi::digitalRead($this->pin);
 		return true;
 	}
 	
-	public function toggleState() {
+	public function _toggleState() {
 		$this->state = ($this->state == Socket::ON)?Socket::OFF:Socket::ON;
 		return true;
 	}
@@ -48,7 +48,7 @@ class SocketCtrl {
 	private function init() {
 		$sockets = json_decode(file_get_contents(SocketCtrl::SOCKET_CONFIG_JSON));
 		foreach ($sockets as $socketCfg) {
-			$s = new Socket($socketCfg->pin, $socketCfg->name, $socketCfg->state);					// remove ', $socketCfg->state' on production
+			$s = new Socket($socketCfg->pin, $socketCfg->name);					// remove ', $socketCfg->state' on production
 			$this->sockets[] = $s;
 		}
 	}
@@ -67,9 +67,10 @@ class SocketCtrl {
 	//$socket int (GPIO pin)
 	public function actionToogle($socketPin) {
 		$socket = $this->getSocketByPin($socketPin);
-		if (!empty($socket)) $socket->toggleState();
-		file_put_contents(SocketCtrl::SOCKET_CONFIG_JSON, json_encode($this->sockets));				// remove / comment on production
-		echo json_encode($socket);
+		if (!empty($socket)) {
+			$socket->toggleState();
+			echo json_encode($socket);
+		}		
 	}
 	
 	public function run() {
