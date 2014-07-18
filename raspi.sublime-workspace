@@ -19,9 +19,17 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 311.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"G",
+				"Git: Push"
+			],
+			[
+				"com",
+				"Set Syntax: Git Commit Message"
+			],
 			[
 				"Package Control: ",
 				"Package Control: Install Package"
@@ -60,6 +68,9 @@
 	},
 	"file_history":
 	[
+		"/C/Apache/htdocs/raspi/raspi.sublime-project",
+		"/C/Apache/htdocs/raspi/led2.py",
+		"/C/Apache/htdocs/raspi/raspi.sublime-workspace",
 		"/C/_/backbonetutorials-gh-pages/examples/todo-app/js/models/todo.js",
 		"/C/_/backbonetutorials-gh-pages/examples/todo-app/js/main.js",
 		"/C/_/backbonetutorials-gh-pages/examples/todo-app/index.html",
@@ -184,7 +195,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -209,6 +220,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.git":
+	{
+		"height": 100.0
+	},
 	"replace":
 	{
 		"height": 0.0
