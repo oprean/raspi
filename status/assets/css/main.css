@@ -17,3 +17,7 @@ body {
 .panel-body li {
 	margin-bottom: 10px;
 }
+
+.gpio input {
+	width: 20px;
+}
