@@ -70,7 +70,6 @@
                 console.log(socket); 
                 self.appendSocket(socket);
             }, this);
-            $(this.el).append("<input type='text' name='rgb' style='width:100%' value='#ccc'/>");
 		},
 		
         appendSocket: function(item){

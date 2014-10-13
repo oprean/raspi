@@ -31,7 +31,23 @@
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
-	
+	<script type="text/javascript" src="js/tinycolor-0.9.15.min.js"></script>
+	<script type="text/javascript" src="js/pick-a-color-1.2.3.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$(".pick-a-color").pickAColor({
+			  showSpectrum            : true,
+				showSavedColors         : true,
+				saveColorsPerElement    : true,
+				fadeMenuToggle          : true,
+				showAdvanced			: true,
+				showBasicColors         : true,
+				showHexInput            : true,
+				allowBlank				: true,
+				inlineDropdown			: true
+			});
+		});	
+		</script>
 </head>
 <body>
 <div class="container">
@@ -55,7 +71,7 @@
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      <ul class="nav navbar-nav">
 			        <li><a href="sockets.html">Sockets</a></li>
-			        <li><a href="ledstrip.html">LED Strip</a></li>
+			        <li class="active"><a href="ledstrip.html">LED Strip</a></li>
 			        <li><a href="raspberry.html">Raspberry</a></li>
 			        <li><a href="arduino.html">Arduino</a></li>
 			      </ul>
@@ -65,16 +81,18 @@
 			    </div><!-- /.navbar-collapse -->
 			  </div><!-- /.container-fluid -->
 			</nav>
-			
-			<div class="list-group">
-			  <a href="sockets.html" class="list-group-item">Sockets</a>
-			  <a href="ledstrip.html" class="list-group-item">LED Strip</a>
-			  <a href="raspberry.html" class="list-group-item">Raspberry</a>
-			  <a href="arduino.html" class="list-group-item">Arduino</a>
-			  <a href="settings.html" class="list-group-item">Settings</a>
+	
+			<div class="panel panel-default">
+				<div class="panel-heading">LEDs</div>
+				<div id="leds" class="panel-body"></div>
 			</div>
+			
 		</div>
 	</div>
 </div>
+	<script src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+	<script src="js/underscore-min.js"></script>
+	<script src="js/backbone-min.js"></script>
+	<script src="js/pages/ledstrip.js" type="text/javascript"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 (function($) {
-
+    var ctrlUrl = '/raspi/iot/php/ctrl_sockets.php';
 	var Socket = Backbone.Model.extend({
-        urlRoot: '/ctrl.php',
+        urlRoot: ctrlUrl,
         defaults: {
             name: '',
             pin: -1,
@@ -12,7 +12,7 @@
 	
     var Sockets = Backbone.Collection.extend({
         model : Socket,
-        url: '/raspi/sockets/ctrl.php'
+        url: ctrlUrl
     });
     
     var SocketView = Backbone.View.extend({
@@ -26,7 +26,7 @@
             this.model.bind('change', this.render);
         },
         render: function(){
-            var cssBtnType = (this.model.get('state') == 1)?'btn-danger':'btn-default';
+            var cssBtnType = (this.model.get('state') == 1)?'btn-danger':'btn-primary';
             var btnText = (this.model.get('state') == 1)?' on':' off';
             $(this.el).html('<a class="btn btn-block btn-large toggle ' + cssBtnType + '">' + this.model.get('name') + btnText + '</a>');
             return this; // for chainable calls, like .render().el
@@ -36,7 +36,7 @@
             var model = this.model; 
             $.ajaxSetup ({ cache: false}); 
             $.ajax({
-            	url: '/raspi/sockets/ctrl.php?action=toggle&pin=' + this.model.get('pin'),
+            	url: ctrlUrl + '?action=toggle&pin=' + this.model.get('pin'),
             	dataType: "json",
             	success: function(data) {
 	                var serverData = {
@@ -70,7 +70,6 @@
                 console.log(socket); 
                 self.appendSocket(socket);
             }, this);
-            $(this.el).append("<input type='text' name='rgb' style='width:100%' value='#ccc'/>");
 		},
 		
         appendSocket: function(item){

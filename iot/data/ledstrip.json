@@ -1,0 +1,15 @@
+{
+	"id":17,
+	"pin":17,
+	"state":0,
+	"color":"#FFFFFF",
+	"name":"RGB LED Strip",
+	"led_number":4,
+	"leds":
+		[
+			{"id":0,"color":"#FFFFFF"},
+			{"id":1,"color":"#FFFFFF"},
+			{"id":2,"color":"#FFFFFF"},
+			{"id":3,"color":"#FFFFFF"}
+		]
+}

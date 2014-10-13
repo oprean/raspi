@@ -1,0 +1,10 @@
+[
+  {
+    "id": 17,
+    "pin": 17,
+    "mode": 0,
+    "value": 0,
+    "name": "GPIO17",
+    "altname": "LED Strip"
+  }
+]

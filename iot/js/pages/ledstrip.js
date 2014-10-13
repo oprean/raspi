@@ -1,7 +1,7 @@
 (function($) {
-
+    var ctrlUrl = '/raspi/iot/php/ctrl_leds.php';
 	var Socket = Backbone.Model.extend({
-        urlRoot: '/ctrl.php',
+        urlRoot: ctrlUrl,
         defaults: {
             name: '',
             pin: -1,
@@ -12,7 +12,7 @@
 	
     var Sockets = Backbone.Collection.extend({
         model : Socket,
-        url: '/raspi/sockets/ctrl.php'
+        url: ctrlUrl
     });
     
     var SocketView = Backbone.View.extend({
@@ -20,23 +20,59 @@
         
         events: {
           'click a.toggle':  'toggle',
+          'click a.cchange': 'applychange',
+          'change input.pick-a-color': 'cchange',
         },
         initialize: function(){
-            _.bindAll(this, 'render', 'toggle');
+            _.bindAll(this, 'render', 'toggle', 'cchange', 'applychange');
             this.model.bind('change', this.render);
         },
         render: function(){
-            var cssBtnType = (this.model.get('state') == 1)?'btn-danger':'btn-default';
+            var cssBtnType = (this.model.get('state') == 1)?'btn-danger':'btn-primary';
             var btnText = (this.model.get('state') == 1)?' on':' off';
             $(this.el).html('<a class="btn btn-block btn-large toggle ' + cssBtnType + '">' + this.model.get('name') + btnText + '</a>');
+
+            if (this.model.get('state') == 1) {
+                $(this.el).append('<a class="btn btn-block btn-large cchange btn-warning">Change LEDs color to ' + this.model.get('color') + '</a>');
+                $(this.el).append('<input type="text" value="' + this.model.get('color') + '" name="ledColor" class="pick-a-color form-control">');
+            }
+            
             return this; // for chainable calls, like .render().el
         },
         
+        cchange: function(){
+            var model = this.model;
+            var newColor = $('.pick-a-color').val();
+            var attrs = {
+                color:newColor
+            };
+            model.set(attrs);
+        },
+
+        applychange: function(){
+            var model = this.model; 
+            $.ajaxSetup ({ cache: false}); 
+            $.ajax({
+                url: ctrlUrl + '?action=cchange&color=' + this.model.get('color'),
+                dataType: "json",
+                success: function(data) {
+                    var serverData = {
+                        id: data.id,
+                        pin: data.pin,
+                        name: data.name,
+                        state: data.state
+                    };
+                    //alert(data.state);
+                    model.set(serverData);
+                }
+            })    
+        },
+
         toggle: function(){
             var model = this.model; 
             $.ajaxSetup ({ cache: false}); 
             $.ajax({
-            	url: '/raspi/sockets/ctrl.php?action=toggle&pin=' + this.model.get('pin'),
+            	url: ctrlUrl + '?action=toggle',
             	dataType: "json",
             	success: function(data) {
 	                var serverData = {
@@ -53,7 +89,7 @@
     });
 
 	var SocketsView = Backbone.View.extend({
-		el : $("#sockets"),
+		el : $("#leds"),
 		
 		initialize : function() {
 			_.bindAll(this, 'render', 'appendSocket');
@@ -70,7 +106,6 @@
                 console.log(socket); 
                 self.appendSocket(socket);
             }, this);
-            $(this.el).append("<input type='text' name='rgb' style='width:100%' value='#ccc'/>");
 		},
 		
         appendSocket: function(item){
