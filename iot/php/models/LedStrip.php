@@ -44,12 +44,16 @@ class LedStrip {
 		}
 	}
 
-	public function setColor($color) {
-		//wiringpi::wiringPiSetup();
-		$fd = wiringpi::serialOpen('/dev/ttyACM0', 9600);
-		//wiringpi::serialPrintf($fd,'Set ledstrip color to: '.$color);
-		//wiringpi::serialPrintf($fd,'led');
+	public function setColor2($color) {
+		$cmd = "python /var/www/raspi/iot/py/connect.py /dev/ttyACM1 9600 '$color;'";
+		exec($cmd);
 		echo 'data sent to serial';
+	}
+
+	public function setColor($color) {
+		$fd = wiringpi::serialOpen('/dev/ttyACM0', 9600);
+		wiringpi::serialPrintf($fd,"color:$color;");
+		echo 'data sent to serial'.$color;
 		wiringpi::serialClose($fd);
 	}
 

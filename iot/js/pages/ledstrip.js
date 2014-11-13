@@ -51,9 +51,12 @@
 
         applychange: function(){
             var model = this.model; 
+            var color = model.get('color');
+            console.log(model.get('color'));
+            var url = ctrlUrl + '?action=cchange&color=' + color;
             $.ajaxSetup ({ cache: false}); 
             $.ajax({
-                url: ctrlUrl + '?action=cchange&color=' + this.model.get('color'),
+                url: url,
                 dataType: "json",
                 success: function(data) {
                     var serverData = {
@@ -63,6 +66,8 @@
                         state: data.state
                     };
                     //alert(data.state);
+                    console.log('ddd');
+                    console.log(model.get('color'));
                     model.set(serverData);
                 }
             })    
