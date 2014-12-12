@@ -9,9 +9,11 @@ require_once('models/Constants.php');
 require_once('models/GPIO.php');
 require_once('models/Led.php');
 require_once('models/LedStrip.php');
+require_once('models/process.php');
 //$H$9MD7CIF2xVvPir9mbCX4SRIOHK89cI.
 class LedStripCtrl {
 	const LEDSTRIP_CONFIG_JSON = '../data/ledstrip.json';
+	public $serialConnectionCmd;
 	public $ledStrip;
 
 	public function __construct() {
@@ -20,7 +22,15 @@ class LedStripCtrl {
 	}
 	
 	private function init() {
+		$this->serialConnectionCmd = 'python /var/www/raspi/iot/py/connect.py '.ARDUINO_TTY.' 9600 Raspi connected!';
 		$this->ledStrip = new LedStrip(self::LEDSTRIP_CONFIG_JSON);
+	}
+	
+	public function actionTTYInit() {
+		if (!BackgroundProcess::isStarted('Raspi')) {
+			$process = new BackgroundProcess($this->serialConnectionCmd);
+			$process->run();
+		}
 	}
 	
 	public function actionLedStrip() {
@@ -35,6 +45,10 @@ class LedStripCtrl {
 	}
 
 	public function actionChangeColor($color) {
+		if (!BackgroundProcess::isStarted('Raspi')) {
+			$process = new BackgroundProcess($this->serialConnectionCmd);
+			$process->run();		
+		}
 		$this->ledStrip->setColor($color);
 	}
 	
@@ -47,6 +61,9 @@ class LedStripCtrl {
 		switch ($_GET['action']) {
 			case 'toggle':
 				$this->actionToogle();				
+				break;
+			case 'ttyInit':
+				$this->actionTTYInit();
 				break;
 			case 'cchange':
 				$this->actionChangeColor($_GET['color']);

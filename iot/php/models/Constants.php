@@ -1,4 +1,7 @@
-<?php 
+<?php
+defined('ARDUINO_TTY') or define('ARDUINO_TTY', '/dev/ttyUSB0');
+
+ 
 /*
 +----------+-Rev2-+------+--------+------+-------+
 | wiringPi | GPIO | Phys | Name   | Mode | Value |

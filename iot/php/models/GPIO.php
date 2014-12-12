@@ -28,7 +28,7 @@ class GPIO {
 		$this->name = $jsonInfo->name;
 		$this->altname = $jsonInfo->altname;
 
-		$this->state = wiringpi::digitalRead($this->pin);
+		$this->value = wiringpi::digitalRead($this->pin);
 
 	}
 	

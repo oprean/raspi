@@ -24,6 +24,8 @@ class LedStrip {
 	public $state;
 	public $color;
 	public $leds;
+	
+	const ARDUINO_TTY = 'ttyUSB0';
 
 	public function __construct($jsonCfg = null) {
 		if (!empty($jsonCfg)) $this->loadCfg($jsonCfg);
@@ -38,21 +40,21 @@ class LedStrip {
 			$this->name = $cfg->name;
 			$this->led_number = $cfg->led_number;
 			$this->pin = new GPIO($cfg->pin);
-			$this->state = $cfg->state;
+			$this->state = $this->pin->value;
 			$this->color = $cfg->color;
 			$this->leds = $this->loadLEDs($cfg->leds);
 		}
 	}
 
 	public function setColor2($color) {
-		$cmd = "python /var/www/raspi/iot/py/connect.py /dev/ttyACM1 9600 '$color;'";
+		$cmd = 'python /var/www/raspi/iot/py/cmd.py '.ARDUINO_TTY.' 9600 "'.$color.';"';
 		exec($cmd);
 		echo 'data sent to serial';
 	}
 
 	public function setColor($color) {
-		$fd = wiringpi::serialOpen('/dev/ttyACM0', 9600);
-		wiringpi::serialPrintf($fd,"color:$color;");
+		$fd = wiringpi::serialOpen(ARDUINO_TTY, 9600);
+		wiringpi::serialPrintf($fd,"$color;");
 		echo 'data sent to serial'.$color;
 		wiringpi::serialClose($fd);
 	}

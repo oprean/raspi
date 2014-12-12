@@ -51,24 +51,16 @@
 </head>
 <body>
 <script type="text/template" id="ledstrip-template">
-	<a id="btnToggle" class="btn btn-block btn-large toggle btn-primary">turn on/off</a>
-
-	<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-	<button id="btnWhite" type="button" class="btn btn-block btn-default">White</button>
-		<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-	<button id="btnBlue" type="button" class="btn btn-block btn-primary">Blue</button>
-	
-	<!-- Indicates a successful or positive action -->
-	<button type="button" class="btn btn-block btn-success">Green</button>
-	
-	<!-- Contextual button for informational alert messages -->
-	<button type="button" class="btn btn-block btn-info">Azure</button>
-	
-	<!-- Indicates caution should be taken with this action -->
-	<button type="button" class="btn btn-block btn-warning">Orange</button>
-	
-	<!-- Indicates a dangerous or potentially negative action -->
-	<button type="button" class="btn btn-block btn-danger">Red</button>
+	<a id="btnToggle" class="btn btn-block btn-large toggle btn-primary"><%=(model.get('state')==1?'on':'off')%></a>
+	<% if (model.get('state') == 1) { %>
+		<button id="btnTTY" type="button" class="btn btn-default">TTY</button>
+		<button id="btnWhite" type="button" class="btn btn-block btn-default">White</button>
+		<button id="btnBlue" type="button" class="btn btn-block btn-primary">Blue</button>
+		<button id="btnGreen" type="button" class="btn btn-block btn-success">Green</button>
+		<!--button id="btnAzure" type="button" class="btn btn-block btn-info">Azure</button-->
+		<!--button id="btnOrange" type="button" class="btn btn-block btn-warning">Orange</button-->
+		<button id="btnRed" type="button" class="btn btn-block btn-danger">Red</button>
+	<% } %>
 </script>
 <div class="container">
 	<div class="row clearfix">
