@@ -41,6 +41,11 @@ class LedStripCtrl {
 	public function actionToogle() {
 		$this->ledStrip->pin->toggleValue();
 		$this->ledStrip->state = $this->ledStrip->pin->value; 
+		if ($this->ledStrip->state == 0) {
+			$this->ledStrip->sendCmd('i!0');
+		} else {
+			$this->ledStrip->sendCmd('i!50');
+		}
 		echo json_encode($this->ledStrip);	
 	}
 
@@ -50,6 +55,14 @@ class LedStripCtrl {
 			$process->run();		
 		}
 		$this->ledStrip->setColor($color);
+	}
+	
+	public function actionSendCommand($cmd) {
+		if (!BackgroundProcess::isStarted('Raspi')) {
+			$process = new BackgroundProcess($this->serialConnectionCmd);
+			$process->run();		
+		}
+		$this->ledStrip->sendCmd($cmd);
 	}
 	
 	public function run() {
@@ -65,8 +78,9 @@ class LedStripCtrl {
 			case 'ttyInit':
 				$this->actionTTYInit();
 				break;
-			case 'cchange':
-				$this->actionChangeColor($_GET['color']);
+			case 'sendCommand':
+				$this->actionSendCommand($_GET['cmd']);
+				break;
 			default:
 				$this->actionLedStrip();					
 				break;

@@ -36,13 +36,12 @@
 	<script type="text/javascript">
 		$(document).ready(function () {
 			$(".pick-a-color").pickAColor({
-			  showSpectrum            : true,
+   			    showSpectrum            : true,
 				showSavedColors         : true,
 				saveColorsPerElement    : true,
 				fadeMenuToggle          : true,
 				showAdvanced			: true,
 				showBasicColors         : true,
-				showHexInput            : true,
 				allowBlank				: true,
 				inlineDropdown			: true
 			});
@@ -53,13 +52,31 @@
 <script type="text/template" id="ledstrip-template">
 	<a id="btnToggle" class="btn btn-block btn-large toggle btn-primary"><%=(model.get('state')==1?'on':'off')%></a>
 	<% if (model.get('state') == 1) { %>
-		<button id="btnTTY" type="button" class="btn btn-default">TTY</button>
-		<button id="btnWhite" type="button" class="btn btn-block btn-default">White</button>
-		<button id="btnBlue" type="button" class="btn btn-block btn-primary">Blue</button>
-		<button id="btnGreen" type="button" class="btn btn-block btn-success">Green</button>
-		<!--button id="btnAzure" type="button" class="btn btn-block btn-info">Azure</button-->
-		<!--button id="btnOrange" type="button" class="btn btn-block btn-warning">Orange</button-->
-		<button id="btnRed" type="button" class="btn btn-block btn-danger">Red</button>
+		<p></p>
+		<!--button id="btnTTY" type="button" class="btn btn-default">TTY</button-->
+		<div class="btn-group btn-group-justified" role="group" aria-label="...">
+			<button id="btnDarker" type="button" class="btn btn-default">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>			
+			</button>
+			
+			<button id="btnBrighter" type="button" class="btn btn-default">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			</button>
+		</div>
+		<p></p>
+		<select id="program" class="form-control">
+			<option value="random">random</option>
+			<option value="fixcolor">fix color</option>
+		</select>
+		<p></p>
+		<input id="customColor" type="text" class="pick-a-color form-control"><p></p>
+		
+		<button id="btnWhite" type="button" class="btn btn-xs btn-block btn-default">White</button>
+		<button id="btnBlue" type="button" class="btn btn-xs btn-block btn-primary">Blue</button>
+		<button id="btnGreen" type="button" class="btn btn-xs btn-block btn-success">Green</button>
+		<button id="btnAzure" type="button" class="btn btn-xs btn-block btn-info">Azure</button>
+		<button id="btnOrange" type="button" class="btn btn-xs btn-block btn-warning">Orange</button>
+		<button id="btnRed" type="button" class="btn btn-xs btn-block btn-danger">Red</button>
 	<% } %>
 </script>
 <div class="container">

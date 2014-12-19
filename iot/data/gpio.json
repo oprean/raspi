@@ -5,6 +5,14 @@
     "mode": 0,
     "value": 0,
     "name": "GPIO17",
+    "altname": "LED Tree"
+  },
+  {
+    "id": 11,
+    "pin": 11,
+    "mode": 0,
+    "value": 0,
+    "name": "GPIO11",
     "altname": "LED Strip"
   }
 ]

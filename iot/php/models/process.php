@@ -21,7 +21,6 @@ class BackgroundProcess
 
 	public static function isStarted($grep) {
 		$result = shell_exec('ps f -u www-data | grep '.$grep);
-		echo count(preg_split("/\n/", $result));
 		if(count(preg_split("/\n/", $result)) > 3) {
 			return true;
         } else {

@@ -28,7 +28,7 @@
         render: function(){
             var cssBtnType = (this.model.get('state') == 1)?'btn-danger':'btn-primary';
             var btnText = (this.model.get('state') == 1)?' on':' off';
-            $(this.el).html('<a class="btn btn-block btn-large toggle ' + cssBtnType + '">' + this.model.get('name') + btnText + '</a>');
+            $(this.el).html('<a class="btn btn-block btn-large toggle ' + cssBtnType + '">' + this.model.get('name') + btnText + '</a><p></p>');
             return this; // for chainable calls, like .render().el
         },
         
