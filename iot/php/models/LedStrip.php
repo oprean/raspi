@@ -9,30 +9,44 @@
 }
 */
 class LedStrip {
+	
+	const LEDSTRIP_CONFIG_JSON = '../data/ledstrip.json';
+	
 	public $id;
 	public $name;
 	public $pin;
+	public $pinObj;
 	public $state;
 	public $color;
 	public $intensity;
+	public $step;
 	public $program;
 	
-	public function __construct($jsonCfg = null) {
-		if (!empty($jsonCfg)) $this->loadCfg($jsonCfg);
-		else 'cfg not found!';
+	public function __construct() {
+		$this->loadCfg(self::LEDSTRIP_CONFIG_JSON);
 	}
 
-	public function loadCfg($jsonCfg) {
-		if (file_exists($jsonCfg)) {
-			$cfg = json_decode(file_get_contents($jsonCfg));
+	public function loadCfg($jsonCfgFile) {
+		if (file_exists($jsonCfgFile)) {
+			$cfg = json_decode(file_get_contents($jsonCfgFile));
+			
 			$this->id = $cfg->id;
 			$this->name = $cfg->name;
-			$this->pin = new GPIO($cfg->pin);
-			$this->state = $this->pin->value;
+			
+			$this->pin = $cfg->pin;
+			$this->pinObj = new GPIO($cfg->pin);
+			$this->state = $this->pinObj->value;
+			
 			$this->color = $cfg->color;
 			$this->intensity = $cfg->intensity;
+			$this->step = empty($cfg->step)?1:$cfg->step;
 			$this->program = $cfg->program;
 		}
+	}
+	
+	public function saveCfg($jsonData) {
+		file_put_contents(self::LEDSTRIP_CONFIG_JSON, $jsonData);
+		$this->loadCfg(self::LEDSTRIP_CONFIG_JSON);
 	}
 	
 	public function sendCmd($cmd) {

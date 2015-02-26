@@ -1,9 +1,1 @@
-{
-	"id":17,
-	"pin":17,
-	"state":0,
-	"color":"FFFFFF",
-	"name":"RGB LED Strip",
-	"intensity": 10,
-	"program":"random"
-}
+{"id":17,"name":"RGB LED Strip","pin":17,"pinObj":{"id":17,"pin":17,"mode":null,"value":1,"name":"GPIO17","altname":"LED Tree"},"state":0,"color":"00FF00","intensity":10,"step":1,"program":"5"}

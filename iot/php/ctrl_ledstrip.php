@@ -12,7 +12,6 @@ require_once('models/LedStrip.php');
 require_once('models/process.php');
 //$H$9MD7CIF2xVvPir9mbCX4SRIOHK89cI.
 class LedStripCtrl {
-	const LEDSTRIP_CONFIG_JSON = '../data/ledstrip.json';
 	public $serialConnectionCmd;
 	public $ledStrip;
 
@@ -23,7 +22,7 @@ class LedStripCtrl {
 	
 	private function init() {
 		$this->serialConnectionCmd = 'python /var/www/raspi/iot/py/connect.py '.ARDUINO_TTY.' 9600 Raspi connected!';
-		$this->ledStrip = new LedStrip(self::LEDSTRIP_CONFIG_JSON);
+		$this->ledStrip = new LedStrip();
 	}
 	
 	public function actionTTYInit() {
@@ -34,17 +33,25 @@ class LedStripCtrl {
 	}
 	
 	public function actionLedStrip() {
+		
+		$putdata = file_get_contents("php://input");
+		if (!empty($putdata)) {
+			$this->ledStrip->saveCfg($putdata);
+		};
 		echo json_encode($this->ledStrip);
 	}
 	
 	//$pin int (GPIO pin)
 	public function actionToogle() {
-		$this->ledStrip->pin->toggleValue();
-		$this->ledStrip->state = $this->ledStrip->pin->value; 
+		$this->ledStrip->pinObj->toggleValue();
+		$this->ledStrip->state = $this->ledStrip->pinObj->value; 
 		if ($this->ledStrip->state == 0) {
+			$this->ledStrip->sendCmd('p!0');
 			$this->ledStrip->sendCmd('i!0');
 		} else {
-			$this->ledStrip->sendCmd('i!50');
+			$this->ledStrip->sendCmd('i!'.$this->ledStrip->intensity);
+			$this->ledStrip->sendCmd('c!'.$this->ledStrip->color);
+			$this->ledStrip->sendCmd('p!'.$this->ledStrip->program);
 		}
 		echo json_encode($this->ledStrip);	
 	}

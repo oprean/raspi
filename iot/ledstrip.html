@@ -53,30 +53,40 @@
 	<a id="btnToggle" class="btn btn-block btn-large toggle btn-primary"><%=(model.get('state')==1?'on':'off')%></a>
 	<% if (model.get('state') == 1) { %>
 		<p></p>
+		<select id="program" class="form-control">
+			<option value="0" <%=(model.get('program') == 0)?'selected':'' %>>fix color</option>
+			<option value="1" <%=(model.get('program') == 1)?'selected':'' %>>random</option>
+			<option value="2" <%=(model.get('program') == 2)?'selected':'' %>>pulse</option>
+			<option value="3" <%=(model.get('program') == 3)?'selected':'' %>>alternate</option>
+			<option value="4" <%=(model.get('program') == 4)?'selected':'' %>>rainbow</option>
+			<option value="5" <%=(model.get('program') == 5)?'selected':'' %>>rainbow cycle</option>
+		</select>
+		<p></p>
 		<!--button id="btnTTY" type="button" class="btn btn-default">TTY</button-->
 		<div class="btn-group btn-group-justified" role="group" aria-label="...">
 			<button id="btnDarker" type="button" class="btn btn-default">
 				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>			
 			</button>
-			
+
 			<button id="btnBrighter" type="button" class="btn btn-default">
 				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 			</button>
 		</div>
+		<!--input type="number" id="intensity"  class="form-control" value="<%= model.get('intensity') %>" /-->
 		<p></p>
-		<select id="program" class="form-control">
-			<option value="random">random</option>
-			<option value="fixcolor">fix color</option>
-		</select>
+		
+		<button id="btnWhite" type="button" class="btn btn-default" style="width: 48%">White</button>
+		<button id="btnBlue" type="button" class="btn btn-primary pull-right" style="width: 48%">Blue</button>
+		<p></p>
+		<button id="btnGreen" type="button" class="btn btn-success" style="width: 48%">Green</button>
+		<button id="btnAzure" type="button" class="btn btn-info pull-right" style="width: 48%">Azure</button>
+		<p></p>
+		<button id="btnOrange" type="button" class="btn btn-warning" style="width: 48%">Orange</button>
+		<button id="btnRed" type="button" class="btn btn-danger pull-right" style="width: 48%">Red</button>	
 		<p></p>
 		<input id="customColor" type="text" class="pick-a-color form-control"><p></p>
-		
-		<button id="btnWhite" type="button" class="btn btn-xs btn-block btn-default">White</button>
-		<button id="btnBlue" type="button" class="btn btn-xs btn-block btn-primary">Blue</button>
-		<button id="btnGreen" type="button" class="btn btn-xs btn-block btn-success">Green</button>
-		<button id="btnAzure" type="button" class="btn btn-xs btn-block btn-info">Azure</button>
-		<button id="btnOrange" type="button" class="btn btn-xs btn-block btn-warning">Orange</button>
-		<button id="btnRed" type="button" class="btn btn-xs btn-block btn-danger">Red</button>
+		<p></p>
+		<input type="number" id="step"  class="form-control" value="<%= model.get('step') %>" />
 	<% } %>
 </script>
 <div class="container">
