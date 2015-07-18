@@ -1,0 +1,211 @@
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	/*font-family: 'Roboto';*/
+	font-weight: 100; 
+	margin-bottom: 60px;
+}
+
+/*********************************************************** 
+*************** PRELOADER - spinnning CIRCLES **************
+* https://ihatetomatoes.net/create-custom-preloading-screen/
+***********************************************************/
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+#loader {
+    display: block;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #3498db;
+    -webkit-animation: spin 2s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+    animation: spin 2s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+}
+ 
+#loader:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #e74c3c;
+    -webkit-animation: spin 3s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+      animation: spin 3s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+}
+ 
+#loader:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #f9c922;
+    -webkit-animation: spin 1.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+      animation: spin 1.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+}
+ 
+@-webkit-keyframes spin {
+    0%   {
+        -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(0deg);  /* IE 9 */
+        transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+    }
+    100% {
+        -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(360deg);  /* IE 9 */
+        transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+    }
+}
+@keyframes spin {
+    0%   {
+        -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(0deg);  /* IE 9 */
+        transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+    }
+    100% {
+        -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(360deg);  /* IE 9 */
+        transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+    }
+}
+
+/******************* containers *********************/
+#header-container {
+}
+
+#main-container {
+}
+
+#footer-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: 0.9em;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  padding-top: 10px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ccc;
+}
+
+.navbar-brand {
+	font-size: 40px;
+	font-family: 'Tangerine';
+}
+
+.jumbotron-home h1 {
+	font-family: 'Tangerine';
+	font-style: normal;
+	font-weight: 100;
+	font-size: 100px;
+	line-height: 75px;
+	color: #312D3A;
+	/*text-shadow: 0px 0px 10px #000;*/
+}
+
+.quiz-card-container {
+	padding: 0px 10px 10px 10px;
+	background: #FFFFFF;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #CCCCCC;
+	margin-bottom: 20px;
+}
+
+
+.quiz-card-description {
+	min-height: 140px
+}
+
+
+.quiz-card-buttons-container {
+	position: absolute;
+	bottom: 30px;
+}
+.question {
+	/*text-align:justify;*/
+	font-size: 20px;
+	font-weight: 300;
+}
+
+.radio-option {
+	padding: 5px;
+	text-align: left;
+}
+
+.radio-selected {
+	color: #FFFFFF;
+	background-color: #337ab7;
+	
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.label-option {
+	text-align: left;
+	min-width: 200px;
+}
+
+.label-started-on {
+	font-size: 0.8em;
+	color: #AAAAAA;
+}
+
+ul.score, ul.groups {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+ul.score li:nth-child(-n+3) {
+	font-weight: bold;
+}
+
+.score-name {
+	text-align: left;
+	display: inline-block;
+	width: 200px;
+	cursor: help;
+	border-bottom: 1px dotted #CCCCCC;
+}
+
+.score-description {
+	text-align: justify;
+	display: inline-block;
+	font-size: 0.9em;
+	font-weight: normal;
+}
+
+.btn-nav-question {
+	width: 150px;
+}
+
+.btn-quiz-status {
+	width: 100px;
+}
+
+.vl {
+	border-left: 1px solid #AAAAAA;
+}
