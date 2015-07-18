@@ -17,7 +17,7 @@ define([
 				success: function(model) {
 					if (model.get('status') == 'success') {
 						self.cpu_temp = model.get('response');				
-						self.root_temp = self.cpu_temp - 21.6;
+						self.root_temp = parseFloat(self.cpu_temp) - 21.6;
 					} else {
 						self.cpu_temp = null;
 						self.room_temp = null;
