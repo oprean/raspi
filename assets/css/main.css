@@ -105,7 +105,7 @@ body {
   height: 40px;
   padding-top: 10px;
   background-color: #f5f5f5;
-  border-top: 1px solid #ccc;
+  /*border-top: 1px solid #ccc;*/
 }
 
 .navbar-brand {
@@ -113,99 +113,10 @@ body {
 	font-family: 'Tangerine';
 }
 
-.jumbotron-home h1 {
-	font-family: 'Tangerine';
-	font-style: normal;
-	font-weight: 100;
-	font-size: 100px;
-	line-height: 75px;
-	color: #312D3A;
-	/*text-shadow: 0px 0px 10px #000;*/
-}
-
-.quiz-card-container {
-	padding: 0px 10px 10px 10px;
-	background: #FFFFFF;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	border: 1px solid #CCCCCC;
-	margin-bottom: 20px;
-}
-
-
-.quiz-card-description {
-	min-height: 140px
-}
-
-
-.quiz-card-buttons-container {
-	position: absolute;
-	bottom: 30px;
-}
-.question {
-	/*text-align:justify;*/
-	font-size: 20px;
-	font-weight: 300;
-}
-
-.radio-option {
-	padding: 5px;
-	text-align: left;
-}
-
-.radio-selected {
-	color: #FFFFFF;
-	background-color: #337ab7;
-	
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-}
-
-.label-option {
-	text-align: left;
-	min-width: 200px;
-}
-
-.label-started-on {
-	font-size: 0.8em;
-	color: #AAAAAA;
-}
-
-ul.score, ul.groups {
-	list-style-type: none;
-	padding: 0px;
-	margin: 0px;
-}
-
-ul.score li:nth-child(-n+3) {
-	font-weight: bold;
-}
-
-.score-name {
-	text-align: left;
-	display: inline-block;
-	width: 200px;
-	cursor: help;
-	border-bottom: 1px dotted #CCCCCC;
-}
-
-.score-description {
-	text-align: justify;
-	display: inline-block;
-	font-size: 0.9em;
-	font-weight: normal;
-}
-
-.btn-nav-question {
-	width: 150px;
-}
-
-.btn-quiz-status {
-	width: 100px;
-}
-
-.vl {
-	border-left: 1px solid #AAAAAA;
+.bg-raspi-logo {
+	background: url('../img/background_small.jpg');
+	background-repeat: no-repeat;
+	/*background-attachment: fixed;*/
+	background-position: center;
+	background-size: contain;
 }

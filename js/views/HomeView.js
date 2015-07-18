@@ -8,6 +8,7 @@ define([
 ], function($, _, Backbone, Marionette, homeTpl, Command){
 	var HomeView = Backbone.Marionette.ItemView.extend({
 		template : _.template(homeTpl),
+		className : 'bg-raspi-logo',
 		initialize : function(options) {
 			var self = this;
 			
@@ -15,31 +16,12 @@ define([
 			tempCmd.fetch({
 				success: function(model) {
 					if (model.get('status') == 'success') {
-						self.temp = model.get('response');				
+						self.cpu_temp = model.get('response');				
+						self.root_temp = self.cpu_temp - 21.6;
 					} else {
-						self.temp = 'failed!';
-					}
-					self.render();
-				}
-			});
-			tempCmd.set({id:'clock'});
-			tempCmd.fetch({
-				success: function(model) {
-					if (model.get('status') == 'success') {
-						self.clock = model.get('response');				
-					} else {
-						self.clock = 'failed!';
-					}
-					self.render();
-				}
-			});
-			tempCmd.set({id:'volts'});
-			tempCmd.fetch({
-				success: function(model) {
-					if (model.get('status') == 'success') {
-						self.volts = model.get('response');				
-					} else {
-						self.volts = 'failed!';
+						self.cpu_temp = null;
+						self.room_temp = null;
+						
 					}
 					self.render();
 				}
@@ -48,9 +30,8 @@ define([
 		
 		templateHelpers: function() {
 			return {
-				temp: this.temp,
-				clock: this.clock,
-				volts: this.volts,
+				cpu_temp: this.cpu_temp,
+				room_temp: this.room_temp,
 			};
 		}
 	});

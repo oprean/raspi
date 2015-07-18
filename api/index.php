@@ -6,7 +6,7 @@ R::setup( 'sqlite:'.ROOT_DIR.'/assets/data/raspi.sqlite' );
 $app = new \Slim\Slim();
 $app->config('debug', DEBUG_MODE);
 
-require_once(ROOT_DIR.'/php/routes/info.php');
+require_once(ROOT_DIR.'/php/routes/command.php');
 
 $app->run();
 R::close();

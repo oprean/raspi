@@ -39,6 +39,11 @@ class Command {
 					'txt' => 'free -o -h',
 					'regexp' => false		
 					),
+			'hostname' => array(
+					'id' => 'hostname',
+					'txt' => 'hostname',
+					'regexp' => false		
+					),
 			'lsusb' => array(
 					'id' => 'lsusb',
 					'txt' => 'lsusb',
