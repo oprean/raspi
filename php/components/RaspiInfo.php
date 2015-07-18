@@ -44,7 +44,7 @@ class RaspiInfo {
 		if (!$output || $return) return $this->formatErrorResponse($cmd, $output);
 		
 		if (!empty($cmd['regexp'])) { // scalar value
-			$r = preg_match_all($cmd['regexp'], $output[0], $matches);
+			$r = preg_match_all('/'.$cmd['regexp'].'/', $output[0], $matches);
 			if (!empty($r) && !empty($matches['value'])) {
 				$result = $this->formatSuccessResponse($cmd, $matches['value']);	
 			} else { // command failed
