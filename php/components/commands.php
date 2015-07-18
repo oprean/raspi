@@ -7,17 +7,17 @@ class Command {
 			'temp' => array(
 					'id' => 'temp',
 					'txt' => 'vcgencmd measure_temp',
-					'regexp' => '(temp)=(?<value>.*)\'C'	
+					'regexp' => '/(temp)=(?<value>.*)\'C/'	
 					),
 			'clock' => array(
 					'id' => 'clock',
 					'txt' => 'vcgencmd measure_clock arm',
-					'regexp' => '(frequency.*)=(?<value>.*)000000'		
+					'regexp' => '/(frequency.*)=(?<value>.*)000000/'		
 					),
 			'volts' => array(
 					'id' => 'volts',
 					'txt' => 'vcgencmd measure_volts core',
-					'regexp' => '(volt)=(?<value>.*)V'		
+					'regexp' => '/(volt)=(?<value>.*)V/'		
 					),
 			'meminfo' => array(
 					'id' => 'meminfo',
@@ -42,6 +42,11 @@ class Command {
 			'hostname' => array(
 					'id' => 'hostname',
 					'txt' => 'hostname',
+					'regexp' => false		
+					),
+			'gpioreadall' => array(
+					'id' => 'gpioreadall',
+					'txt' => 'gpio readall',
 					'regexp' => false		
 					),
 			'lsusb' => array(
@@ -70,7 +75,7 @@ class Command {
 		if (!$output || $return) return $this->formatErrorResponse($cmd, $output);
 		
 		if (!empty($cmd['regexp'])) { // scalar value
-			$r = preg_match_all('/'.$cmd['regexp'].'/', $output[0], $matches);
+			$r = preg_match_all($cmd['regexp'], $output[0], $matches);
 			if (!empty($r) && !empty($matches['value'])) {
 				$result = $this->formatSuccessResponse($cmd, $matches['value'][0]);	
 			} else { // command failed

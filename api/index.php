@@ -7,6 +7,7 @@ $app = new \Slim\Slim();
 $app->config('debug', DEBUG_MODE);
 
 require_once(ROOT_DIR.'/php/routes/command.php');
+require_once(ROOT_DIR.'/php/routes/gpio.php');
 
 $app->run();
 R::close();
