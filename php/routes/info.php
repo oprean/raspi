@@ -15,8 +15,22 @@ $app->get('/test', function () use ($app) {
 	
 });
 
-$app->get('/cputemp', function () use ($app) {
-	echo exec('/opt/vc/bin/vcgencmd measure_temp');
+$app->get('/vcgencmd/:cmd', function ($cmd) use ($app) {
+	switch($cmd) {
+		case 'temp':	
+			$cmd = 'vcgencmd measure_temp';
+			break;
+		case 'clock':	
+			$cmd = 'vcgencmd measure_clock arm';
+			break;
+		case 'volts':	
+			$cmd = 'vcgencmd measure_volts core';
+			break;
+	}
+	$result = exec($cmd); 
+	$result = split('=', $result);
+	
+	return (count($result) == 2)?$result[1]:'Commad failed!';
 	
 });
 ?>
