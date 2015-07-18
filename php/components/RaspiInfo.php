@@ -23,6 +23,11 @@ class RaspiInfo {
 					'txt' => 'cat /proc/meminfo',
 					'regexp' => false		
 					),
+			'date' => array(
+					'id' => 'date',
+					'txt' => 'date',
+					'regexp' => '/(?<value>.*)/'		
+					),
 			'dir' => array(
 					'id' => 'dir',
 					'txt' => 'dir',
@@ -46,7 +51,7 @@ class RaspiInfo {
 		if (!empty($cmd['regexp'])) { // scalar value
 			$r = preg_match_all('/'.$cmd['regexp'].'/', $output[0], $matches);
 			if (!empty($r) && !empty($matches['value'])) {
-				$result = $this->formatSuccessResponse($cmd, $matches['value']);	
+				$result = $this->formatSuccessResponse($cmd, $matches['value'][0]);	
 			} else { // command failed
 				$result = $this->formatErrorResponse($cmd, $output);
 			}	
