@@ -1,6 +1,7 @@
 <?php
 class RaspiInfo {
 	function __construct() {}
+
 	public function all() {
 		return array(
 			'temp' => array(
@@ -19,10 +20,30 @@ class RaspiInfo {
 					'regexp' => '(volt)=(?<value>.*)V'		
 					),
 			'meminfo' => array(
-					'id' => 'volts',
+					'id' => 'meminfo',
 					'txt' => 'cat /proc/meminfo',
 					'regexp' => false		
 					),
+			'partitions' => array(
+					'id' => 'partitions',
+					'txt' => 'cat /proc/partitions',
+					'regexp' => false		
+					),
+			'version' => array(
+					'id' => 'version',
+					'txt' => 'cat /proc/version',
+					'regexp' => false		
+					),
+			'free' => array(
+					'id' => 'free',
+					'txt' => 'free -o -h',
+					'regexp' => false		
+					),
+			'lsusb' => array(
+					'id' => 'lsusb',
+					'txt' => 'lsusb',
+					'regexp' => false		
+					),					
 			'date' => array(
 					'id' => 'date',
 					'txt' => 'date',
@@ -65,19 +86,17 @@ class RaspiInfo {
 	private function formatErrorResponse($cmd, $output, $msg='') {
 		return array(
 			'status' => 'error',
-			'data' => array(
-				'message' => 'Failed to execute command "'. $cmd['txt'].'". Error: '. (empty($msg)?implode("\n", $output):$msg) 
-			)
+			'cmd' => $cmd['txt'],
+			'response' => 'Failed to execute command "'. $cmd['txt'].'". Error: '. (empty($msg)?implode("\n", $output):$msg) 
 		);
 	}
 	
 	private function formatSuccessResponse($cmd, $response) {
 		return array(
 			'status' => 'success',
-			'data' => array(
-				'cmd' => $cmd['txt'],
-				'response' => $response,  
-			)
+			'id' => $cmd['id'],
+			'cmd' => $cmd['txt'],
+			'response' => $response,
 		);	
 	}
 }
