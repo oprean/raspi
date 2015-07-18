@@ -18,13 +18,13 @@ class GPIO {
 			$r = preg_match_all($gpio_readall_pattern, $rawData, $matches);
 			if ($r && array_key_exists('Value', $matches)) {
 				$response[] = array(
-					'id' => $matches['GPIO'],
-					'wiringPi' => $matches['wiringPi'],
-					'GPIO' => $matches['GPIO'],
-					'Phys' => $matches['Phys'],
-					'Name' => $matches['Name'],
-					'Mode' => $matches['Mode'],
-					'Value' => $matches['Value'],
+					'id' => $matches['GPIO'][0],
+					'wiringPi' => $matches['wiringPi'][0],
+					'GPIO' => $matches['GPIO'][0],
+					'Phys' => $matches['Phys'][0],
+					'Name' => $matches['Name'][0],
+					'Mode' => $matches['Mode'][0],
+					'Value' => $matches['Value'][0],
 				);
 			}	
 		}
