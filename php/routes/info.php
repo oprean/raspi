@@ -15,7 +15,7 @@ $app->get('/test', function () use ($app) {
 	
 });
 
-$app->get('/info', function () use ($app) {
+$app->get('/cputemp', function () use ($app) {
 	echo exec('/opt/vc/bin/vcgencmd measure_temp');
 	
 });

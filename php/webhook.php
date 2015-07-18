@@ -18,9 +18,9 @@
 
 // Set Variables
 $LOCAL_ROOT         = "/var/www";
-$LOCAL_REPO_NAME    = "quizzes";
+$LOCAL_REPO_NAME    = "raspi";
 $LOCAL_REPO         = "{$LOCAL_ROOT}/{$LOCAL_REPO_NAME}";
-$REMOTE_REPO        = "git@github.com:oprean/daruri.git";
+$REMOTE_REPO        = "git@github.com:oprean/raspi.git";
 $BRANCH             = "master";
 
 if (isset($_SERVER['HTTP_X_GITHUB_EVENT']) && 
