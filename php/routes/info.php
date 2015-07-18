@@ -30,7 +30,24 @@ $app->get('/vcgencmd/:cmd', function ($cmd) use ($app) {
 	$result = exec($cmd); 
 	$result = split('=', $result);
 	
-	return (count($result) == 2)?$result[1]:'Commad failed!';
+	if (count($result) == 2) {
+		$result = array(
+			'status' => 'success',
+			'data' => array(
+				'cmd' => $cmd,
+				'response' => $result[1],  
+			)	
+		);
+	} else {
+		$result = array(
+			'status' => 'error',
+			'data' => array(
+				'message' => 'Failed to execute command "'. $cmd.'". Error: '.$result[0] 
+			)
+		);		
+	}
 	
+	$app->response()->header('Content-Type', 'application/json');
+	echo json_encode($result);	
 });
 ?>
