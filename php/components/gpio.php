@@ -6,7 +6,7 @@ class GPIO {
 		$rawResponse = $oCmd->response('gpioreadall');
 		
 		if ($rawResponse['status'] == 'error' || 
-			$rawResponse['response'][0][0] != '|') {
+			$rawResponse['response'][0][0] != '+') {
 			return $this->formatErrorResponse($rawResponse['response']);			
 		} else {
 			$rawResponse = $rawResponse['response'];
