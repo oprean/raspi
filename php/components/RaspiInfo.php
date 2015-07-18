@@ -44,11 +44,6 @@ class RaspiInfo {
 					'txt' => 'lsusb',
 					'regexp' => false		
 					),					
-			'date' => array(
-					'id' => 'date',
-					'txt' => 'date',
-					'regexp' => '/(?<value>.*)/'		
-					),
 			'dir' => array(
 					'id' => 'dir',
 					'txt' => 'dir',
