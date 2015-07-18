@@ -1,9 +1,0 @@
-{
-	"id":17,
-	"pin":17,
-	"state":0,
-	"color":"FFFFFF",
-	"name":"RGB LED Strip",
-	"intensity": 10,
-	"program":"random"
-}
