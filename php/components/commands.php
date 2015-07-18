@@ -1,5 +1,5 @@
 <?php
-class RaspiInfo {
+class Command {
 	function __construct() {}
 
 	public function all() {
@@ -57,7 +57,7 @@ class RaspiInfo {
 		return array_key_exists($id, $all)?$all[$id]:null;
 	}
 	
-	public function get($id) {
+	public function response($id) {
 		$cmd = $this->cmd($id);
 		if (empty($cmd)) return $this->formatErrorResponse($cmd, array('Unknown command.'));
 		exec($cmd['txt'], $output, $return);
