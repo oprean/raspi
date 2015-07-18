@@ -16,6 +16,7 @@ define([
 	  appRoutes: {
 	    '': 'home',
 	    'home': 'home',
+	    'pins': 'pins',
 	    'socket/:id': 'socket',
 	  }
 	});
