@@ -1,6 +1,9 @@
 <div>
-	<span><%= wiringPi %></span>|
-	<span><%= Phys %></span>|
-	<span><%= Mode %></span>|
-	<span><%= Value %></span>
+	<span>wi: <%= wiringPi %></span>|
+	<span>bmc: <%= GPIO %></span>|
+	<span>phys: <%= Phys %></span>|
+	<span>mode: <%= Mode %></span>|
+	<span>value: <%= Value %></span>
+	<a class="btn btn-primary btn-read-pin" data-pin="<%= GPIO %>">read</a> |
+	<a class="btn btn-primary btn-pin-toggle" data-pin="<%= GPIO %>">toggle</a>
 </div>

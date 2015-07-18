@@ -11,12 +11,26 @@ define([
 		template : _.template(pinsTpl),
 		childViewContainer: '.pins-container',
 		childView: PinView,
+		
+		events : {
+			'click .btn-pins-reset' : 'resetPins'
+		},
+		
 		initialize : function(options) {
 			var self = this;
 			this.model = app.quizzes;
 			this.collection = new Pins();
 			this.collection.fetch();
 		},
+		
+		resetPins: function() {
+			var self = this;
+			$.get('/raspi/api/gpioreset', function(data) {
+				if (data.status == 'success') {
+					self.render();					
+				}
+			});
+		}
 	});
 	 
 	return PinsView;
