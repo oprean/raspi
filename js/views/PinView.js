@@ -11,8 +11,9 @@ define([
 		className : 'pin',
 		
 		events : {
-			'click .btn-read-pin' : 'read',
-			'click .btn-toggle-pin' : 'toggle',
+			'click .btn-pin-read' : 'read',
+			'click .btn-pin-toggle-mode' : 'toggleMode',
+			'click .btn-pin-toggle-val' : 'toggleVal',
 		},
 		
 		initialize : function(options) {
@@ -23,8 +24,12 @@ define([
 			console.log('read' + $(e.target).data('pin'));
 		},
 
-		toggle : function(e) {
-			console.log('toggle ' + $(e.target).data('pin'));
+		toggleMode : function(e) {
+			console.log('toggle mode: ' + $(e.target).data('pin'));
+		},
+		
+		toggleVal : function(e) {
+			console.log('toggle val: ' + $(e.target).data('pin'));
 		},
 		
 		templateHelpers: function() {
