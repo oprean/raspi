@@ -23,6 +23,11 @@ class RaspiInfo {
 					'txt' => 'cat /proc/meminfo',
 					'regexp' => false		
 					),
+			'dir' => array(
+					'id' => 'dir',
+					'txt' => 'dir',
+					'regexp' => false		
+					),
 		);
 	}
 	
@@ -35,11 +40,12 @@ class RaspiInfo {
 		$cmd = $this->cmd($id);
 		if (empty($cmd)) return $this->formatErrorResponse($cmd, array('Unknown command.'));
 		exec($cmd['txt'], $output, $return);
-		if (!$output || !$return) return $this->formatErrorResponse($cmd, $output);
+			
+		if (!$output || $return) return $this->formatErrorResponse($cmd, $output);
 		
 		if (!empty($cmd['regexp'])) { // scalar value
-			$return = preg_match_all($cmd['regexp'], $output[0], $matches);
-			if (!empty($return) && !empty($matches['value'])) {
+			$r = preg_match_all($cmd['regexp'], $output[0], $matches);
+			if (!empty($r) && !empty($matches['value'])) {
 				$result = $this->formatSuccessResponse($cmd, $matches['value']);	
 			} else { // command failed
 				$result = $this->formatErrorResponse($cmd, $output);
@@ -47,6 +53,8 @@ class RaspiInfo {
 		} else { // array response
 			$result = $this->formatSuccessResponse($cmd, $output);				
 		}
+		
+		return $result;
 	}
 	
 	private function formatErrorResponse($cmd, $output, $msg='') {
