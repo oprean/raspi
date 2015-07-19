@@ -55,11 +55,21 @@ class GPIO {
 		array(14, 11, 23, 'SCLK'),
 		array(15, 14,  8, 'TxD'),
 		array(16, 15, 10, 'RxD'),
-		
+				
 		array(17, 28,  3, 'GPIO 8'),
 		array(18, 29,  4, 'GPIO 9'),
 		array(19, 30,  5, 'GPIO 10'),
 		array(20, 31,  6, 'GPIO 11'),
+		
+		array(21, null,  6, 'GND'),
+		array(22, null,  9, 'GND'),
+		array(23, null, 14, 'GND'),
+		array(24, null, 20, 'GND'),
+		array(25, null, 25, 'GND'),
+		
+		array(26, null,  1, '3V'),
+		array(27, null,  2, '5V'),
+		array(28, null,  4, '5V'),
 	);
 	
 	private function get($pin, $numbering) {
@@ -79,7 +89,21 @@ class GPIO {
 		return false;
 	}
 	
-	public static function convert($pin, $from, $to) {
+	public function all() {
+		$all = array();
+		foreach ($this->gpio_table as $id => $gpio) {
+			$all[] = array(
+				'id' => $gpio[0],
+				'wiringPi' => $gpio[0],
+				'GPIO' => $gpio[1],
+				'Phys' => $gpio[2],
+				'Name' => $gpio[3],
+				'Mode' => null,
+				'Value' => null,
+			);
+		}
+		
+		return $all;
 	}
 	
 	public function readall() {
@@ -88,7 +112,8 @@ class GPIO {
 		
 		if ($rawResponse['status'] == 'error' || 
 			$rawResponse['response'][0][0] != '+') {
-			return $this->formatErrorResponse($rawResponse['response']);			
+			//return $this->formatErrorResponse($rawResponse['response']);
+			return $this->all();			
 		} else {
 			$rawResponse = $rawResponse['response'];
 		}
