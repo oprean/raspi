@@ -81,7 +81,6 @@ class GPIO {
 	);
 	
 	private function get($pin, $numbering = WPI_PIN_NUMBERING) {
-		if ($numbering == WPI_PIN_NUMBERING) return $this->gpio_table[$pin];
 		foreach ($this->gpio_table as $id => $gpio) {
 			if ($gpio[$numbering] == $pin) 
 				return array(
