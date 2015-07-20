@@ -3,19 +3,23 @@ define([
   'underscore',
   'backbone',
   'backbone.marionette',
-  'text!templates/pin.html',
-], function($, _, Backbone, Marionette, pinTpl){
-	var PinView = Backbone.Marionette.ItemView.extend({
-		template : _.template(pinTpl),
+  'text!templates/pin-edit.html',
+  'models/Pin',
+], function($, _, Backbone, Marionette, pinEditTpl, Pin){
+	var PinEditView = Backbone.Marionette.ItemView.extend({
+		template : _.template(pinEditTpl),
 		className : 'pin',
 		
 		events : {
+			'click .btn-pin-read' : 'read',
 			'click .btn-pin-toggle-mode' : 'toggleMode',
 			'click .btn-pin-toggle-val' : 'toggleVal',
 		},
 		
 		initialize : function(options) {
 			var self = this;
+			this.model = new Pin({id: options.pin});
+			this.model.fetch({async:false});
 		},
 		
 		read : function(e) {
@@ -54,5 +58,5 @@ define([
 		}
 	});
 	 
-	return PinView;
+	return PinEditView;
 });

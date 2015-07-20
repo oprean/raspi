@@ -5,9 +5,10 @@ define([
   'backbone.marionette',
   'views/HomeView',
   'views/PinsView',
+  'views/PinEditView',
   'views/SocketView'
 ], function($, _, Backbone, Marionette, 
-	HomeView, PinsView, SocketView){
+	HomeView, PinsView, PinEditView, SocketView){
 	var Controller = Marionette.Controller.extend({
 	  initialize: function() {
 	  },
@@ -20,6 +21,11 @@ define([
 	  pins: function() {
 	  	console.log('pins');
 		app.mainRegion.show(new PinsView());
+	  },
+
+	  pin: function(id) {
+	  	console.log('view pin ' + id);
+		app.mainRegion.show(new PinEditView({pin:id}));
 	  },
 	  
 	  socket: function(id) {

@@ -173,9 +173,9 @@ class GPIO {
 	public function read($pin, $numbering = DEFAULT_PIN_NUMBERING) {
 		$pin = $this->get($pin, $numbering);
 		if(!$pin) return $this->formatErrorResponse('This pin does not exist!');
-		$cmd = sprintf("gpio mode %u in && gpio read %u",$pin['GPIO'], $pin['GPIO']);
+		$cmd = sprintf("gpio read %u", $pin['GPIO']);
 		exec($cmd, $output, $return);		
-		if (!$output || $return) return $this->formatErrorResponse($cmd, $output);
+		if (!$output || $return) return $this->formatSuccessResponse($pin, null, null);
 		$value = $output[0];
 		
 		return $this->formatSuccessResponse($pin, $value, IN);

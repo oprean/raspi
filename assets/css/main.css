@@ -122,7 +122,7 @@ body {
 }
 
 .pin-container {
-	height: 2em;
+	height: 2.3em;
 	line-height: 2em;
 	vertical-align: middle;
 	font-weight: bold;
@@ -155,7 +155,8 @@ body {
 }
 
 .pin-gnd {
-	background: #;
+	background: #000000;
+	color: #FFFFFF;
 }
 
 .pin-3v {
@@ -172,4 +173,7 @@ body {
 
 .pin-off {
 	background: #CCCCCC;
+}
+
+.header5 {
 }
