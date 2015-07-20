@@ -153,3 +153,23 @@ body {
 	margin-left: 5px;
 
 }
+
+.pin-gnd {
+	background: #;
+}
+
+.pin-3v {
+	background: #FE9A2E;
+}
+
+.pin-5v {
+	background: #FF0040;
+}
+
+.pin-on {
+	background: #04B404;
+}
+
+.pin-off {
+	background: #CCCCCC;
+}

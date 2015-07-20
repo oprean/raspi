@@ -32,9 +32,26 @@ define([
 			console.log('toggle val: ' + $(e.target).data('pin'));
 		},
 		
+		pinCssClass : function() {
+			var pinClass = '';
+			var name = this.model.get('Name');
+			if (name == 'GND' || name == '3V' || name == '5V') {
+				pinClass = 'pin-' + this.model.get('Name').toLowerCase();				
+			} else {
+				pinClass = this.model.get('Value')?' pin-on':' pin-off';
+			}
+			
+			if (this.model.get('Phys') > 100) {
+				pinClass += ' header5';
+			}
+			
+			return pinClass;
+		},
+		
 		templateHelpers: function() {
 			return {
-				cssClass : (this.model.get('Phys') % 2)?'pull-right':'pull-left'
+				css : (this.model.get('Phys') % 2)?'pull-right':'pull-left',
+				pinCss : this.pinCssClass()
 			};
 		}
 	});

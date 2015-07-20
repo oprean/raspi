@@ -8,7 +8,7 @@
 	<a class="btn btn-xs btn-primary btn-pin-read" data-pin="<%= GPIO %>">read</a> |
 	<a class="btn btn-xs btn-primary btn-pin-toggle-mode" data-pin="<%= GPIO %>">toggle mode</a>
 	<a class="btn btn-xs btn-primary btn-pin-toggle-val" data-pin="<%= GPIO %>">toggle val</a-->
-	<div class="pin <%= cssClass %>"><%= Phys %></div>&nbsp;
-	<div class="<%= cssClass %>"></div>&nbsp; 
-	<div class="<%= cssClass %>"><%= Name %></div>&nbsp; 	
+	<div class="pin <%= pinCss + ' ' +css %>"><%= Phys %></div>&nbsp;
+	<div class="<%= css %>"></div>&nbsp; 
+	<div class="<%= css %>"><%= Name %></div>&nbsp; 	
 </div>
