@@ -56,10 +56,10 @@ class GPIO {
 		array(15, 14,  8, 'TxD'),
 		array(16, 15, 10, 'RxD'),
 				
-		array(17, 28,  3, 'GPIO 8'),
-		array(18, 29,  4, 'GPIO 9'),
-		array(19, 30,  5, 'GPIO 10'),
-		array(20, 31,  6, 'GPIO 11'),
+		array(17, 28,  103, 'GPIO 8'),
+		array(18, 29,  104, 'GPIO 9'),
+		array(19, 30,  105, 'GPIO 10'),
+		array(20, 31,  106, 'GPIO 11'),
 		
 		array(21, null,  6, 'GND'),
 		array(22, null,  9, 'GND'),
@@ -68,8 +68,9 @@ class GPIO {
 		array(25, null, 25, 'GND'),
 		
 		array(26, null,  1, '3V'),
-		array(27, null,  2, '5V'),
-		array(28, null,  4, '5V'),
+		array(27, null, 17, '3V'),
+		array(28, null,  2, '5V'),
+		array(29, null,  4, '5V'),
 	);
 	
 	private function get($pin, $numbering) {

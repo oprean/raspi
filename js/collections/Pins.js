@@ -5,7 +5,12 @@ define([
 ], function(_, Backbone, Pin){
 	var Pins = Backbone.Collection.extend({
 	  url : 'api/gpio',
-	  model: Pin, 
+	  model: Pin,
+	  
+	  comparator: function(m) {
+		return m.get('Phys');
+	  },
+       
 	});
 	
 	return Pins;

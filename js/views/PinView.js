@@ -34,6 +34,7 @@ define([
 		
 		templateHelpers: function() {
 			return {
+				cssClass : (this.model.get('Phys') % 2)?'pull-right':'pull-left'
 			};
 		}
 	});
