@@ -36,7 +36,13 @@ define([
 			if (name == 'GND' || name == '3V' || name == '5V') {
 				pinClass = 'pin-' + this.model.get('Name').toLowerCase();				
 			} else {
-				pinClass = this.model.get('Value')?' pin-on':' pin-off';
+				if (this.model.get('Value') == null) {
+					pinClass = ' pin-null';
+				} else if (this.model.get('Value') == 0) {
+					pinClass = ' pin-off';
+				} else {
+					pinClass = ' pin-on';
+				}
 			}
 			
 			if (this.model.get('Phys') > 100) {
