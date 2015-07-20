@@ -137,7 +137,7 @@ class GPIO {
 			}	
 		}
 		// add GND & Power pins
-		for ($i=21; $i < 33; $i++) {
+		for ($i=21; $i <= 33; $i++) {
 			$gpio = $this->gpio_table[$i];
 			$response[] = array(
 					'id' => $gpio[0],
