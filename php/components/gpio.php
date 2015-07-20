@@ -80,7 +80,7 @@ class GPIO {
 		
 	);
 	
-	private function get($pin, $numbering) {
+	private function get($pin, $numbering = WPI_PIN_NUMBERING) {
 		if ($numbering == WPI_PIN_NUMBERING) return $this->gpio_table[$pin];
 		foreach ($this->gpio_table as $id => $gpio) {
 			if ($gpio[$numbering] == $pin) 
@@ -131,15 +131,10 @@ class GPIO {
 			$rawData = preg_replace('/\s+/', ' ',$rawResponse[$i]);
 			$r = preg_match_all($gpio_readall_pattern, $rawData, $matches);
 			if ($r && array_key_exists('Value', $matches)) {
-				$response[] = array(
-					'id' => $matches['wiringPi'][0],
-					'wiringPi' => $matches['wiringPi'][0],
-					'GPIO' => $matches['GPIO'][0],
-					'Phys' => $matches['Phys'][0],
-					'Name' => $matches['Name'][0],
-					'Mode' => $matches['Mode'][0],
-					'Value' => $matches['Value'][0] =='High'?1:0,
-				);
+				$gpio = $this->get($matches['wiringPi'][0]);
+				$gpio['Mode'] = $matches['Mode'][0];
+				$gpio['Value'] = $matches['Value'][0] =='High'?1:0;
+				$response[] = $gpio;
 			}	
 		}
 		// add GND & Power pins
