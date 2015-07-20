@@ -56,21 +56,28 @@ class GPIO {
 		array(15, 14,  8, 'TxD'),
 		array(16, 15, 10, 'RxD'),
 				
-		array(17, 28,  103, 'GPIO 8'),
-		array(18, 29,  104, 'GPIO 9'),
-		array(19, 30,  105, 'GPIO 10'),
-		array(20, 31,  106, 'GPIO 11'),
+		array(17, 28,  103, 'GPIO 8',  1),
+		array(18, 29,  104, 'GPIO 9',  1),
+		array(19, 30,  105, 'GPIO 10', 1),
+		array(20, 31,  106, 'GPIO 11', 1),
 		
 		array(21, null,  6, 'GND'),
 		array(22, null,  9, 'GND'),
 		array(23, null, 14, 'GND'),
 		array(24, null, 20, 'GND'),
 		array(25, null, 25, 'GND'),
-		
+				
 		array(26, null,  1, '3V'),
 		array(27, null, 17, '3V'),
 		array(28, null,  2, '5V'),
 		array(29, null,  4, '5V'),
+
+		array(30, null, 107, 'GND', 1),
+		array(31, null, 108, 'GND', 1),		
+		
+		array(32, null, 101, '3V', 1),
+		array(33, null, 102, '5V', 1),
+		
 	);
 	
 	private function get($pin, $numbering) {
@@ -134,6 +141,19 @@ class GPIO {
 					'Value' => $matches['Value'][0] =='High'?1:0,
 				);
 			}	
+		}
+		// add GND & Power pins
+		for ($i=21; $i < 33; $i++) {
+			$gpio = $this->gpio_table[$i];
+			$response[] = array(
+					'id' => $gpio[0],
+					'wiringPi' => $gpio[0],
+					'GPIO' => $gpio[1],
+					'Phys' => $gpio[2],
+					'Name' => $gpio[3],
+					'Mode' => null,
+					'Value' => null,
+				);
 		}
 		
 		return $response;
