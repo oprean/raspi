@@ -3,7 +3,8 @@ require.config({
 	"paths":{
 		"jquery" : "lib/jquery-2.1.3.min",
  		"jquery.bootstrap": "lib/bootstrap.min",
- 		
+		"bootstrap-switch":"lib/bootstrap-switch.min",
+		 		
 		"jquery.ui":"lib/jquery-ui.min",
 		
 		"underscore":"lib/lodash.min",
@@ -23,6 +24,9 @@ require.config({
 		},
 		"jquery.bootstrap": {
 			"deps": ["jquery.ui"]
+		},
+		"bootstrap-switch": {
+			"deps": ["jquery"]
 		},
 		"backbone":{
 			"deps":["jquery","underscore"],

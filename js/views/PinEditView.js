@@ -8,7 +8,7 @@ define([
 ], function($, _, Backbone, Marionette, pinEditTpl, Pin){
 	var PinEditView = Backbone.Marionette.ItemView.extend({
 		template : _.template(pinEditTpl),
-		className : 'pin',
+		className : 'pin-container',
 		
 		events : {
 			'click .btn-pin-read' : 'read',
@@ -20,6 +20,10 @@ define([
 			var self = this;
 			this.model = new Pin({id: options.pin});
 			this.model.fetch({async:false});
+		},
+		
+		onRender: function() {
+			this.$(".bt-switch").bootstrapSwitch();
 		},
 		
 		read : function(e) {

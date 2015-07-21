@@ -1,6 +1,7 @@
 define([
 	"jquery",
 	"jquery.bootstrap",
+	"bootstrap-switch",
 	"jquery.ui",
 	"underscore",
 	"backbone",

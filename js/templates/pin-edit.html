@@ -1,14 +1,10 @@
-<div class="pin-container">
-	<!--span>wi: <%= wiringPi %></span>|
-	<span>bmc: <%= GPIO %></span>|
-	<span>phys: <%= Phys %></span>|
-	<span>mode: <%= Mode %></span>|
-	<span>value: <%= Value %></span>|
-	<span>Name: <%= Name %></span>
-	<a class="btn btn-xs btn-primary btn-pin-read" data-pin="<%= GPIO %>">read</a> |
-	<a class="btn btn-xs btn-primary btn-pin-toggle-mode" data-pin="<%= GPIO %>">toggle mode</a>
-	<a class="btn btn-xs btn-primary btn-pin-toggle-val" data-pin="<%= GPIO %>">toggle val</a-->
-	<div class="pin <%= pinCss + ' ' +css %>"><%= Phys %></div>&nbsp;
-	<div class="<%= css %>"></div>&nbsp; 
-	<a class="<%= css %>" href="#pin/<%= id %>"><%= Name %></a>&nbsp; 	
-</div>
+<div>wi: <%= wiringPi %></div>
+<div>bmc: <%= GPIO %></div>
+<div>phys: <%= Phys %></div>
+<div>mode: <%= Mode %></div>
+<div>value: <%= Value %></div>
+<div>Name: <%= Name %></div>
+
+<input class="bt-switch chk-pin-toggle-mode" type="checkbox" name="my-checkbox" data-off-color="primary" data-on-text="IN" data-off-text="OUT" data-indeterminate="<%= (Mode == null)?'true':'false' %>" checked>
+<input class="bt-switch chk-pin-toggle-value" type="checkbox" name="my-checkbox" data-on-text="High" data-off-text="Low" data-indeterminate="<%= (Value == null)?'true':'false' %>" <%= Value?'checked':'' %>>
+<a class="btn btn-primary" href="#pins" >pins</a>

@@ -16,6 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/animate.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-switch.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 	<script type="text/javascript" data-main="dist/main" src="js/lib/require.min.js"></script>
 	<script>define('globals', [], function() { return {DEBUG_MODE: false} });</script>
