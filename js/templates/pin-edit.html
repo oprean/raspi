@@ -1,9 +1,10 @@
 <div class="row">
 	<div class="col-md-4 col-sm-3 hidden-xs"></div>
 	<div class="col-md-4 col-sm-6 col-xs-12">
+		<h1 class="center-block text-center"><%= Name %> Details</h1>
 		<ul class="list-group">
 		  <li class="list-group-item">
-	    	<div class="pin pin-lg <%= pinCss %> center-block"><%= Name %>::<%= Mode %></div>		  		
+	    	<div class="pin pin-lg <%= pinCss %> center-block"><%= Name %></div>		  		
 		  </li>  
 		  <li class="list-group-item">
 			    <input class="bt-switch chk-pin-toggle-mode" type="checkbox" name="chk-pin-toggle-mode" 
@@ -39,11 +40,12 @@
 		    Physical
 		    <span class="pull-right"><%= Phys %></span>
 		  </li>
-		  
-		  <li class="list-group-item">
-			<a class="btn btn-primary btn-block" href="#pins" >pins</a>
-		  </li>
 		</ul>
+		<hr />
+		<p class="text-center">
+			<a class="btn btn-primary" href="#pins" >pins</a>
+			<a class="btn btn-primary" href="#">home</a>
+		</p>
 	</div>
 	<div class="col-md-4 col-sm-3 hidden-xs"></div>
 </div>
