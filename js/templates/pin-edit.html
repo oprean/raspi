@@ -1,10 +1,51 @@
-<div>wi: <%= wiringPi %></div>
-<div>bmc: <%= GPIO %></div>
-<div>phys: <%= Phys %></div>
-<div>mode: <%= Mode %></div>
-<div>value: <%= Value %></div>
-<div>Name: <%= Name %></div>
-
-<input class="bt-switch chk-pin-toggle-mode" type="checkbox" name="my-checkbox" data-off-color="primary" data-on-text="IN" data-off-text="OUT" data-indeterminate="<%= (Mode == null)?'true':'false' %>" checked>
-<input class="bt-switch chk-pin-toggle-value" type="checkbox" name="my-checkbox" data-on-text="High" data-off-text="Low" data-indeterminate="<%= (Value == null)?'true':'false' %>" <%= Value?'checked':'' %>>
-<a class="btn btn-primary" href="#pins" >pins</a>
+<div class="row">
+	<div class="col-md-4 col-sm-3 hidden-xs"></div>
+	<div class="col-md-4 col-sm-6 col-xs-12">
+		<ul class="list-group">
+		  <li class="list-group-item">
+	    	<div class="pin pin-lg <%= pinCss %> center-block"><%= Name %>::<%= Mode %></div>		  		
+		  </li>  
+		  <li class="list-group-item">
+		    Mode
+		    <input class="bt-switch chk-pin-toggle-mode" type="checkbox" name="chk-pin-toggle-mode" 
+		    	data-off-color="primary" 
+		    	data-on-text="IN" 
+		    	data-off-text="OUT" 
+		    	data-wrapper-class="pull-right" 
+		    	data-indeterminate="<%= (Mode == null)?'true':'false' %>" 
+		    	<%= Value == 'in'?'checked':'' %>>
+		  </li>
+		  <li class="list-group-item">
+		    Value
+		    <input class="bt-switch chk-pin-toggle-value" type="checkbox" name="chk-pin-toggle-value" 
+		    	data-on-text="High" 
+		    	data-off-text="Low"
+		    	data-wrapper-class="pull-right"  
+		    	data-indeterminate="<%= (Value == null)?'true':'false' %>" 
+		    	<%= Value?'checked':'' %>>
+		  </li>
+		  
+		  <li class="list-group-item">
+		    Name
+		    <span class="pull-right"><%= Name %></span>
+		  </li>
+		  <li class="list-group-item">
+		    wiringPi
+		    <span class="pull-right"><%= wiringPi %></span>
+		  </li>
+		  <li class="list-group-item">
+		    BMC/GPIO
+		    <span class="pull-right"><%= GPIO %></span>
+		  </li>
+		  <li class="list-group-item">
+		    Physical
+		    <span class="pull-right"><%= Phys %></span>
+		  </li>
+		  
+		  <li class="list-group-item">
+			<a class="btn btn-primary btn-block" href="#pins" >pins</a>
+		  </li>
+		</ul>
+	</div>
+	<div class="col-md-4 col-sm-3 hidden-xs"></div>
+</div>
