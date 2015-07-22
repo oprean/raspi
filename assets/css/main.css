@@ -195,3 +195,9 @@ body {
 
 .header5 {
 }
+
+.bootstrap-switch-center {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
