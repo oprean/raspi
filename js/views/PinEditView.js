@@ -26,11 +26,11 @@ define([
 			this.$(".bt-switch").bootstrapSwitch();
 			var name = this.model.get('Name');
 			if (name == 'GND' || name == '3V' || name == '5V') {
-				this.$(".chk-pin-toggle-mode").hide();
-				this.$(".chk-pin-toggle-value").hide();
+				this.$(".toggle-mode").hide();
+				this.$(".toggle-value").hide();
 			} else {
 				if (this.model.get('Mode') == 'in') {
-					this.$(".chk-pin-toggle-value").hide();
+					this.$(".toggle-value").hide();
 				}
 			}
 			
