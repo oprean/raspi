@@ -1,6 +1,10 @@
 <?php
 class Command {
-	function __construct() {}
+	private $_id;
+	
+	function __construct($id = null) {
+		$this->_id = $id;
+	}
 
 	public function all() {
 		return array(
@@ -62,12 +66,16 @@ class Command {
 		);
 	}
 	
-	private function cmd($id) {
+	private function cmd($id = null) {
+		$id = empty($id)?$this->_id:$id;
+		
 		$all = $this->all();
 		return array_key_exists($id, $all)?$all[$id]:null;
 	}
 	
-	public function response($id) {
+	public function response($id = null) {
+		$id = empty($id)?$this->_id:$id;
+				
 		$cmd = $this->cmd($id);
 		if (empty($cmd)) return $this->formatErrorResponse($cmd, array('Unknown command.'));
 		exec($cmd['txt'], $output, $return);

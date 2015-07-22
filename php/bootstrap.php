@@ -8,4 +8,7 @@ require_once(ROOT_DIR.'/php/Slim/Slim.php');
 require_once(ROOT_DIR.'/php/redbean/rb.php');
 require_once(ROOT_DIR.'/php/config.php');
 
+require_once(ROOT_DIR.'/php/components/commands.php');
+require_once(ROOT_DIR.'/php/components/gpio.php');
+
 ?>

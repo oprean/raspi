@@ -1,5 +1,5 @@
 <?php
-require_once '../php/components/gpio.php';
+require_once(ROOT_DIR.'/php/components/gpio.php');
 
 $app->get('/gpio', function () use ($app) {
 	$oGPIO = new GPIO();

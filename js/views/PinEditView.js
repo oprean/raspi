@@ -12,8 +12,8 @@ define([
 		
 		events : {
 			'click .btn-pin-read' : 'read',
-			'click .btn-pin-toggle-mode' : 'toggleMode',
-			'click .btn-pin-toggle-val' : 'toggleVal',
+			'click .chk-pin-toggle-mode' : 'toggleMode',
+			'click .chk-pin-toggle-value' : 'toggleValue',
 		},
 		
 		initialize : function(options) {
@@ -24,18 +24,28 @@ define([
 		
 		onRender: function() {
 			this.$(".bt-switch").bootstrapSwitch();
+			var name = this.model.get('Name');
+			if (name == 'GND' || name == '3V' || name == '5V') {
+				this.$(".chk-pin-toggle-mode").hide();
+				this.$(".chk-pin-toggle-value").hide();
+			} else {
+				if (this.model.get('Mode') == 'in') {
+					this.$(".chk-pin-toggle-value").hide();
+				}
+			}
+			
 		},
 		
 		read : function(e) {
-			console.log('read' + $(e.target).data('pin'));
+			console.log('read' + this.model.get('Phys'));
 		},
 
 		toggleMode : function(e) {
-			console.log('toggle mode: ' + $(e.target).data('pin'));
+			console.log('toggle mode: ' + this.model.get('Phys'));
 		},
 		
-		toggleVal : function(e) {
-			console.log('toggle val: ' + $(e.target).data('pin'));
+		toggleValue : function(e) {
+			console.log('toggle val: ' + this.model.get('Phys'));
 		},
 		
 		pinCssClass : function() {
@@ -56,7 +66,6 @@ define([
 		
 		templateHelpers: function() {
 			return {
-				css : (this.model.get('Phys') % 2)?'pull-right':'pull-left',
 				pinCss : this.pinCssClass()
 			};
 		}

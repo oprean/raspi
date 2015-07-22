@@ -1,5 +1,5 @@
 <?php
-require_once '../php/components/commands.php';
+require_once(ROOT_DIR.'/php/components/commands.php');
 
 $app->get('/cmd/:cmd', function ($cmd) use ($app) {
 	$oCmd = new Command();
