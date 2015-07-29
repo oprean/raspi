@@ -80,11 +80,11 @@ class GPIO {
 		
 	);
 	
-	private function get($pin, $numbering = WPI_PIN_NUMBERING) {
+	private function get($pin, $numbering = DEFAULT_PIN_NUMBERING) {
 		foreach ($this->gpio_table as $id => $gpio) {
 			if ($gpio[$numbering] == $pin) 
 				return array(
-					'id' => $gpio[0],
+					'id' => $gpio[DEFAULT_PIN_NUMBERING],
 					'wiringPi' => $gpio[0],
 					'GPIO' => $gpio[1],
 					'Phys' => $gpio[2],
@@ -100,7 +100,7 @@ class GPIO {
 		$all = array();
 		foreach ($this->gpio_table as $id => $gpio) {
 			$all[] = array(
-				'id' => $gpio[0],
+				'id' => $gpio[DEFAULT_PIN_NUMBERING],
 				'wiringPi' => $gpio[0],
 				'GPIO' => $gpio[1],
 				'Phys' => $gpio[2],
@@ -140,7 +140,7 @@ class GPIO {
 		for ($i=21; $i <= 33; $i++) {
 			$gpio = $this->gpio_table[$i];
 			$response[] = array(
-					'id' => $gpio[0],
+					'id' => $gpio[DEFAULT_PIN_NUMBERING],
 					'wiringPi' => $gpio[0],
 					'GPIO' => $gpio[1],
 					'Phys' => $gpio[2],
