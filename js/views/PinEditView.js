@@ -23,7 +23,6 @@ define([
 		},
 		
 		onRender: function() {
-			this.$(".bt-switch").bootstrapSwitch();
 			var name = this.model.get('Name');
 			if (name == 'GND' || name == '3V' || name == '5V') {
 				this.$(".toggle-mode").hide();
@@ -41,6 +40,9 @@ define([
 		},
 
 		toggleMode : function(e) {
+			var mode = (this.model.get('Mode') == 'in')?'out':'in';
+			this.model.set({Mode:mode});
+			this.model.save();
 			console.log('toggle mode: ' + this.model.get('Phys'));
 		},
 		

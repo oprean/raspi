@@ -7,21 +7,10 @@
 	    	<div class="pin pin-lg <%= pinCss %> center-block"><%= Name %></div>		  		
 		  </li>  
 		  <li class="list-group-item toggle-mode">
-			    <input class="bt-switch chk-pin-toggle-mode" type="checkbox" name="chk-pin-toggle-mode" 
-			    	data-off-color="primary" 
-			    	data-on-text="IN" 
-			    	data-off-text="OUT" 
-			    	data-wrapper-class="center" 
-			    	data-indeterminate="<%= (Mode == null)?'true':'false' %>" 
-			    	<%= Value == 'in'?'checked':'' %>>		    	
+			    <button class="btn btn-block btn-primary chk-pin-toggle-mode" type="button">Mode: <%=Value %></button>
 		  </li>
 		  <li class="list-group-item toggle-value">
-		    <input class="bt-switch chk-pin-toggle-value" type="checkbox" name="chk-pin-toggle-value" 
-		    	data-on-text="High" 
-		    	data-off-text="Low"
-		    	data-wrapper-class="center"  
-		    	data-indeterminate="<%= (Value == null)?'true':'false' %>" 
-		    	<%= Value?'checked':'' %>>
+		  		<button class="btn btn-block btn-primary chk-pin-toggle-value" type="button">Value: <%=Mode %></button>
 		  </li>
 		  
 		  <li class="list-group-item">
