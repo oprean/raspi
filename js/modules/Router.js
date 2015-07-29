@@ -18,6 +18,7 @@ define([
 	    'home': 'home',
 	    'pins': 'pins',
 	    'pin/:id': 'pin',
+	    'sockets': 'sockets',
 	    'socket/:id': 'socket',
 	  }
 	});
