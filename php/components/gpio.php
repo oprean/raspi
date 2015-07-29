@@ -130,7 +130,7 @@ class GPIO {
 			$rawData = preg_replace('/\s+/', ' ',$rawResponse[$i]);
 			$r = preg_match_all($gpio_readall_pattern, $rawData, $matches);
 			if ($r && array_key_exists('Value', $matches)) {
-				$gpio = $this->get($matches['wiringPi'][0]);
+				$gpio = $this->get($matches['Phys'][0]);
 				$gpio['Mode'] = $matches['Mode'][0];
 				$gpio['Value'] = $matches['Value'][0] =='High'?1:0;
 				$response[] = $gpio;
