@@ -40,14 +40,16 @@ define([
 		},
 
 		toggleMode : function(e) {
-			var mode = (this.model.get('Mode') == 'in')?'out':'in';
-			this.model.set({Mode:mode});
-			this.model.save();
 			console.log('toggle mode: ' + this.model.get('Phys'));
+			var mode = (this.model.get('Mode') == 'in')?'out':'in';
+			this.model.save({Mode:mode}, {patch:true});
+
 		},
 		
 		toggleValue : function(e) {
 			console.log('toggle val: ' + this.model.get('Phys'));
+			var value = (this.model.get('Value') == 0)?1:0;
+			this.model.save({Value:value}, {patch:true});
 		},
 		
 		pinCssClass : function() {
