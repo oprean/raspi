@@ -1,14 +1,6 @@
 <?php
 require_once(ROOT_DIR.'/php/components/commands.php');
 
-define('WPI_PIN_NUMBERING', 0);
-define('BCM_PIN_NUMBERING', 1);
-define('PHYS_PIN_NUMBERING', 2);
-define('DEFAULT_PIN_NUMBERING', PHYS_PIN_NUMBERING);
-
-define('IN', 'in');
-define('OUT', 'out');
-
 /*| wiringPi | GPIO | Phys | Name   | Mode | Value |
 +----------+------+------+--------+------+-------+
 |      0   |  17  |  11  | GPIO 0 | IN   | High  |
