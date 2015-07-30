@@ -24,15 +24,14 @@ define([
 		
 		onRender: function() {
 			var name = this.model.get('Name');
-			if (name == 'GND' || name == '3V' || name == '5V') {
+			/*if (name == 'GND' || name == '3V' || name == '5V') {
 				this.$(".toggle-mode").hide();
 				this.$(".toggle-value").hide();
 			} else {
 				if (this.model.get('Mode') == 'in') {
 					this.$(".toggle-value").hide();
 				}
-			}
-			
+			}*/
 		},
 		
 		read : function(e) {
