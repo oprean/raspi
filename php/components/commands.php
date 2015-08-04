@@ -8,14 +8,14 @@ class Command {
 
 	public function all() {
 		return array(
-			'cputemp' => array(
-					'id' => 'cputemp',
+			'temp' => array(
+					'id' => 'temp',
 					'txt' => 'vcgencmd measure_temp',
 					'regexp' => '/(temp)=(?<value>.*)\'C/'	
 					),
-			'temp' => array(
-					'id' => 'temp',
-					'txt' => 'readtemp.php',
+			'tempsensor' => array(
+					'id' => 'tempsensor',
+					'txt' => 'tempsensor.php',
 					'regexp' => '/celsius=(?<celsius>.*)\|fahrenheit=(?<fahrenheit>.*)/'	
 					),
 			'clock' => array(
