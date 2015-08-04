@@ -155,7 +155,7 @@ class GPIO {
 	public function mode($pin, $mode, $numbering = DEFAULT_PIN_NUMBERING) {
 		$pin = $this->get($pin, $numbering);
 		if(!$pin) return $this->formatErrorResponse('This pin does not exist!');
-		$cmd = sprintf("gpio mode %u %s", $pin['GPIO'], $mode);
+		$cmd = sprintf("gpio -g mode %u %s", $pin['GPIO'], $mode);
 		exec($cmd, $output, $return);		
 		if ($return) return $this->formatErrorResponse($cmd, $output);
 				
@@ -165,7 +165,7 @@ class GPIO {
 	public function read($pin, $numbering = DEFAULT_PIN_NUMBERING) {
 		$pin = $this->get($pin, $numbering);
 		if(!$pin) return $this->formatErrorResponse('This pin does not exist!');
-		$cmd = sprintf("gpio read %u", $pin['GPIO']);
+		$cmd = sprintf("gpio -g read %u", $pin['GPIO']);
 		exec($cmd, $output, $return);		
 		if (!$output || $return) return $this->formatSuccessResponse($pin, null, null);
 		$value = $output[0];
@@ -176,7 +176,7 @@ class GPIO {
 	public function write($pin, $value, $numbering = DEFAULT_PIN_NUMBERING) {
 		$pin = $this->get($pin, $numbering);
 		if(!$pin) return $this->formatErrorResponse('This pin does not exist!');
-		$cmd = sprintf("gpio mode %u out && gpio write %u %u && gpio read %u",$pin['GPIO'], $pin['GPIO'], $value, $pin['GPIO']);
+		$cmd = sprintf("gpio -g mode %u out && gpio -g write %u %u && gpio -g read %u",$pin['GPIO'], $pin['GPIO'], $value, $pin['GPIO']);
 		exec($cmd, $output, $return);		
 		if (!$output || $return) return $this->formatErrorResponse($cmd, $output);
 		$value = $output[0];
