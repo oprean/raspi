@@ -18,7 +18,7 @@ class TemperatureSensor {
 	private function init() {
 		$result = true;
 		exec(LOAD_W1_KERNEL_MODULE_CMD, $output, $return);
-		if (!$output || $return) {
+		if ($output || $return) {
 			$result = 'W1 kernel module could not loaded!';
 		} else {
 			$this->_device_file = $this->getDeviceFile();
