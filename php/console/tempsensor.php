@@ -1,5 +1,5 @@
 <?php
-require_once '../php/bootstrap.php';
+require_once('../bootstrap.php');
 $tempSensor = new TemperatureSensor();
 echo $tempSensor->read()
 ?>
