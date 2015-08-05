@@ -20,6 +20,11 @@ class Command {
 					'txt' => 'sudo php '.CONSOLE_COMMAND_PATH.'tempsensor.php',
 					'regexp' => '/celsius=(?<value>.*)\|fahrenheit=(?<fahrenheit>.*)/'	
 					),
+			'tempsensor2' => array(
+					'id' => 'tempsensor2',
+					'txt' => 'php '.CONSOLE_COMMAND_PATH.'tempsensor.php',
+					'regexp' => '/celsius=(?<value>.*)\|fahrenheit=(?<fahrenheit>.*)/'	
+					),
 			'clock' => array(
 					'id' => 'clock',
 					'txt' => 'vcgencmd measure_clock arm',

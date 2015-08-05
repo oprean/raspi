@@ -6,9 +6,9 @@ define('ROOM_TEMPERATURE', 1);
 
 R::setup( 'sqlite:'.ROOT_DIR.'/data/raspi.sqlite' );
 
-$temperature = new Command('tempsensor');
+$temperature = new Command('tempsensor2');
 $val = $temperature->response();
-//$val = array('status' => 'success', 'response' => 50.00);
+//$val = array('status' => 'success', 'response' => 28.00);
 
 if ($val['status'] == 'success') {
 	$item = R::dispense('teperature'); 
