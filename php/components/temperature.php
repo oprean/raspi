@@ -3,7 +3,7 @@ define('DEVICE_FILE', '/w1_slave');
 define('RETRY_NUMBER', 10);
 define('RETRY_INTERVAL', 200);
 define('BASE_W1_DIR', '/sys/bus/w1/devices/');
-define('LOAD_W1_KERNEL_MODULE_CMD', 'modprobe w1-gpio && modprobe w1-therm');
+define('LOAD_W1_KERNEL_MODULE_CMD', 'sudo modprobe w1-gpio && sudo modprobe w1-therm');
 
 class TemperatureSensor {
 	private $_device_file;
