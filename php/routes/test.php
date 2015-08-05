@@ -28,4 +28,14 @@ $app->get('/temp', function () use ($app) {
 	}
 });
 
+$app->get('/temp2', function () use ($app) {
+	$oCmd = new Command();
+	$response = $oCmd->response('tempsensor');
+	
+	exec('php /var/www/raspi/php/console/tempsensor.php', $output, $return);
+	
+	echo json_encode($output);	
+	echo json_encode($return);	
+});
+
 ?>
