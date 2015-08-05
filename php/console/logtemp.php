@@ -2,6 +2,7 @@
 require_once('../bootstrap.php');
 
 define('CPU_TEMPERATURE', 0);
+define('ROOM_TEMPERATURE', 1);
 
 R::setup( 'sqlite:'.ROOT_DIR.'/data/raspi.sqlite' );
 
@@ -11,7 +12,7 @@ $val = $temperature->response();
 
 if ($val['status'] == 'success') {
 	$item = R::dispense('teperature'); 
-	$item->type = CPU_TEMPERATURE;
+	$item->type = ROOM_TEMPERATURE;
 	$item->date = date('Y-m-d H:i:s');
 	$item->value = $val['response'];
  

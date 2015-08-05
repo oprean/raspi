@@ -29,13 +29,21 @@ $app->get('/temp', function () use ($app) {
 });
 
 $app->get('/temp2', function () use ($app) {
-	$oCmd = new Command();
-	$response = $oCmd->response('tempsensor');
+	$oCmd = new Command('tempsensor');
+	$response = $oCmd->response();
 	
-	exec('sudo php /var/www/raspi/php/console/tempsensor.php', $output, $return);
+	$app->response()->header('Content-Type', 'application/json');
+	echo json_encode($response);	
+});
+
+$app->get('/temps', function () use ($app) {
+    	
+    // get all items
+    $items = R::find('teperature');
 	
-	echo json_encode($output);	
-	echo json_encode($return);	
+    // create JSON response
+    $app->response()->header('Content-Type', 'application/json');
+    echo json_encode(R::exportAll($items));	
 });
 
 ?>
