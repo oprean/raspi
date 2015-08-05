@@ -10,5 +10,6 @@ require_once(ROOT_DIR.'/php/config.php');
 
 require_once(ROOT_DIR.'/php/components/commands.php');
 require_once(ROOT_DIR.'/php/components/gpio.php');
+require_once(ROOT_DIR.'/php/components/temperature.php');
 
 ?>

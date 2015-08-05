@@ -19,5 +19,13 @@ $app->get('/gpiomode/:pin', function ($pin) use ($app) {
 	echo file_get_contents('/sys/class/gpio/gpio'.($pin + 0).'/direction');	
 });
 
+$app->get('/temp', function () use ($app) {
+	try	{
+		$tempSensor = new TemperatureSensor();
+		echo $tempSensor->read();
+	} catch(Exception $e) {
+		echo $e->getMessage();
+	}
+});
 
 ?>

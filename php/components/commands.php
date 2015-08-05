@@ -16,7 +16,7 @@ class Command {
 			'tempsensor' => array(
 					'id' => 'tempsensor',
 					'txt' => 'tempsensor.php',
-					'regexp' => '/celsius=(?<celsius>.*)\|fahrenheit=(?<fahrenheit>.*)/'	
+					'regexp' => '/celsius=(?<value>.*)\|fahrenheit=(?<fahrenheit>.*)/'	
 					),
 			'clock' => array(
 					'id' => 'clock',
