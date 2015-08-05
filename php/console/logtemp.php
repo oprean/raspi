@@ -5,7 +5,7 @@ define('CPU_TEMPERATURE', 0);
 
 R::setup( 'sqlite:'.ROOT_DIR.'/data/raspi.sqlite' );
 
-$temperature = new Command('temp');
+$temperature = new Command('tempsensor');
 $val = $temperature->response();
 //$val = array('status' => 'success', 'response' => 50.00);
 
