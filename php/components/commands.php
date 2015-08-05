@@ -1,4 +1,6 @@
 <?php
+define('CONSOLE_COMMAND_PATH', dirname(getcwd()).DS.'php'.DS.'console'.DS);
+
 class Command {
 	private $_id;
 	
@@ -15,7 +17,7 @@ class Command {
 					),
 			'tempsensor' => array(
 					'id' => 'tempsensor',
-					'txt' => 'tempsensor.php',
+					'txt' => 'php '.CONSOLE_COMMAND_PATH.'tempsensor.php',
 					'regexp' => '/celsius=(?<value>.*)\|fahrenheit=(?<fahrenheit>.*)/'	
 					),
 			'clock' => array(
