@@ -13,12 +13,12 @@ define([
 			var self = this;
 			this.cpu_temp = 0;
 			this.room_temp = 0;
-			var tempCmd = new Command({id:'temp'});
+			var tempCmd = new Command({id:'tempsensor'});
 			tempCmd.fetch({
 				success: function(model) {
 					if (model.get('status') == 'success') {
-						self.cpu_temp = parseFloat(model.get('response'));				
-						self.room_temp = self.cpu_temp - 21.6;
+						self.cpu_temp = 0;//parseFloat(model.get('response'));				
+						self.room_temp = parseFloat(model.get('response'));
 					} else {
 						self.cpu_temp = 0;
 						self.room_temp = 0;
