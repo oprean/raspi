@@ -17,7 +17,7 @@ class Command {
 					),
 			'tempsensor' => array(
 					'id' => 'tempsensor',
-					'txt' => 'sudo php '.CONSOLE_COMMAND_PATH.'tempsensor.php',
+					'txt' => 'cd '.CONSOLE_COMMAND_PATH.' && sudo php tempsensor.php',
 					'regexp' => '/celsius=(?<value>.*)\|fahrenheit=(?<fahrenheit>.*)/'	
 					),
 			'clock' => array(
