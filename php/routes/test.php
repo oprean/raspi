@@ -1,6 +1,6 @@
 <?php
 
-define('TTS_COMAAND', 'espeak -vro+m1 -k2 -s150 ');
+define('TTS_COMAAND', 'sudo espeak -vro+m1 -k2 -s150 ');
 
 $app->get('/request', function () use ($app) {
 	//echo RUNTIME_DIR;
