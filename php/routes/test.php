@@ -28,8 +28,7 @@ $app->get('/temps', function () use ($app) {
     echo json_encode(R::exportAll($items));	
 });
 
-$app->get('/speak', function () use ($app) {
-    $text = 'te iubesc cami';
+$app->get('/speak(/:text)', function ($text = 'te iubesc cami') use ($app) {
 	$cmd = TTS_COMAAND.'"'.$text.'"';
     exec($cmd, $output, $return);
 	
@@ -37,7 +36,7 @@ $app->get('/speak', function () use ($app) {
     $app->response()->header('Content-Type', 'application/json');
     echo json_encode(array(
     	'status' => 'success',
-    	'text' => $text
+    	'cmd' => $cmd
 		)
 	);	
 });
