@@ -1,5 +1,6 @@
 <?php
 
+require_once (ROOT_DIR.'/php/Slim/Middleware.php');
 class TokenAuth extends \Slim\Middleware {
 
     public function __construct() {}
@@ -27,7 +28,7 @@ class TokenAuth extends \Slim\Middleware {
      */
     public function call() {
         //Get the token sent from jquery
-        $tokenAuth = $app->request->headers->get('Authorization');
+        $tokenAuth = $this->app->request->headers->get('Authorization');
         
         //Check if our token is valid
         if ($this->authenticate($tokenAuth)) {
