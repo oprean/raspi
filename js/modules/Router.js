@@ -15,6 +15,7 @@ define([
 	  controller: controller,
 	  appRoutes: {
 	    '': 'home',
+	    'login': 'login',
 	    'home': 'home',
 	    'pins': 'pins',
 	    'pin/:id': 'pin',

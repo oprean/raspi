@@ -1,6 +1,6 @@
 <?php
 
-define('TTS_COMAAND', 'sudo espeak -vro+m1 -k2 -s150 ');
+define('TTS_COMAAND', 'sudo espeak -a500 -vro+m4 -k20 -s120 ');
 
 $app->get('/request', function () use ($app) {
 	//echo RUNTIME_DIR;
@@ -40,5 +40,4 @@ $app->get('/speak(/:text)', function ($text = 'te iubesc cami') use ($app) {
 		)
 	);	
 });
-
 ?>

@@ -3,17 +3,22 @@ define([
   'underscore',
   'backbone',
   'backbone.marionette',
+  'views/LoginView',
   'views/HomeView',
   'views/PinsView',
   'views/PinEditView',
   'views/SocketsView',
   'views/SocketView'
 ], function($, _, Backbone, Marionette, 
-	HomeView, PinsView, PinEditView, SocketsView, SocketView){
+	LoginView, HomeView, PinsView, PinEditView, SocketsView, SocketView){
 	var Controller = Marionette.Controller.extend({
 	  initialize: function() {
 	  },
-	  
+
+ 	  login: function() {
+	  	console.log('home');
+		app.mainRegion.show(new LoginView());
+ 	  },  
 	  home: function() {
 	  	console.log('home');
 		app.mainRegion.show(new HomeView());
