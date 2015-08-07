@@ -1,5 +1,9 @@
 <?php   
-//http://espeak.sourceforge.net/commands.html   
+//http://espeak.sourceforge.net/commands.html
+//http://diyhacking.com/best-voice-recognition-software-for-raspberry-pi/
+//http://stevenhickson.blogspot.in/2013/04/voice-control-on-raspberry-pi.html
+//http://blog.oscarliang.net/raspberry-pi-voice-recognition-works-like-siri/ 
+//https://wolfpaulus.com/about/  
 define('TTS_COMMAND', 'sudo espeak -a{vol} -v{lang}+{gender}{voice} -k{capital} -s{speed} ');
 
 // defaults
