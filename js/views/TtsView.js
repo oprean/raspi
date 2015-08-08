@@ -29,9 +29,9 @@ define([
 				type: "POST",
 				//dataType: "json",
 				url: '/raspi/api/tts', 
-				data: JSON.stringify({
+				data: {
 					tts: this.$('#tts_text').val(),
-				}), 
+				}, 
 			});
 		},
 		
