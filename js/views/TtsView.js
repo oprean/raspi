@@ -28,7 +28,7 @@ define([
 			$.ajax({
 				type: "POST",
 				//dataType: "json",
-				url: '/raspi/api/tts/', 
+				url: '/raspi/api/tts', 
 				data: JSON.stringify({
 					tts: this.$('#tts_text').val(),
 				}), 
