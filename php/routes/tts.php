@@ -14,7 +14,7 @@ function _time() {
 $app->get('/tts/:cmd', function ($cmd) use ($app) {
 	switch ($cmd) {
 		case 'time':
-			$tts = 'Este ora {H} și {i} minute';
+			$tts = 'Este ora: {H} și {i} minute';
 			$tts = str_replace(
 				array('{H}', '{i}'), 
 				array(date('H'), date('i')), 
@@ -26,7 +26,7 @@ $app->get('/tts/:cmd', function ($cmd) use ($app) {
 			$temp = $sensor->read();
 			$r = preg_match_all('/celsius=(?<value>.*)\|fahrenheit=(?<fahrenheit>.*)/', $temp, $matches);
 			if (!empty($r) && !empty($matches['value'])) {
-				$tts = 'În cameră sunt. '.$matches['value'][0].' grade.';
+				$tts = 'În cameră sunt: '.$matches['value'][0].' grade.';
 			} else {
 				$tts = 'Nu am putut citi temperatura';
 			}			

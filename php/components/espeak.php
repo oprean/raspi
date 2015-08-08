@@ -38,7 +38,7 @@ class Espeak {
 	}
 	
 	private function init() {
-		$search = array('{lng}', '{vol}', '{gender}' , '{voice}', '{speed}', '{capital}');
+		$search = array('{lang}', '{vol}', '{gender}' , '{voice}', '{speed}', '{capital}');
 		$replace = array($this->_language, $this->_volume, $this->_gender, $this->_voice, $this->_speed, $this->_capital);
 		
 		$this->_tts_cmd = str_replace($search, $replace, TTS_COMMAND);
@@ -46,6 +46,7 @@ class Espeak {
 	
 	public function speak($text = DEFAULT_TEXT) {
 		$cmd = $this->_tts_cmd.'"'.$text.'"';
+		echo $cmd;
 		exec($cmd, $output, $return);
 	}
 	
