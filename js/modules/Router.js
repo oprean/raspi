@@ -17,6 +17,7 @@ define([
 	    '': 'home',
 	    'login': 'login',
 	    'home': 'home',
+	    'tts': 'tts',
 	    'pins': 'pins',
 	    'pin/:id': 'pin',
 	    'sockets': 'sockets',

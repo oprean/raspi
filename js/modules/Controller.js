@@ -5,24 +5,31 @@ define([
   'backbone.marionette',
   'views/LoginView',
   'views/HomeView',
+  'views/TtsView',
   'views/PinsView',
   'views/PinEditView',
   'views/SocketsView',
   'views/SocketView',
   'views/TemperaturesView'
 ], function($, _, Backbone, Marionette, 
-	LoginView, HomeView, PinsView, PinEditView, SocketsView, SocketView, TemperaturesView){
+	LoginView, HomeView, TtsView, PinsView, PinEditView, SocketsView, SocketView, TemperaturesView){
 	var Controller = Marionette.Controller.extend({
 	  initialize: function() {
 	  },
 
  	  login: function() {
-	  	console.log('home');
+	  	console.log('login');
 		app.mainRegion.show(new LoginView());
  	  },  
+
 	  home: function() {
 	  	console.log('home');
 		app.mainRegion.show(new HomeView());
+	  },
+
+	  tts: function() {
+	  	console.log('tts');
+		app.mainRegion.show(new TtsView());
 	  },
 
 	  temperatures: function() {
