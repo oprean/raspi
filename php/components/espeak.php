@@ -26,7 +26,11 @@ class Espeak {
 
 	private $_tts_cmd;
 	
-	function __construct($lang = DEFAULT_LANGUAGE ) {
+	function __construct($lang = DEFAULT_LANGUAGE, $gender = DEFAULT_GENDER, $voice = DEFAULT_VOICE, $speed = DEFAULT_SPEED ) {
+		$this->_language = $lang;
+		$this->_gender = $gender;
+		$this->_voice = $voice;
+		$this->_speed = $speed;
 		$this->init();
 	}
 	

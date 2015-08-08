@@ -1,7 +1,29 @@
 <div class="row">
 	 <div class="col-md-12 col-sm-12 col-xs-12">
 		<h1 class="center-block text-center">Text to speach</h1>
-		<textarea id="tts_text" style="width: 100%">Buna sunt Raspi!</textarea>
+		<textarea id="tts_text" style="width: 100%">Bună sunt un Raspberry PI!</textarea>
+		<select id="tts_lang">
+			<option value="ro">ro</option>
+			<option value="en">en</option>
+		</select>
+		<select id="tts_gender">
+			<option value="m">bărbat</option>
+			<option value="f">femeie</option>
+		</select>
+		<select id="tts_voice">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+		</select>
+		<select id="tts_speed">
+			<option value="120">normal</option>
+			<option value="80">rar</option>
+			<option value="220">rapid</option>
+		</select>
 		<button class="btn btn-primary btn-block btn-tts-text">Say it!</button>
 		<hr />
 		<button class="btn btn-primary btn-block btn-tts-temp">Temperature</button>

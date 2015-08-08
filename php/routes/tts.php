@@ -1,8 +1,8 @@
 <?php
 $app->post('/tts', function () use ($app) {
-	$espeak = new Espeak();
 	$post = $app->request()->post();
 	if (!empty($post['tts'])) {
+		$espeak = new Espeak($post['lang'], $post['gender'], $post['voice'], $post['speed']);		
 		$espeak->speak($post['tts']);		
 	}
 });

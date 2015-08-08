@@ -31,6 +31,10 @@ define([
 				url: '/raspi/api/tts', 
 				data: {
 					tts: this.$('#tts_text').val(),
+					lang:this.$('#tts_lang').val(),
+					gender:this.$('#tts_gender').val(),
+					voice:this.$('#tts_voice').val(),
+					speed:this.$('#tts_speed').val(),
 				}, 
 			});
 		},
