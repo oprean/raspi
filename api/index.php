@@ -8,6 +8,7 @@ $app->config('debug', DEBUG_MODE);
 
 require_once(ROOT_DIR.'/php/routes/command.php');
 require_once(ROOT_DIR.'/php/routes/gpio.php');
+require_once(ROOT_DIR.'/php/routes/temperature.php');
 require_once(ROOT_DIR.'/php/routes/test.php');
 
 $app->run();

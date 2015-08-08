@@ -20,6 +20,7 @@ define([
 	    'pins': 'pins',
 	    'pin/:id': 'pin',
 	    'sockets': 'sockets',
+	    'temperatures': 'temperatures',
 	    'socket/:id': 'socket',
 	  }
 	});

@@ -12,7 +12,7 @@ $app->get('/request', function () use ($app) {
 	//Get resource URI
 	$resourceUri = $req->getResourceUri();
 	
-	echo $rootUri;
+	//echo $rootUri;
 	echo $resourceUri;
 	//echo str_replace('/api', '/', $req->getUrl().$req->getRootUri());
 	
