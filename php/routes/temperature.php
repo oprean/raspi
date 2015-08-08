@@ -3,7 +3,7 @@ define('TEMPERATURE_BEAN', 'temperature');
 
 $app->get('/temperature', function () use ($app) {
 
-    $items = R::find(TEMPERATURE_BEAN); 
+    $items = R::find(TEMPERATURE_BEAN, ' ORDER BY date desc'); 
     $app->response()->header('Content-Type', 'application/json');
     echo json_encode(R::exportAll($items));
 });
