@@ -1,1 +1,13 @@
-temps
+<table class="table table-condensed table-bordered table-striped">
+	<tr>
+		<th>date</th>
+		<th>value</th>
+	</tr>
+	<% if (temperatures != null) 
+	temperatures.each(function(temp, index, list){ %>
+	<tr class="<%= getCss(temp.get('value')) %>">
+		<td><%= temp.get('date') %></td>
+		<td><%= temp.get('value') %></td>
+	</tr>
+	<% }) %>
+</table>

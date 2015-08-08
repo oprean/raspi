@@ -18,16 +18,6 @@ $app->get('/request', function () use ($app) {
 	
 });
 
-$app->get('/temps', function () use ($app) {
-    	
-    // get all items
-    $items = R::find('teperature');
-	
-    // create JSON response
-    $app->response()->header('Content-Type', 'application/json');
-    echo json_encode(R::exportAll($items));	
-});
-
 $app->get('/speak(/:text)', function ($text = 'te iubesc cami') use ($app) {
 	$cmd = TTS_COMAAND.'"'.$text.'"';
     exec($cmd, $output, $return);
