@@ -11,7 +11,7 @@ $val = $temperature->response();
 //$val = array('status' => 'success', 'response' => 28.00);
 
 if ($val['status'] == 'success') {
-	$item = R::dispense('teperature'); 
+	$item = R::dispense('temperature'); 
 	$item->type = ROOM_TEMPERATURE;
 	$item->date = date('Y-m-d H:i:s');
 	$item->value = $val['response'];
