@@ -2,14 +2,10 @@
 $app->post('/tts', function () use ($app) {
 	$espeak = new Espeak();
 	$post = $app->request()->post();
-	if (!empty($post['text'])) {
-		$espeak->speak($post['text']);		
+	if (!empty($post['tts'])) {
+		$espeak->speak($post['tts']);		
 	}
 });
-
-function _time() {
-	
-}
 
 $app->get('/tts/:cmd', function ($cmd) use ($app) {
 	switch ($cmd) {
