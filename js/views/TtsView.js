@@ -25,10 +25,17 @@ define([
 		},
 		
 		ttsText : function() {
+			var self = this; 
 			$.ajax({
 				type: "POST",
 				//dataType: "json",
-				url: '/raspi/api/tts', 
+				url: '/raspi/api/tts',
+				beforeSend: function() {
+					self.$('.tts_status').html('talking ...');
+				}, 
+				complete: function() {
+					self.$('.tts_status').html('done talking!');
+				},
 				data: {
 					tts: this.$('#tts_text').val(),
 					lang:this.$('#tts_lang').val(),
