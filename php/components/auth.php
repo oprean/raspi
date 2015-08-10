@@ -4,8 +4,8 @@ require_once (ROOT_DIR.'/php/Slim/Middleware.php');
 class TokenAuth extends \Slim\Middleware {
 	
 	private $_public_uri = array(
-		//'/',
-		'/login'
+		'/#login',
+		//'/login'
 	);
 	
     public function __construct() {}
@@ -46,7 +46,7 @@ class TokenAuth extends \Slim\Middleware {
 	            //Continue with execution
 	            $this->next->call();
 	        } else {
-	        	$this->app->redirect('login');
+	        	$this->app->redirect('#login');
 	            //$this->deny_access();
 	        }			
 		} else {

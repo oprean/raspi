@@ -13,6 +13,11 @@ define([
 	  },
 	  
 	  controller: controller,
+	  
+	  onRoute: function(name, path, args) {
+	  	console.log('onRoute');
+	  },
+	  
 	  appRoutes: {
 	    '': 'home',
 	    'login': 'login',

@@ -13,14 +13,15 @@ class User {
 		}
 	}
 
-	public function login($username, $password) {
+	public static function login($username, $password) {
 		$user = self::validateUser($username, $password); 
 		if (!empty($user)) {
-			$return['user'] = $user->id;
+			$return['uid'] = $user->id;
 			$return['token'] = bin2hex(openssl_random_pseudo_bytes(16));
 			$tokenExpiration = date('Y-m-d H:i:s', strtotime('+1 hour'));
 			User::updateToken($user->username, $return['token'], $tokenExpiration);
-			return json_encode($return);
+			
+			return $return;
 		}
 		return false;
 	}
