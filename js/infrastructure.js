@@ -8,6 +8,7 @@ define([
 	"backbone.marionette",
 	"backbone.localStorage",
 	"backbone.validation",
+	"backbone.zingchart",
 	"moment",
 	"text",
 ], function() { });

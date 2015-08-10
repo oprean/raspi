@@ -9,10 +9,13 @@ require.config({
 		
 		"underscore":"lib/lodash.min",
 		
+		"zingchart":"lib/zingchart.min",
+		
 		"backbone":"lib/backbone-min",
 		"backbone.marionette":"lib/backbone.marionette.min",
 		"backbone.localStorage":"lib/backbone.localStorage.min",
 		"backbone.validation":"lib/backbone-validation-min",		
+		"backbone.zingchart":"lib/backbone.zingchart.min",
 		
 		"moment":"lib/moment.min",
 		"text":"lib/text",
@@ -43,6 +46,10 @@ require.config({
 		"backbone.validation":{
 			"deps":["backbone"],
 			"exports":"Backbone"
+		},
+		"backbone.zingchart":{
+			"deps":["zingchart"],
+			"exports":"ZingChart"
 		},
 	}
 });

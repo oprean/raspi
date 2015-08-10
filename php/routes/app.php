@@ -16,7 +16,10 @@ $app->get('/login', function () use ($app) {
 $app->post('/login', function () use ($app) { 
 	$post = $app->request()->post();
 	if (User::validateUser($post['username'], $post['password'])) {
-		User::login($post['username'], $post['password']);
+		$auth = User::login($post['username'], $post['password']);
+		
+		$app->response()->header('Content-Type', 'application/json');
+    	echo json_encode(R::exportAll($items));
 		$app->redirect('/raspi');		
 	} else {
 		echo 'login failed';
