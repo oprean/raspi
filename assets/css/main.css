@@ -237,3 +237,19 @@ body {
   background-image: -o-linear-gradient(top, #eeeeee, white);
   background-image: linear-gradient(to bottom, #eeeeee, white);
 }
+
+.chart-container {
+	height: 100px;
+}
+
+.chart-value-item {
+	width: 1px;
+}
+
+.chart-container .danger {
+	background-color: #f2dede;
+}
+
+.chart-container .warning {
+	background-color: #fcf8e3;
+}

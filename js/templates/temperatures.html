@@ -1,4 +1,12 @@
 <h1 class="text-center">Temperatures</h1>
+
+<div class="chart-container" style="height: 100px;">
+	<% if (temperatures != null) 
+	temperatures.each(function(temp, index, list){ %>
+		<div class="chart-value-item <%= getCss(temp.get('value')) %> pull-left" style="height: <%=temp.get('value')*2 %>px"></div>
+	<% }) %>
+</div>
+
 <table class="table table-condensed table-bordered table-striped">
 	<tr>
 		<th>date</th>
