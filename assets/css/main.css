@@ -240,6 +240,7 @@ body {
 
 .chart-container {
 	height: 100px;
+	background-color: #EEEEEE;
 }
 
 .chart-value-item {
@@ -252,4 +253,8 @@ body {
 
 .chart-container .warning {
 	background-color: #fcf8e3;
+}
+
+.chart-container .info {
+	background-color: #d9edf7;
 }
