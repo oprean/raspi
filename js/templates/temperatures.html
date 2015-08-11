@@ -1,24 +1,3 @@
 <h1 class="text-center">Temperatures</h1>
 <a class="btn btn-primary btn-block" href="#">home</a>
 <div id="zing-chart-container"></div>
-<div class="chart-container" style="height: 100px;">
-	<% if (temperatures != null) 
-	temperatures.each(function(temp, index, list){ %>
-		<div class="chart-value-item <%= getCss(temp.get('value')) %> pull-left" style="height: <%=temp.get('value')*2 %>px"></div>
-	<% }) %>
-</div>
-
-<table class="table table-condensed table-bordered table-striped">
-	<tr>
-		<th>date</th>
-		<th>value</th>
-	</tr>
-	<% if (temperatures != null) 
-	temperatures.each(function(temp, index, list){ %>
-	<tr class="<%= getCss(temp.get('value')) %>">
-		<td><%= temp.get('date') %></td>
-		<td><%= temp.get('value') %></td>
-	</tr>
-	<% }) %>
-</table>
-<a class="btn btn-primary btn-block" href="#">home</a>

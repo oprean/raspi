@@ -10,34 +10,74 @@ define([
 		template : _.template(statsTpl),
 		initialize : function(options) {
 			var self = this;
-			this.temperatures = null;
-			var stats = new Temperatures();
-			stats.fetch({
-				success: function(temps) {
-					self.temperatures = temps;
-					self.render();
-				}
+			$.getJSON('api/temperature', function(data){
+				self.temperatures = self.prepareData(data);
+				self.render(); 	
 			});
 		},
 		
-		/*onRender: function() {
+		prepareData: function(data) {
+			var returnData = [];
+			var filteredData = _.filter(data, function(item){
+				return item.date[14] == 0;
+			});
+			var series = _.groupBy(filteredData, function(item){
+				return item.date.substring(0,10);
+			});
+			
+			_.each(series, function(serie) {
+				var text = serie[0].date.substring(0,10);
+				var values = []; 
+				_.each(serie, function(value) {
+					values.push([parseInt(value.date.substring(11,13)), parseFloat(value.value)]);
+				});
+				returnData.push({
+					'text':text,
+					'values': values
+				});
+			});
+			
+			return returnData;
+		},
+		
+		onRender: function() {
 			// Create ZingChart Model Passing in Data to Plot
 			if (this.temperatures != null) {
-				var chartData = new ZingChart.ZingChartModel(
-				            {
-				                //data: [[3,2,3,3,9] , [1,2,3,4,5]],
-				                data : this.temperatures.pluck("value"),
-				                width: 500,
-				                height: 400
-				            });
-				
+				console.log(this.temperatures);				
+				var chartData = new ZingChart.ZingChartModel({
+					"width":"1140px",
+					json: {
+						"type": "line",
+						"legend":{
+					        "layout":"x1",
+					        "margin-top":"5%",
+					        "border-width":"0",
+					        "shadow":false,
+					        "marker":{
+					            "cursor":"hand",
+					            "border-width":"0"
+					        },
+					        "background-color":"white",
+					        "item":{
+					            "cursor":"hand"
+					        },
+					        "toggle-action":"remove"
+					    },
+
+						"scaleY": {
+							"values":"20:40:4",
+						},
+						"series": this.temperatures,
+					}
+
+				});
 				
 				// Render the Chart
 				// Note that the el must already be added to the DOM
 				var chartView = new ZingChart.ZingChartView({model: chartData, el: this.$('#zing-chart-container')});
 				chartView.render();				
 			}
-		},*/
+		},
 		
 		templateHelpers: function() {
 			return {
