@@ -3,7 +3,7 @@
 		<h1 class="center-block text-center">Status</h1>
 		<div class="text-center">
 			<div id="temp-gauge-container" class="center-block text-center"></div>
-			<a id="power1" class="btn btn-power-switch center-block" data-pin="23">&#xF011;</a>
+			<a id="power1" class="btn btn-power-switch center-block <%=(power.get('Value')==1?'on':'')%>" data-pin="23">&#xF011;</a>
 			<hr />
 			<a class="btn btn-primary btn-block" href="#pins">Pins</a>
 			<a class="btn btn-primary btn-block" href="#tts">Text to speach</a>

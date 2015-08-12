@@ -34,19 +34,20 @@ define([
 			});
 			tempCmd = new Command({id:'temp'});
 			tempCmd.fetch({
-				async:false,
+//				async:false,
 				success: function(model) {
 					if (model.get('status') == 'success') {	
 						self.cpu_temp = parseFloat(model.get('response'));
 					} else {
 						self.cpu_temp = 0;
 					}
+					self.render();
 				}
 			});
 		},
 		
-		onRender : function() {
-				var chartData = new ZingChart.ZingChartModel({
+		initZing: function() {
+			var chartData = new ZingChart.ZingChartModel({
 					width:'100%',
 					height: 300,
 					json: {
@@ -69,21 +70,26 @@ define([
 					}
 
 				});
-				var chartView = new ZingChart.ZingChartView({model: chartData, el: this.$('#temp-gauge-container')});
-				chartView.render();		
+			this.chartView = new ZingChart.ZingChartView({model: chartData, el: this.$('#temp-gauge-container')});
+			this.chartView.render();		
+		},
+		
+		onRender : function() {
+			this.initZing();
 		},
 		
 		powerSwitch: function(e) {
 			console.log('toggle val: ' + this.pin.get('Phys'));
 			var value = (this.pin.get('Value') == 0)?1:0;
 			this.pin.save({Value:value}, {patch:true});
-			this.render();
+			this.$('#power1').toggleClass('power-on');
 		},
 		
 		templateHelpers: function() {
 			return {
 				cpu_temp: this.cpu_temp.toFixed(2),
 				room_temp: this.room_temp.toFixed(2),
+				power:this.pin
 			};
 		}
 	});
