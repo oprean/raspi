@@ -28,6 +28,30 @@ define([
 			});
 		},
 		
+		onRender : function() {
+				var chartData = new ZingChart.ZingChartModel({
+					width:340,
+					height: 150,
+					json: {
+				        "scale":{
+				            "size-factor":2,
+				            "offset-y":40
+				        },
+						"scale-r":{
+            				"values":"0:120:5",
+            			},
+						"type": "gauge",
+						"series": [
+							{"values":[this.room_temp]},
+							{"values":[this.cpu_temp]},
+						],
+					}
+
+				});
+				var chartView = new ZingChart.ZingChartView({model: chartData, el: this.$('#room-temp-gauge-container')});
+				chartView.render();		
+		},
+		
 		templateHelpers: function() {
 			return {
 				cpu_temp: this.cpu_temp.toFixed(2),
