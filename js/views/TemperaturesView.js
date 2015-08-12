@@ -33,7 +33,10 @@ define([
 				});
 				returnData.push({
 					'text':text,
-					'values': values
+					'values': values,
+					'tooltip':{ 
+				        'text':"%t, ora %k:00 <br><div style='font-size:14px'>%v °C</div>" 
+        			}
 				});
 			});
 			
