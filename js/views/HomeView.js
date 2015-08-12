@@ -16,12 +16,21 @@ define([
 			var tempCmd = new Command({id:'tempsensor'});
 			tempCmd.fetch({
 				success: function(model) {
-					if (model.get('status') == 'success') {
-						self.cpu_temp = 0;//parseFloat(model.get('response'));				
+					if (model.get('status') == 'success') {	
 						self.room_temp = parseFloat(model.get('response'));
 					} else {
-						self.cpu_temp = 0;
 						self.room_temp = 0;
+					}
+					self.render();
+				}
+			});
+			tempCmd = new Command({id:'temp'});
+			tempCmd.fetch({
+				success: function(model) {
+					if (model.get('status') == 'success') {	
+						self.cpu_temp = parseFloat(model.get('response'));
+					} else {
+						self.cpu_temp = 0;
 					}
 					self.render();
 				}
@@ -30,16 +39,20 @@ define([
 		
 		onRender : function() {
 				var chartData = new ZingChart.ZingChartModel({
-					width:340,
-					height: 150,
+					width:'100%',
+					height: 300,
 					json: {
-				        "scale":{
-				            "size-factor":2,
-				            "offset-y":40
-				        },
 						"scale-r":{
             				"values":"0:120:5",
+            				"aperture":"240",
+           				    "ring":{
+						      "size":10
+						    }
             			},
+            			"plot": {
+            				"csize":"5%"
+            			},
+						"background-color": "transparent",
 						"type": "gauge",
 						"series": [
 							{"values":[this.room_temp]},

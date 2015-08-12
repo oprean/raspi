@@ -51,6 +51,7 @@ define([
 					"width":"1140px",
 					json: {
 						"type": "line",
+						"background-color": "#fff",
 						"legend":{
 					        "layout":"x1",
 					        "margin-top":"5%",
