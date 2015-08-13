@@ -10,7 +10,7 @@ define([
 		template : _.template(statsTpl),
 		initialize : function(options) {
 			var self = this;
-			$.getJSON('api/temperatures/144', function(data){
+			$.getJSON('api/temperatures/3', function(data){
 				self.temperatures = self.prepareData(data);
 				self.render(); 	
 			});
