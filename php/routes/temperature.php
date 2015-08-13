@@ -1,9 +1,9 @@
 <?php
 define('TEMPERATURE_BEAN', 'temperature');
 
-$app->get('/temperature', function () use ($app) {
-
-    $items = R::find(TEMPERATURE_BEAN, ' ORDER BY date desc'); 
+$app->get('/temperatures(/:limit)', function ($limit) use ($app) {
+	$limit = empty($limit)?9999:$limit;
+    $items = R::find(TEMPERATURE_BEAN, ' ORDER BY date desc LIMIT ?', array($limit));
     $app->response()->header('Content-Type', 'application/json');
     echo json_encode(R::exportAll($items));
 });

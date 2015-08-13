@@ -4,7 +4,7 @@ define([
   'models/Temperature'
 ], function(_, Backbone, Temperature){
 	var Temperatures = Backbone.Collection.extend({
-	  url : 'api/temperature',
+	  url : 'api/temperatures',
 	  model: Temperature, 
 	});
 	
