@@ -12,15 +12,18 @@ define([
 		className : 'bg-raspi-logo',
 		
 		events: {
-			'click #power1' : 'powerSwitch'
+			'click #power1' : 'powerSwitch1',
+			'click #power2' : 'powerSwitch2',
 		},
 		
 		initialize : function(options) {
 			var self = this;
 			this.cpu_temp = 0;
 			this.room_temp = 0;
-			this.pin = new Pin({id: 23});
-			this.pin.fetch({async:false});
+			this.pin1 = new Pin({id: 23});
+			this.pin1.fetch({async:false});
+			this.pin2 = new Pin({id: 11});
+			this.pin2.fetch({async:false});
 
 			$.getJSON('api/temperature/now/1', function(data){
 				self.room_temp = data.value;
@@ -35,18 +38,24 @@ define([
 			});
 		},
 		
-		powerSwitch: function(e) {
-			console.log('toggle val: ' + this.pin.get('Phys'));
-			var value = (this.pin.get('Value') == 0)?1:0;
-			this.pin.save({Value:value}, {patch:true});
+		powerSwitch1: function(e) {
+			var value = (this.pin1.get('Value') == 0)?1:0;
+			this.pin1.save({Value:value}, {patch:true});
 			this.$('#power1').toggleClass('power-on');
+		},
+		
+		powerSwitch2: function(e) {
+			var value = (this.pin2.get('Value') == 0)?1:0;
+			this.pin2.save({Value:value}, {patch:true});
+			this.$('#power2').toggleClass('power-on');
 		},
 		
 		templateHelpers: function() {
 			return {
 				cpu_temp: this.cpu_temp.toFixed(2),
 				room_temp: this.room_temp.toFixed(2),
-				power:this.pin
+				power1:this.pin1,
+				power2:this.pin2
 			};
 		}
 	});
