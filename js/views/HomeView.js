@@ -23,13 +23,13 @@ define([
 			this.pin.fetch({async:false});
 			this.render();
 			$.getJSON('api/temperature/now/1', function(data){
-				this.room_temp = data.value;
-				this.$('#room-temperature-value').html(data.value); 	
+				self.room_temp = data.value;
+				self.$('#room-temperature-value').html(data.value); 	
 			});
 			 
 			$.getJSON('api/temperature/now/0', function(data){
-				this.cpu_temp = data.value;
-				this.$('#cpu-temperature-value').html(data.value); 	
+				self.cpu_temp = data.value;
+				self.$('#cpu-temperature-value').html(data.value); 	
 			});
 		},
 		
