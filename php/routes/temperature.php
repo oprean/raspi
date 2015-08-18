@@ -1,5 +1,5 @@
 <?php
-define('TEMPERATURE_BEAN', 'temperature');
+defined('TEMPERATURE_BEAN') or define('TEMPERATURE_BEAN', 'temperature');
 
 $app->get('/temperatures(/:days)', function ($days=null) use ($app) {
 	$days = empty($days)?356:$days;
