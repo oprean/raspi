@@ -1,21 +1,14 @@
 <?php
 require_once('../bootstrap.php');
 
-define('CPU_TEMPERATURE', 0);
-define('ROOM_TEMPERATURE', 1);
-
-define('SOURCE_SENSOR', 0);
-define('SOURCE_CALCULATED', 1);
-
-define('DESCRIPTION_MIN', 'min');
-define('DESCRIPTION_MAX', 'max');
-define('DESCRIPTION_AVG', 'avg');
+defined('CPU_TEMPERATURE') or define('CPU_TEMPERATURE', 0);
+defined('ROOM_TEMPERATURE') or define('ROOM_TEMPERATURE', 1);
 
 R::setup( 'sqlite:'.ROOT_DIR.'/data/raspi.sqlite' );
 
 $temperature = new Command('tempsensor');
 $val = $temperature->response();
-//$val = array('status' => 'success', 'response' => 28.00);
+//$val = array('status' => 'success', 'response' => 38.00);
 
 if ($val['status'] == 'success') {
 	$item = R::dispense('temperature'); 
