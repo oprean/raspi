@@ -21,7 +21,7 @@ define([
 			this.room_temp = 0;
 			this.pin = new Pin({id: 23});
 			this.pin.fetch({async:false});
-			this.render();
+			//this.render();
 			$.getJSON('api/temperature/now/1', function(data){
 				self.room_temp = data.value;
 				self.$('#room-temperature-value').html(data.value); 	
