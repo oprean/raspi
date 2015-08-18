@@ -247,10 +247,12 @@ body {
 }
 
 .tail-container {
+	position: relative;
 	width: 110px;
 	height: 110px;
-	float: right;
+	float: left;
 	margin: 5px;
+	background-color: #CCCCCC;
 	box-shadow: inset 0 1px rgba(0, 0, 0, 0.02);
 	box-shadow: 0px 0px 2px 1px #242424;
 	-webkit-box-shadow: 0px 0px 2px 1px #242424;
@@ -262,4 +264,11 @@ body {
 	 text-transform: uppercase;
 	 font-size: 0.7em;
 	 font-weight: bolder;
+}
+
+.tail-footer {
+	 font-size: 0.4em;
+	 font-weight: lighter;
+	 position: absolute;
+	 bottom: 0px;
 }
