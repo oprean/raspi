@@ -6,8 +6,11 @@ define('BASE_W1_DIR', '/sys/bus/w1/devices/');
 define('LOAD_W1_KERNEL_MODULE_CMD', 'sudo modprobe w1-gpio && sudo modprobe w1-therm');
 
 class TemperatureSensor {
+
 	private $_device_file;
-	
+	private $_value_celsius = null;
+	private $_value_fahrenheit = null;
+		
 	function __construct() {
 		$result = $this->init();
 		if ($result !== true) {
@@ -39,6 +42,13 @@ class TemperatureSensor {
 		return file($this->_device_file);
 	}
 	
+	function getValue($unit = 'c') {
+		$this->read();
+		return ($unit== 'c')
+			?$this->_value_celsius
+			:$this->_value_fahrenheit;
+	}
+	
 	function read() {
 		$output = $this->readRaw();
 		$retry = 0;
@@ -49,10 +59,10 @@ class TemperatureSensor {
 		}
 		if (strpos($output[1], 't=') !== false) {
 			$temp = substr($output[1], strpos($output[1], 't=') + 2);
-			$tempCelsius = (float)$temp/1000; 
-			$tempFahrenheit = $tempCelsius * 9 / 5 + 32;
+			$this->_value_celsius = (float)$temp/1000; 
+			$this->_value_fahrenheit = $this->_value_celsius * 9 / 5 + 32;
 						
-			$result = 'celsius='.$tempCelsius.'|fahrenheit='.$tempFahrenheit;
+			$result = 'celsius='.$this->_value_celsius.'|fahrenheit='.$this->_value_fahrenheit;
 		} else {
 			$result = 'DS18B20 sensor could not be read!';
 		}
