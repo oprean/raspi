@@ -20,62 +20,21 @@ define([
 			this.cpu_temp = 0;
 			this.room_temp = 0;
 			this.pin = new Pin({id: 23});
-			this.pin.fetch({async:false}); 
-			var tempCmd = new Command({id:'tempsensor'});
-			tempCmd.fetch({
-				async:false,
-				success: function(model) {
-					if (model.get('status') == 'success') {	
-						self.room_temp = parseFloat(model.get('response'));
-					} else {
-						self.room_temp = 0;
-					}
-				}
+			this.pin.fetch({async:false});
+			this.render();
+			$.getJSON('api/temperature/now/1', function(data){
+				this.room_temp = data.value;
+				this.$('#room-temperature-value').html(data.value); 	
 			});
-			tempCmd = new Command({id:'temp'});
-			tempCmd.fetch({
-//				async:false,
-				success: function(model) {
-					if (model.get('status') == 'success') {	
-						self.cpu_temp = parseFloat(model.get('response'));
-					} else {
-						self.cpu_temp = 0;
-					}
-					self.render();
-				}
+			 
+			$.getJSON('api/temperature/now/0', function(data){
+				this.cpu_temp = data.value;
+				this.$('#cpu-temperature-value').html(data.value); 	
 			});
-		},
-		
-		initZing: function() {
-			var chartData = new ZingChart.ZingChartModel({
-					width:'100%',
-					height: 300,
-					json: {
-						"scale-r":{
-            				"values":"0:120:5",
-            				"aperture":"240",
-           				    "ring":{
-						      "size":10
-						    }
-            			},
-            			"plot": {
-            				"csize":"5%"
-            			},
-						"background-color": "transparent",
-						"type": "gauge",
-						"series": [
-							{"values":[this.room_temp]},
-							{"values":[this.cpu_temp]},
-						],
-					}
-
-				});
-			this.chartView = new ZingChart.ZingChartView({model: chartData, el: this.$('#temp-gauge-container')});
-			this.chartView.render();		
 		},
 		
 		onRender : function() {
-			this.initZing();
+
 		},
 		
 		powerSwitch: function(e) {

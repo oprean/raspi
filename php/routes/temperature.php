@@ -37,7 +37,7 @@ $app->get('/temperature/last/:type', function ($type = ROOM_TEMPERATURE) use ($a
         $app->response()->header('Content-Type', 'application/json');
         echo json_encode($item->export());
     } else {
-        $app->response()->status(404);
+        $app->response()->status(503);
     }	
 });
 
