@@ -2,11 +2,20 @@
 	 <div class="col-md-12 col-sm-12 col-xs-12">
 		<h1 class="center-block text-center">Status</h1>
 		<div class="text-center">
-			<div id="room-temperature-value" class="center-block text-center"></div>
-			<div id="cpu-temperature-value" class="center-block text-center"></div>
-
-			<a id="power1" class="btn btn-power-switch center-block <%=(power.get('Value')==1?'power-on':'')%>" data-pin="23">&#xF011;</a>
-
+			<div id="room-temperature" class="tail-container">
+				<div class="tail-header">room</div>
+				<div class="tail-content"></div>
+				<div class="tail-footer"></div>
+			</div>
+			<div id="cpu-temperature" class="tail-container">
+				<div class="tail-header">cpu</div>
+				<div class="tail-content"></div>
+				<div class="tail-footer"></div>
+			</div>
+			<span class="clearfix"></span>
+			<a id="power1" class="btn btn-power-switch pull-left <%=(power.get('Value')==1?'power-on':'')%>" data-pin="23">&#xF011;</a>
+			<a id="power1" class="btn btn-power-switch pull-right <%=(power.get('Value')==1?'power-on':'')%>" data-pin="23">&#xF011;</a>
+			<span class="clearfix"></span>
 			<a class="btn btn-primary btn-block" href="#pins">Pins</a>
 			<a class="btn btn-primary btn-block" href="#tts">Text to speach</a>
 			<a class="btn btn-primary btn-block" href="#temperatures">Temperatures stats</a>

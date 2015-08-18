@@ -21,15 +21,17 @@ define([
 			this.room_temp = 0;
 			this.pin = new Pin({id: 23});
 			this.pin.fetch({async:false});
-			//this.render();
+
 			$.getJSON('api/temperature/now/1', function(data){
 				self.room_temp = data.value;
-				self.$('#room-temperature-value').html(data.value); 	
+				self.$('#room-temperature .tail-content').html(data.value);
+				self.$('#room-temperature .tail-footer').html(data.date); 	
 			});
 			 
 			$.getJSON('api/temperature/now/0', function(data){
 				self.cpu_temp = data.value;
-				self.$('#cpu-temperature-value').html(data.value); 	
+				self.$('#cpu-temperature .tail-content').html(data.value); 	
+				self.$('#cpu-temperature .tail-footer').html(data.date);
 			});
 		},
 		
