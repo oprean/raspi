@@ -10,15 +10,26 @@ define([
 		template : _.template(tileTpl),
 		
 		events : {
-			'click .tile-container' : 'action',
+			'click .tile-content' : 'action',
 		},
 		
 		initialize : function(options) {
+			this.temperature = 'N/A';
+			this.data = this.model.get('data');
+			this.updateTemperature();
+		},
+		
+		updateTemperature : function() {
 			var self = this;
+			$.getJSON('api/temperature/now/'+ this.data.type, function(data){
+				self.temperature = data.value;
+				self.$('.tile-content').html(data.value + '<sup style="font-size:.5em;">°C</sup>');
+				self.$('.tile-footer').html(data.date); 	
+			});			
 		},
 		
 		action : function(e) {
-			console.log('temp sensor tile action');
+			this.updateTemperature();
 		},
 		
 		templateHelpers: function() {
