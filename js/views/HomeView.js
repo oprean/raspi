@@ -27,14 +27,14 @@ define([
 
 			$.getJSON('api/temperature/now/1', function(data){
 				self.room_temp = data.value;
-				self.$('#room-temperature .tail-content').html(data.value + '<sup style="font-size:.5em;">°C</sup>');
-				self.$('#room-temperature .tail-footer').html(data.date); 	
+				self.$('#room-temperature .tile-content').html(data.value + '<sup style="font-size:.5em;">°C</sup>');
+				self.$('#room-temperature .tile-footer').html(data.date); 	
 			});
 			 
 			$.getJSON('api/temperature/now/0', function(data){
 				self.cpu_temp = data.value;
-				self.$('#cpu-temperature .tail-content').html(data.value + '<sup style="font-size:.5em;">°C</sup>'); 	
-				self.$('#cpu-temperature .tail-footer').html(data.date);
+				self.$('#cpu-temperature .tile-content').html(data.value + '<sup style="font-size:.5em;">°C</sup>'); 	
+				self.$('#cpu-temperature .tile-footer').html(data.date);
 			});
 		},
 		
