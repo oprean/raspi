@@ -16,4 +16,6 @@ require_once(ROOT_DIR.'/php/components/Temperature.php');
 require_once(ROOT_DIR.'/php/components/TemperatureSensor.php');
 require_once(ROOT_DIR.'/php/components/espeak.php');
 
+require_once(ROOT_DIR.'/php/models/Tile.php');
+
 ?>

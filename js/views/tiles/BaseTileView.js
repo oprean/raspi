@@ -4,14 +4,14 @@ define([
   'underscore',
   'backbone',
   'backbone.marionette',
-  'text!templates/tile.html',
+  'text!templates/tiles/base_tile.html',
 ], function($, _, Backbone, Marionette, tileTpl){
-	var TileView = Backbone.Marionette.ItemView.extend({
+	var BaseTileView = Backbone.Marionette.ItemView.extend({
 		template : _.template(tileTpl),
-		className : 'tile',
+		className : 'tile-container',
 		
 		events : {
-			'click .btn-tile' : 'action',
+			'click .tile-container' : 'action',
 		},
 		
 		initialize : function(options) {
@@ -19,7 +19,7 @@ define([
 		},
 		
 		action : function(e) {
-			console.log('action' + $(e.target).data('pin'));
+			console.log('base tile action');
 		},
 		
 		templateHelpers: function() {
@@ -28,5 +28,5 @@ define([
 		}
 	});
 	 
-	return TileView;
+	return BaseTileView;
 });
