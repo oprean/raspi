@@ -16,6 +16,9 @@ define([
 	  
 	  onRoute: function(name, path, args) {
 	  	console.log('onRoute');
+	  	if ( window.location.pathname.indexOf('/login') >= 0 ) {
+	  		this.navigate('#login', {trigger: true});
+	  	}
 	  },
 	  
 	  appRoutes: {

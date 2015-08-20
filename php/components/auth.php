@@ -4,8 +4,7 @@ require_once (ROOT_DIR.'/php/Slim/Middleware.php');
 class TokenAuth extends \Slim\Middleware {
 	
 	private $_public_uri = array(
-		'/#login',
-		//'/login'
+		'/login'
 	);
 	
     public function __construct() {}
@@ -32,25 +31,20 @@ class TokenAuth extends \Slim\Middleware {
      * Call
      */
     public function call() {
-    	if (!in_array($this->app->request->getResourceUri(),$this->_public_uri)) {
-	        //Get the token sent from jquery
+    	if (strpos(IP_WHITE_LIST, $_SERVER['REMOTE_ADDR']) !== false) {
+            $this->next->call();    		
+    	} else if (!in_array($this->app->request->getResourceUri(),$this->_public_uri)) {
 	        $tokenAuth = $this->app->request->headers->get('Authorization');
-	 	        //Check if our token is valid
 	        if ($this->authenticate($tokenAuth)) {
-	            //Get the user and make it available for the controller
 	            $usrObj = new User();
 	            $usrObj->getByToken($tokenAuth);
 	            $this->app->auth_user = $usrObj;
-	            //Update token's expiration
 	            User::keepTokenAlive($tokenAuth);
-	            //Continue with execution
 	            $this->next->call();
 	        } else {
-	        	$this->app->redirect('#login');
-	            //$this->deny_access();
+	        	$this->app->redirect('login');
 	        }			
 		} else {
-            //Continue with execution
             $this->next->call();
 		}
     }
