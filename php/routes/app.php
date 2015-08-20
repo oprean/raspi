@@ -19,10 +19,9 @@ $app->post('/login', function () use ($app) {
 		$auth = User::login($post['username'], $post['password']);
 		
 		$app->response()->header('Content-Type', 'application/json');
-    	echo json_encode(R::exportAll($items));
-		$app->redirect('/raspi');		
+    	echo json_encode($auth);
 	} else {
-		echo 'login failed';
+		$app->response()->status(401);
 	}
 	
 });

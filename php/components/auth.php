@@ -34,7 +34,7 @@ class TokenAuth extends \Slim\Middleware {
     	if (strpos(IP_WHITE_LIST, $_SERVER['REMOTE_ADDR']) !== false) {
             $this->next->call();    		
     	} else if (!in_array($this->app->request->getResourceUri(),$this->_public_uri)) {
-	        $tokenAuth = $this->app->request->headers->get('Authorization');
+	        $tokenAuth = $this->app->request->headers->get('Authorization');		
 	        if ($this->authenticate($tokenAuth)) {
 	            $usrObj = new User();
 	            $usrObj->getByToken($tokenAuth);
