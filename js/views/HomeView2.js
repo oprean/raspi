@@ -11,10 +11,11 @@ define([
 
   'views/tiles/BaseTileView',  
   'views/tiles/TemperatureSensorTileView',
-  'views/tiles/SwitchTileView'
+  'views/tiles/SwitchTileView',
+  'views/tiles/TtsTileView'
  
 ], function($, _, Backbone, Marionette, homeTpl, Tiles, Constant,
-	BaseTileView, TemperatureSensorTileView, SwitchTileView){
+	BaseTileView, TemperatureSensorTileView, SwitchTileView, TtsTileView){
 	var HomeView = Backbone.Marionette.CompositeView.extend({
 		template : _.template(homeTpl),
 		childViewContainer: '.tiles-container',
@@ -27,6 +28,9 @@ define([
 				break;
 			case Constant.TILE_TYPE_SWITCH:
 				view = SwitchTileView;
+				break;
+			case Constant.TILE_TYPE_TTS:
+				view = TtsTileView;
 				break;
 			default:
 				view = BaseTileView;

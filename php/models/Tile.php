@@ -34,12 +34,18 @@ class Tile {
 				'name' => 'vent',
 				'data' => array('pin' => 11)
 			),
-			/*array(
+			array(
 				'id' => 5,
 				'type' => Tile::TILE_TYPE_TTS,
-				'name' => 'I\'m home',
-				'data' => array('text' => 'Cami, sunt acasă!')
-			),*/
+				'name' => 'say time',
+				'data' => array('text' => 'time')
+			),
+			array(
+				'id' => 6,
+				'type' => Tile::TILE_TYPE_TTS,
+				'name' => 'say temperature',
+				'data' => array('text' => 'temp')
+			),
 		);
 	}
 }
