@@ -8,13 +8,14 @@ define([
   'collections/Tiles',
   
   'modules/Constants',
+  'collections/Settings',
 
   'views/tiles/BaseTileView',  
   'views/tiles/TemperatureSensorTileView',
   'views/tiles/SwitchTileView',
   'views/tiles/TtsTileView'
  
-], function($, _, Backbone, Marionette, homeTpl, Tiles, Constant,
+], function($, _, Backbone, Marionette, homeTpl, Tiles, Constant, Settings,
 	BaseTileView, TemperatureSensorTileView, SwitchTileView, TtsTileView){
 	var HomeView = Backbone.Marionette.CompositeView.extend({
 		template : _.template(homeTpl),
@@ -41,7 +42,9 @@ define([
 		
 		initialize : function(options) {
 			this.collection = new Tiles();
-			this.collection.fetch();
+			this.collection.fetch({
+				headers: {'Authorization' :{uid:Settings.getVal('uid'), token:Settings.getVal('token')}}
+			});
 		},
 	});
 	 

@@ -4,7 +4,8 @@ define([
   'backbone',
   'backbone.marionette',
   'text!templates/login.html',
-], function($, _, Backbone, Marionette, loginTpl){
+  'collections/Settings'
+], function($, _, Backbone, Marionette, loginTpl, Settings){
 	var LoginView = Backbone.Marionette.ItemView.extend({
 		template : _.template(loginTpl),
 		className : 'login',
@@ -25,14 +26,15 @@ define([
 					username: this.$('#username').val(),
 					password:this.$('#password').val(),
 				}, 
-				success: function(data) {
+				success: function(auth) {
 					
 					console.log('login successfully!');
+					console.log(auth);
 					
-					$.ajaxSetup({
-					    headers: { 'Authorization' :data }
-					});
-					window.location.replace('');
+					Settings.setVal('uid', auth.uid);
+					Settings.setVal('token', auth.token);
+
+					window.location.replace('index');
 				}
 			});
 		},
