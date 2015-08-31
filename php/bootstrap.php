@@ -15,6 +15,9 @@ require_once(ROOT_DIR.'/php/components/gpio.php');
 require_once(ROOT_DIR.'/php/components/Temperature.php');
 require_once(ROOT_DIR.'/php/components/TemperatureSensor.php');
 require_once(ROOT_DIR.'/php/components/espeak.php');
+require_once(ROOT_DIR.'/php/components/pushalot_api.php');
+
+require_once(ROOT_DIR.'/php/components/Utils.php');
 
 require_once(ROOT_DIR.'/php/models/Tile.php');
 

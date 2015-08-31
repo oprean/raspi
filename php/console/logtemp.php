@@ -15,7 +15,9 @@ if ($val['status'] == 'success') {
 	$item->type = ROOM_TEMPERATURE;
 	$item->date = date('Y-m-d H:i:s');
 	$item->value = $val['response'];
- 
+ 	if (floatval($item->value) > 28 ) {
+ 		Utils::pushalot('Temperatura în cameră: '. $item->value);
+ 	}
     R::store($item);		
 } else {
 	return $val['response'];
