@@ -46,7 +46,7 @@ $app->get('/toggle/gpio/:pin', function ($pin) use ($app) {
 	$oGPIO = new GPIO();
 	$data = $oGPIO->read($pin, DEFAULT_PIN_NUMBERING);
 	if ($data['status'] == 'success') {
-		$value = $data['Value']?1:0;
+		$value = $data['Value']?0:1;
 		$response = $oGPIO->write($pin, $value, DEFAULT_PIN_NUMBERING);
 	}
 	
