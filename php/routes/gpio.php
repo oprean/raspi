@@ -44,10 +44,10 @@ $app->get('/gpioreset', function () use ($app) {
 
 $app->get('/toggle/gpio/:pin', function ($pin) use ($app) {
 	$oGPIO = new GPIO();
-	$data = $oGPIO->read($pin);
+	$data = $oGPIO->read($pin, DEFAULT_PIN_NUMBERING);
 	if ($data['status'] == 'success') {
 		$value = $data['Value']?1:0;
-		$response = $oGPIO->write($pin, $value);
+		$response = $oGPIO->write($pin, $value, DEFAULT_PIN_NUMBERING);
 	}
 	
 	$app->response()->header('Content-Type', 'application/json');
