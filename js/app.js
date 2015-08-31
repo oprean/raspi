@@ -4,12 +4,14 @@ define([
 	'backbone',
 	'backbone.marionette',
 	'modules/Utils',
+	'collections/Settings',
 	'views/HeaderView',
 	'views/FooterView',
-], function( $, _, Backbone, Marionette, Utils, HeaderView, FooterView) {
+], function( $, _, Backbone, Marionette, Utils, Settings, HeaderView, FooterView) {
 	var App = Backbone.Marionette.Application.extend({
 		initialize: function() {
 			$.ajaxSetup({cache: false});
+			Settings.fetch({async:false});
 			this.env = Utils.bootstrapEnv();
 			this.addRegions({
 				headerRegion : "#header-container",

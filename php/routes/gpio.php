@@ -42,4 +42,16 @@ $app->get('/gpioreset', function () use ($app) {
 	echo json_encode($response);	
 });
 
+$app->get('/toggle/gpio/:pin', function ($pin) use ($app) {
+	$oGPIO = new GPIO();
+	$data = $oGPIO->read($pin);
+	if ($data['status'] == 'success') {
+		$value = $data['Value']?1:0;
+		$response = $oGPIO->write($pin, $value);
+	}
+	
+	$app->response()->header('Content-Type', 'application/json');
+	echo json_encode($response);	
+});
+
 ?>

@@ -4,6 +4,7 @@ require_once (ROOT_DIR.'/php/Slim/Middleware.php');
 class TokenAuth extends \Slim\Middleware {
 	
 	private $_public_uri = array(
+		'/',
 		'/login'
 	);
 	
@@ -45,7 +46,7 @@ class TokenAuth extends \Slim\Middleware {
 	            $this->next->call();
 	        } else {
 	        	$this->app->redirect('login');
-	        }			
+	        }
 		} else {
             $this->next->call();
 		}

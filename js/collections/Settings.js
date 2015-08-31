@@ -14,7 +14,7 @@ define([
 	  },
 	  
 	  setVal : function(key, value) {
-	  	var setting = this.getVal(key);
+	  	var setting = this.findWhere({key:key});
 	  	if (!setting) {
 	  		setting = new Setting({
 		  		key: key,
@@ -35,6 +35,6 @@ define([
 	  	return this.get('uid');
 	  },
 	});
-	
+
 	return new Settings();
 });
