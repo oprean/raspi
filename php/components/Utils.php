@@ -8,7 +8,7 @@ class Utils {
 			'LinkTitle'=>'Raspi',
 			'Link'=>'http://oprean.ddns.net/raspi/',
 			'IsImportant'=>true,
-			'IsSilent'=>false,
+			'IsSilent'=>true,
 			'Image'=>'http://oprean.ddns.net/raspi/assets/img/logo.png',
 			'Source'=>'raspi'
 		));
