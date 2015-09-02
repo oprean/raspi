@@ -18,7 +18,13 @@ define([
 			var self = this;
 			this.data = this.model.get('data');
 			this.pin = new Pin({id: this.data.pin});
-			this.pin.fetch({async:false});
+			this.pin.fetch({success: function(data) {
+				if (data.get('Value') == 1) {
+					this.$('.btn-power-switch').addClass('power-on');
+				} else {
+					this.$('.btn-power-switch').removeClass('power-on');					
+				}
+			}});
 		},
 		
 		action : function(e) {
