@@ -52,20 +52,20 @@ class Tile {
 			array(
 				'id' => 5,
 				'type' => Tile::TILE_TYPE_TTS,
-				'name' => 'say time',
+				'name' => 'sunt la ușă',
 				'icon' => null,
 				'color' => Tile::TILE_DEFAULT_COLOR,
 				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR,
-				'data' => array('text' => 'time')
+				'data' => array('text' => 'sunt la ușă')
 			),
 			array(
 				'id' => 6,
 				'type' => Tile::TILE_TYPE_TTS,
-				'name' => 'say temperature',
+				'name' => 'te iubesc',
 				'icon' => null,
 				'color' => Tile::TILE_DEFAULT_COLOR,
 				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR,
-				'data' => array('text' => 'temp')
+				'data' => array('text' => 'te iubesc')
 			),
 			array(
 				'id' => 7,
