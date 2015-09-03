@@ -28,6 +28,7 @@ $app->get('/tts/:cmd', function ($cmd) use ($app) {
 			}			
 			break;
 		default:
+			$tts = $cmd;
 			break;
 	}
 	
