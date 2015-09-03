@@ -6,6 +6,9 @@ class Tile {
 	const TILE_TYPE_TEMPERATURE_SENSOR = 'temperature_sensor';
 	const TILE_TYPE_TTS = 'tts';
 	
+	const TILE_DEFAULT_COLOR = '#000000';
+	const TILE_DEFAULT_BK_COLOR = '#CCCCCC';
+	
 	function __construct() {}
 	
 	public static function getList() {
@@ -15,7 +18,8 @@ class Tile {
 				'type' => Tile::TILE_TYPE_TEMPERATURE_SENSOR,
 				'name' => 'room',
 				'icon' => null,
-				'color' => null,				
+				'color' => Tile::TILE_DEFAULT_COLOR,
+				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR,
 				'data' => array('type' => ROOM_TEMPERATURE)
 			),
 			array(
@@ -23,7 +27,8 @@ class Tile {
 				'type' => Tile::TILE_TYPE_TEMPERATURE_SENSOR,
 				'name' => 'cpu',
 				'icon' => null,
-				'color' => null,
+				'color' => Tile::TILE_DEFAULT_COLOR,
+				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR,
 				'data' => array('type' => CPU_TEMPERATURE)
 			),
 			array(
@@ -31,7 +36,8 @@ class Tile {
 				'type' => Tile::TILE_TYPE_SWITCH,
 				'name' => 'lamp',
 				'icon' => null,
-				'color' => null,
+				'color' => Tile::TILE_DEFAULT_COLOR,
+				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR,
 				'data' => array('pin' => 23)
 			),
 			array(
@@ -39,7 +45,8 @@ class Tile {
 				'type' => Tile::TILE_TYPE_SWITCH,
 				'name' => 'vent',
 				'icon' => null,
-				'color' => null,
+				'color' => Tile::TILE_DEFAULT_COLOR,
+				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR,
 				'data' => array('pin' => 11)
 			),
 			array(
@@ -47,7 +54,8 @@ class Tile {
 				'type' => Tile::TILE_TYPE_TTS,
 				'name' => 'say time',
 				'icon' => null,
-				'color' => null,
+				'color' => Tile::TILE_DEFAULT_COLOR,
+				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR,
 				'data' => array('text' => 'time')
 			),
 			array(
@@ -55,7 +63,8 @@ class Tile {
 				'type' => Tile::TILE_TYPE_TTS,
 				'name' => 'say temperature',
 				'icon' => null,
-				'color' => null,
+				'color' => Tile::TILE_DEFAULT_COLOR,
+				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR,
 				'data' => array('text' => 'temp')
 			),
 			array(
@@ -63,8 +72,8 @@ class Tile {
 				'type' => Tile::TILE_TYPE_BUTTON,
 				'name' => 'pins',
 				'icon' => 'fa-wrench',
-				'color' => null,
-
+				'color' => Tile::TILE_DEFAULT_COLOR,
+				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR,
 				'data' => array('url' => '#pins')
 			),
 			array(
@@ -72,7 +81,8 @@ class Tile {
 				'type' => Tile::TILE_TYPE_BUTTON,
 				'name' => 'tts',
 				'icon' => 'fa-bullhorn',
-				'color' => null,
+				'color' => Tile::TILE_DEFAULT_COLOR,
+				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR,
 				'data' => array('url' => '#tts')
 			),
 			array(
@@ -80,7 +90,8 @@ class Tile {
 				'type' => Tile::TILE_TYPE_BUTTON,
 				'name' => 'temperatures stats',
 				'icon' => 'fa-line-chart',
-				'color' => null,
+				'color' => Tile::TILE_DEFAULT_COLOR,
+				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR, 
 				'data' => array('url' => '#temperatures')
 			),
 			array(
@@ -88,7 +99,8 @@ class Tile {
 				'type' => Tile::TILE_TYPE_BUTTON,
 				'name' => 'sockets',
 				'icon' => 'fa-plug',
-				'color' => null,
+				'color' => Tile::TILE_DEFAULT_COLOR,
+				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR,
 				'data' => array('url' => '#sockets')
 			),
 		);

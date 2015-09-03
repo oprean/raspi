@@ -23,7 +23,11 @@ define([
 		},
 		
 		onRender: function() {
-			this.$el.css('background-color', '#'+Math.floor(Math.random()*16777215).toString(16));
+			this.$el.css('background-color', 
+				this.model.get('bk_color')
+					?this.model.get('bk_color')
+					:'#'+Math.floor(Math.random()*16777215).toString(16)
+			);
 		},
 		
 		templateHelpers: function() {
