@@ -19,9 +19,25 @@ define([
 		},
 		
 		action : function(e) {
-			$.get('/raspi/api/tts/' + this.tts_text);
+			var self = this;
+			$.ajax({
+				type: "POST",
+				url: '/raspi/api/tts',
+				beforeSend: function() {
+					self.$('.tile-footer').html('talking ...');
+				}, 
+				complete: function() {
+					self.$('.tile-footer').html('done talking!');
+				},
+				data: {
+					tts: this.tts_text,
+					lang: 'ro',
+					gender:'m',
+					voice:4,
+					speed:120,
+				}, 
+			});
 		},
-	
 	});
 	 
 	return TtsTileView;
