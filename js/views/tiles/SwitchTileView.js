@@ -20,9 +20,9 @@ define([
 			this.pin = new Pin({id: this.data.pin});
 			this.pin.fetch({success: function(data) {
 				if (data.get('Value') == 1) {
-					this.$el('.btn-power-switch').addClass('power-on');
+					this.$('.btn-power-switch').addClass('power-on');
 				} else {
-					this.$el('.btn-power-switch').removeClass('power-on');					
+					this.$('.btn-power-switch').removeClass('power-on');					
 				}
 			}});
 		},

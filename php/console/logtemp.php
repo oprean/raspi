@@ -16,7 +16,7 @@ if ($val['status'] == 'success') {
 	$item->date = date('Y-m-d H:i:s');
 	$item->value = $val['response'];
  	if (floatval($item->value) > 28 ) {
- 		Utils::pushalot('Temperatura in camera: '. $item->value);
+ 		Utils::pushalot('In camera: '. $item->value.' C ('.date('Y-m-d H:i:s').')');
  	}
     R::store($item);		
 } else {

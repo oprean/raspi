@@ -50,7 +50,7 @@ $app->get('/toggle/gpio/:pin', function ($pin) use ($app) {
 		$response = $oGPIO->write($pin, $value, DEFAULT_PIN_NUMBERING);
 	}
 	
-	Utils::pushalot('Pin '.$pin.' value is now '.$value);	
+	//Utils::pushalot('Pin '.$pin.' value is now '.$value);	
 	$app->response()->header('Content-Type', 'application/json');
 	echo json_encode($response);	
 });

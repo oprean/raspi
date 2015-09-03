@@ -14,16 +14,20 @@ define([
 		},
 		
 		initialize : function(options) {
-			this.temperature = 'N/A';
 			this.data = this.model.get('data');
+			//this.intT = '--';
+			//this.decT = '-';
 			this.updateTemperature();
 		},
 		
 		updateTemperature : function() {
 			var self = this;
 			$.getJSON('api/temperature/now/'+ this.data.type, function(data){
-				self.temperature = data.value;
-				self.$('.tile-content').html(data.value + '<sup style="font-size:.5em;">°C</sup>');
+				var temp = data.value.toPrecision(3);
+				var intT = parseInt(temp);
+				var decT = temp.slice(temp.indexOf('.'));
+				self.$('.int').html(intT);
+				self.$('.dec').html(decT);
 				self.$('.tile-footer').html(data.date); 	
 			});			
 		},
