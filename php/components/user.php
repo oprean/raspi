@@ -38,8 +38,16 @@ class User {
 		} 
 	}
 	
+	static function keepTokenAlive($token) {
+		$user = R::findOne(USER_BEAN , ' token = ? ', array($token));
+		if (!empty($user)) {
+			$user->token_expire = date('Y-m-d H:i:s', strtotime('+1 hour'));
+			R::store($user);
+		}
+	}
+	
 	static function validateToken($token) {
-		$user = R::findOne(USER_BEAN , ' token = ? ');
+		$user = R::findOne(USER_BEAN , ' token = ? ', array($token));
 		return !empty($user);
 	}
 	

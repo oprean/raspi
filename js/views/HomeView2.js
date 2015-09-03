@@ -43,7 +43,7 @@ define([
 		initialize : function(options) {
 			this.collection = new Tiles();
 			this.collection.fetch({
-				headers: {'Authorization' :{uid:Settings.getVal('uid'), token:Settings.getVal('token')}}
+				headers: {'Authorization' : Settings.getVal('token')}
 			});
 		},
 	});

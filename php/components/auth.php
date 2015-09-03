@@ -32,20 +32,15 @@ class TokenAuth extends \Slim\Middleware {
      * Call
      */
     public function call() {	
-    	if (strpos(IP_WHITE_LIST, $_SERVER['REMOTE_ADDR']) !== false) {
+    	if (strpos(IP_WHITE_LIST, $_SERVER['REMOTE_ADDR']) === false) {
             $this->next->call();    		
     	} else if (!in_array($this->app->request->getResourceUri(),$this->_public_uri)) {
-	        $auth = $this->app->request->headers->get('Authorization');
-			$auth = json_decode($auth);
-			//print_r($auth);die;
-	        if ($this->authenticate($auth['token'])) {
-	            $usrObj = new User();
-	            $usrObj->getByToken($tokenAuth);
-	            $this->app->auth_user = $usrObj;
-	            User::keepTokenAlive($tokenAuth);
+	        $authToken = $this->app->request->headers->get('Authorization');
+	        if (!empty($auth) && $this->authenticate($authToken)) {
+	            User::keepTokenAlive($auth->token);
 	            $this->next->call();
 	        } else {
-	        	$this->app->redirect('login');
+	        	$this->app->redirect('../login');
 	        }
 		} else {
             $this->next->call();

@@ -18,8 +18,9 @@ $app->post('/login', function () use ($app) {
 	if (User::validateUser($post['username'], $post['password'])) {
 		$auth = User::login($post['username'], $post['password']);
 		
+    	$auth = json_encode($auth);		
 		$app->response()->header('Content-Type', 'application/json');
-    	echo json_encode($auth);
+		echo $auth;
 	} else {
 		$app->response()->status(401);
 	}
