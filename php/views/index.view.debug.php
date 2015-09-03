@@ -23,7 +23,7 @@
 </head>
 <body>	
 	<div id="header-container"> </div>
-	<div class="container" id="main-container">
+	<div class="container bg-raspi-logo" id="main-container">
 		<div id="loader-wrapper">
 			<div id="loader"></div>
 		</div>

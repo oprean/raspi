@@ -116,7 +116,7 @@ body {
 .bg-raspi-logo {
 	background: url('../img/background_small.jpg');
 	background-repeat: no-repeat;
-	/*background-attachment: fixed;*/
+	background-attachment: fixed;
 	background-position: center;
 	background-size: contain;
 }
@@ -278,6 +278,7 @@ body {
 
 .tile-header {
 	 text-transform: uppercase;
+	 padding-left:2px;
 	 font-size: 0.9em;
 	 font-weight: 900;
 }

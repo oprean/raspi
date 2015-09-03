@@ -19,7 +19,7 @@ class Tile {
 				'name' => 'room',
 				'icon' => null,
 				'color' => Tile::TILE_DEFAULT_COLOR,
-				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR,
+				'bk_color' => '#79822b',
 				'data' => array('type' => ROOM_TEMPERATURE)
 			),
 			array(
@@ -28,7 +28,7 @@ class Tile {
 				'name' => 'cpu',
 				'icon' => null,
 				'color' => Tile::TILE_DEFAULT_COLOR,
-				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR,
+				'bk_color' => '#79822b',
 				'data' => array('type' => CPU_TEMPERATURE)
 			),
 			array(
@@ -37,7 +37,7 @@ class Tile {
 				'name' => 'lamp',
 				'icon' => null,
 				'color' => Tile::TILE_DEFAULT_COLOR,
-				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR,
+				'bk_color' => '#307391',
 				'data' => array('pin' => 23)
 			),
 			array(
@@ -46,7 +46,7 @@ class Tile {
 				'name' => 'vent',
 				'icon' => null,
 				'color' => Tile::TILE_DEFAULT_COLOR,
-				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR,
+				'bk_color' => '#307391',
 				'data' => array('pin' => 11)
 			),
 			array(
@@ -55,7 +55,7 @@ class Tile {
 				'name' => 'sunt la ușă',
 				'icon' => null,
 				'color' => Tile::TILE_DEFAULT_COLOR,
-				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR,
+				'bk_color' => '#87622d',
 				'data' => array('text' => 'sunt la ușă')
 			),
 			array(
@@ -64,7 +64,7 @@ class Tile {
 				'name' => 'te iubesc',
 				'icon' => null,
 				'color' => Tile::TILE_DEFAULT_COLOR,
-				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR,
+				'bk_color' => '#87622d',
 				'data' => array('text' => 'te iubesc')
 			),
 			array(
@@ -73,7 +73,7 @@ class Tile {
 				'name' => 'pins',
 				'icon' => 'fa-wrench',
 				'color' => Tile::TILE_DEFAULT_COLOR,
-				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR,
+				'bk_color' => '#c34b53',
 				'data' => array('url' => '#pins')
 			),
 			array(
@@ -82,7 +82,7 @@ class Tile {
 				'name' => 'tts',
 				'icon' => 'fa-bullhorn',
 				'color' => Tile::TILE_DEFAULT_COLOR,
-				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR,
+				'bk_color' => '#c34b53',
 				'data' => array('url' => '#tts')
 			),
 			array(
@@ -91,7 +91,7 @@ class Tile {
 				'name' => 'temperatures stats',
 				'icon' => 'fa-line-chart',
 				'color' => Tile::TILE_DEFAULT_COLOR,
-				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR, 
+				'bk_color' => '#d19f75', 
 				'data' => array('url' => '#temperatures')
 			),
 			array(
@@ -100,7 +100,7 @@ class Tile {
 				'name' => 'sockets',
 				'icon' => 'fa-plug',
 				'color' => Tile::TILE_DEFAULT_COLOR,
-				'bk_color' => Tile::TILE_DEFAULT_BK_COLOR,
+				'bk_color' => '#d19f75',
 				'data' => array('url' => '#sockets')
 			),
 		);
