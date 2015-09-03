@@ -23,7 +23,7 @@ define([
 		updateTemperature : function() {
 			var self = this;
 			$.getJSON('api/temperature/now/'+ this.data.type, function(data){
-				var temp = data.value.toPrecision(3);
+				var temp = parseFloat(data.value).toPrecision(3);
 				var intT = parseInt(temp);
 				var decT = temp.slice(temp.indexOf('.'));
 				self.$('.int').html(intT);
