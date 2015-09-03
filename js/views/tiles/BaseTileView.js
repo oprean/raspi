@@ -11,7 +11,7 @@ define([
 		className : 'tile-container',
 		
 		events : {
-			'click .tile-container' : 'action',
+			'click .tile-content' : 'action',
 		},
 		
 		initialize : function(options) {
@@ -20,6 +20,10 @@ define([
 		
 		action : function(e) {
 			console.log('base tile action');
+		},
+		
+		onRender: function() {
+			this.$el.css('background-color', '#'+Math.floor(Math.random()*16777215).toString(16));
 		},
 		
 		templateHelpers: function() {
