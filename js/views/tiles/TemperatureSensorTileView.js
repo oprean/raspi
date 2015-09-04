@@ -29,7 +29,14 @@ define([
 				url: 'api/temperature/now/' + this.data.type,
 				headers: {'Authorization': Settings.getVal('token')},
 				beforeSend: function() {
-					self.$('.tile-footer').html('talking ...');
+					self.$('.tile-footer').html('fetching data ...');
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					if (jqXHR.status == 401) {
+						window.location.href = app.rootUri + '/login#login';
+					} else {
+						console.log(jqXHR);
+					}
 				},
 				success: function(data) {
 					var temp = parseFloat(data.value).toPrecision(3);
