@@ -5,7 +5,8 @@ define([
   'backbone.marionette',
   'views/tiles/BaseTileView',
   'text!templates/tiles/tts_tile.html',
-], function($, _, Backbone, Marionette, BaseTileView, ttsTpl){
+  'collections/Settings'
+], function($, _, Backbone, Marionette, BaseTileView, ttsTpl, Settings){
 	var TtsTileView = BaseTileView.extend({
 		template : _.template(ttsTpl),
 		

@@ -5,7 +5,8 @@ define([
   'backbone.marionette',
   'views/tiles/BaseTileView',
   'text!templates/tiles/temperature_sensor_tile.html',
-], function($, _, Backbone, Marionette, BaseTileView, tileTpl){
+  'collections/Settings',
+], function($, _, Backbone, Marionette, BaseTileView, tileTpl, Settings){
 	var TemperatureSensorTileView = BaseTileView.extend({
 		template : _.template(tileTpl),
 		
