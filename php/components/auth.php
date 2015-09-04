@@ -5,7 +5,8 @@ class TokenAuth extends \Slim\Middleware {
 	
 	private $_public_uri = array(
 		'/',
-		'/login'
+		'/login',
+		'/request'
 	);
 	
     public function __construct() {}
@@ -32,15 +33,13 @@ class TokenAuth extends \Slim\Middleware {
      * Call
      */
     public function call() {	
-    	if (strpos(IP_WHITE_LIST, $_SERVER['REMOTE_ADDR']) === false) {
-            $this->next->call();    		
-    	} else if (!in_array($this->app->request->getResourceUri(),$this->_public_uri)) {
+		if (!in_array($this->app->request->getResourceUri(),$this->_public_uri)) {
 	        $authToken = $this->app->request->headers->get('Authorization');
-	        if (!empty($auth) && $this->authenticate($authToken)) {
-	            User::keepTokenAlive($auth->token);
+	        if (!empty($authToken) && $this->authenticate($authToken)) {
+	            User::keepTokenAlive($authToken);
 	            $this->next->call();
 	        } else {
-	        	$this->app->redirect('../login');
+				$this->deny_access();
 	        }
 		} else {
             $this->next->call();

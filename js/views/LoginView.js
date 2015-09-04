@@ -19,6 +19,7 @@ define([
 		},
 				
 		login: function() {
+			var self = this;
 			$.ajax({
 				type: "POST",
 				url: 'login',
@@ -33,8 +34,12 @@ define([
 					
 					Settings.setVal('uid', auth.uid);
 					Settings.setVal('token', auth.token);
-
-					window.location.replace('index');
+					
+					window.location.replace(app.rootUri);
+				},
+				error: function(response) {
+					self.$('.form-group').addClass('has-error');
+					self.$('.error-block').removeClass('hidden');
 				}
 			});
 		},

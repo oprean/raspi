@@ -9,6 +9,7 @@ define([
 	"backbone.localStorage",
 	"backbone.validation",
 	"backbone.zingchart",
+	"backbone.auth",
 	"moment",
 	"text",
 ], function() { });

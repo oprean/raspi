@@ -16,15 +16,12 @@ define([
 	  
 	  onRoute: function(name, path, args) {
 	  	console.log('onRoute');
-	  	if ( window.location.pathname.indexOf('/login') >= 0 ) {
-	  		//window.location.href = '/login';
-	  		this.navigate('#login', {trigger: true});
-	  	}
 	  },
 	  
 	  appRoutes: {
 	    '': 'home',
 	    'login': 'login',
+	    'logout': 'logout',
 	    'home': 'home',
 	    'tts': 'tts',
 	    'pins': 'pins',

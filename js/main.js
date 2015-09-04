@@ -16,6 +16,7 @@ require.config({
 		"backbone.localStorage":"lib/backbone.localStorage.min",
 		"backbone.validation":"lib/backbone-validation-min",		
 		"backbone.zingchart":"lib/backbone.zingchart.min",
+		"backbone.auth":"lib/backbone-auth",
 		
 		"moment":"lib/moment.min",
 		"text":"lib/text",

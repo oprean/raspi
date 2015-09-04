@@ -10,7 +10,7 @@ define([
 	  
 	  getVal: function(key) {
 	  	var s = this.findWhere({key:key});
-	  	if (s) return s.get('value');
+	  	return (s)?s.get('value'):null;
 	  },
 	  
 	  setVal : function(key, value) {
@@ -25,6 +25,11 @@ define([
 	  		setting.set({value:value});
 	  	}
 		setting.save();
+	  },
+	  
+	  removeVal : function(key) {
+	  	var setting = this.findWhere({key:key});
+	  	if (setting) setting.destroy();
 	  },
 	  
 	  token : function() {

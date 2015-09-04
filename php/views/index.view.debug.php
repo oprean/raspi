@@ -19,7 +19,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-switch.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 	<script type="text/javascript" data-main="js/main" src="js/lib/require.min.js"></script>
-	<script>define('globals', [], function() { return {DEBUG_MODE: true} });</script>
+	<script>define('globals', [], function() { return {common.js} });</script>
 </head>
 <body>	
 	<div id="header-container"> </div>

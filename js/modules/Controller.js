@@ -10,9 +10,11 @@ define([
   'views/PinEditView',
   'views/SocketsView',
   'views/SocketView',
-  'views/TemperaturesView'
+  'views/TemperaturesView',
+  'collections/Settings'
 ], function($, _, Backbone, Marionette, 
-	LoginView, HomeView, TtsView, PinsView, PinEditView, SocketsView, SocketView, TemperaturesView){
+	LoginView, HomeView, TtsView, PinsView, PinEditView, SocketsView, SocketView, TemperaturesView,
+	Settings){
 	var Controller = Marionette.Controller.extend({
 	  initialize: function() {
 	  },
@@ -20,6 +22,13 @@ define([
  	  login: function() {
 	  	console.log('login');
 		app.mainRegion.show(new LoginView());
+ 	  },  
+
+ 	  logout: function() {
+	  	console.log('logout');
+		Settings.removeVal('token');
+		Settings.removeVal('uid');
+		window.location.href = app.rootUri;
  	  },  
 
 	  home: function() {

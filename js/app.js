@@ -7,12 +7,15 @@ define([
 	'collections/Settings',
 	'views/HeaderView',
 	'views/FooterView',
-], function( $, _, Backbone, Marionette, Utils, Settings, HeaderView, FooterView) {
+	'globals'
+], function( $, _, Backbone, Marionette, Utils, Settings, HeaderView, FooterView, globals) {
 	var App = Backbone.Marionette.Application.extend({
 		initialize: function() {
-			$.ajaxSetup({cache: false});
 			Settings.fetch({async:false});
+			$.ajaxSetup({cache: false});
+					
 			this.env = Utils.bootstrapEnv();
+			this.rootUri = globals.rootUri;
 			this.addRegions({
 				headerRegion : "#header-container",
 				mainRegion: "#main-container",
