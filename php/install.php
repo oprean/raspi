@@ -1,4 +1,7 @@
 <?php
+
+/* run this from console*/
+
 require_once('bootstrap.php');
 R::setup( 'sqlite:'.ROOT_DIR.'/data/raspi.sqlite' );
 

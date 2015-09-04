@@ -21,15 +21,24 @@ define([
 		},
 		
 		updateTemperature : function() {
-			var self = this;
-			$.getJSON('api/temperature/now/'+ this.data.type, function(data){
-				var temp = parseFloat(data.value).toPrecision(3);
-				var intT = parseInt(temp);
-				var decT = temp.slice(temp.indexOf('.'));
-				self.$('.int').html(intT);
-				self.$('.dec').html(decT);
-				self.$('.tile-footer').html(data.date); 	
-			});			
+			var self = this;		
+			$.ajax({
+				type: "GET",
+  				dataType: "json",
+				url: 'api/temperature/now/' + this.data.type,
+				headers: {'Authorization': Settings.getVal('token')},
+				beforeSend: function() {
+					self.$('.tile-footer').html('talking ...');
+				},
+				success: function(data) {
+					var temp = parseFloat(data.value).toPrecision(3);
+					var intT = parseInt(temp);
+					var decT = temp.slice(temp.indexOf('.'));
+					self.$('.int').html(intT);
+					self.$('.dec').html(decT);
+					self.$('.tile-footer').html(data.date);	
+				}  
+			});	
 		},
 		
 		action : function(e) {

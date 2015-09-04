@@ -23,6 +23,7 @@ define([
 			$.ajax({
 				type: "POST",
 				url: '/raspi/api/tts',
+				headers: {'Authorization': Settings.getVal('token')},
 				beforeSend: function() {
 					self.$('.tile-footer').html('talking ...');
 				}, 
