@@ -61,8 +61,8 @@ class User {
 	
 	static function validateUser($username, $password) {
 		$user = R::findOne(USER_BEAN , ' username = ? OR email = ? ', array($username, $username));
-		return (!empty($user) && password_verify($password, $user->password))?$user:false;
-		//return (!empty($user) && $password == $user->password)?$user:false;
+		//return (!empty($user) && password_verify($password, $user->password))?$user:false;
+		return (!empty($user) && $password == $user->password)?$user:false;
 	}
 }
 
