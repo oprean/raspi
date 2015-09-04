@@ -4,7 +4,7 @@ define([
   'backbone',
   'backbone.marionette',
   'views/LoginView',
-  'views/HomeView2',
+  'views/HomeView',
   'views/TtsView',
   'views/PinsView',
   'views/PinEditView',
