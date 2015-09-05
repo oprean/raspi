@@ -5,8 +5,6 @@ class TokenAuth extends \Slim\Middleware {
 	
 	private $_public_uri = array(
 		'/',
-		'/login',
-		'/request'
 	);
 	
     public function __construct() {}

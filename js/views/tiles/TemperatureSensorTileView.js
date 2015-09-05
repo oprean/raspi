@@ -33,7 +33,7 @@ define([
 				},
 				error: function(jqXHR, textStatus, errorThrown) {
 					if (jqXHR.status == 401) {
-						window.location.href = app.rootUri + '/login#login';
+						window.location.href = app.rootUri + '#login';
 					} else {
 						console.log(jqXHR);
 					}
