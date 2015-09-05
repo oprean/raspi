@@ -24,7 +24,7 @@ define([
 			var self = this;
 			Utils.authAjax({
 				type: "POST",
-				url: '/raspi/api/tts',
+				url: 'api/tts',
 				data: {
 					tts: this.tts_text,
 					lang: 'ro',
