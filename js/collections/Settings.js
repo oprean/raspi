@@ -33,11 +33,11 @@ define([
 	  },
 	  
 	  token : function() {
-	  	return this.get('token');
+	  	return this.getVal('token');
 	  },
 	  
 	  uid : function() {
-	  	return this.get('uid');
+	  	return this.getVal('uid');
 	  },
 	});
 

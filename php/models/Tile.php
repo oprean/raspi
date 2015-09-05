@@ -103,6 +103,15 @@ class Tile {
 				'bk_color' => '#d19f75',
 				'data' => array('url' => '#sockets')
 			),
+			array(
+				'id' => 11,
+				'type' => Tile::TILE_TYPE_BUTTON,
+				'name' => 'Account',
+				'icon' => 'fa-user',
+				'color' => Tile::TILE_DEFAULT_COLOR,
+				'bk_color' => '#d19f75',
+				'data' => array('url' => '#account')
+			),
 		);
 	}
 }

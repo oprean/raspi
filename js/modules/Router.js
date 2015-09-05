@@ -20,6 +20,7 @@ define([
 	  
 	  appRoutes: {
 	    '': 'home',
+	    'account': 'account',
 	    'login': 'login',
 	    'logout': 'logout',
 	    'home': 'home',

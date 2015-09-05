@@ -3,8 +3,9 @@ define([
   'underscore',
   'backbone',
   'backbone.marionette',
+  'collections/Settings',
   'moment'
-], function($, _, Backbone, Marionette, moment ){
+], function($, _, Backbone, Marionette, Settings, moment ){
 	
 	String.prototype.ucfirst = function() {
 	    return this.charAt(0).toUpperCase() + this.slice(1);
@@ -18,6 +19,50 @@ define([
 	}
 	
 	var Utils = {
+		
+		authAjax : function(url, settings) {
+			
+			var oSettings;
+			if (typeof(url) === 'object' && url !== null) {
+				oSettings = url;
+			} else {
+				oSettings.url = url;
+			}
+			
+			// prepare setting
+			var url = oSettings.url;
+			var type = oSettings.type || 'GET';
+			var dataType = oSettings.dataType || 'json';
+			var data = oSettings.data || null;
+			var beforeSend = oSettings.beforeSend || function() {
+					$('#auth-ajax').html('fetching data ...');
+				};
+			var complete = oSettings.complete || function() {
+					$('#auth-ajax').html(null);
+				}; 
+			var error = oSettings.error || function(jqXHR, textStatus, errorThrown) {
+					if (jqXHR.status == 401) {
+						window.location.href = app.rootUri + '#login';
+					} else {
+						console.log(jqXHR);
+					}
+				};
+			var success = oSettings.success || function(data) {
+				$('#auth-ajax').html(null);
+			};
+			
+			$.ajax({
+				url: url,
+				type: type,
+  				dataType: dataType,
+				data: data,
+				headers: {'Authorization': Settings.getVal('token')},
+				beforeSend: beforeSend,
+				complete: complete,
+				error: error,
+				success: success  
+			});	
+		},
 		
 		getDistance : function(lon, lat, pid) {
 			point = _.findWhere(Constants.LOCATIONS, {id:pid});

@@ -5,8 +5,9 @@ define([
   'backbone.marionette',
   'views/tiles/BaseTileView',
   'text!templates/tiles/tts_tile.html',
-  'collections/Settings'
-], function($, _, Backbone, Marionette, BaseTileView, ttsTpl, Settings){
+  'collections/Settings',
+  'modules/Utils',
+], function($, _, Backbone, Marionette, BaseTileView, ttsTpl, Settings, Utils){
 	var TtsTileView = BaseTileView.extend({
 		template : _.template(ttsTpl),
 		
@@ -21,30 +22,22 @@ define([
 		
 		action : function(e) {
 			var self = this;
-			$.ajax({
+			Utils.authAjax({
 				type: "POST",
 				url: '/raspi/api/tts',
-				headers: {'Authorization': Settings.getVal('token')},
-				beforeSend: function() {
-					self.$('.tile-footer').html('talking ...');
-				}, 
-				error: function(jqXHR, textStatus, errorThrown) {
-					if (jqXHR.status == 401) {
-						window.location.href = app.rootUri + '#login';
-					} else {
-						console.log(jqXHR);
-					}
-				},
-				complete: function() {
-					self.$('.tile-footer').html('done talking!');
-				},
 				data: {
 					tts: this.tts_text,
 					lang: 'ro',
 					gender:'m',
 					voice:4,
 					speed:120,
+				},
+				beforeSend: function() {
+					self.$('.tile-footer').html('talking ...');
 				}, 
+				complete: function() {
+					self.$('.tile-footer').html('done talking!');
+				},  
 			});
 		},
 	});

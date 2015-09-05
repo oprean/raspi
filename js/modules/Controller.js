@@ -3,8 +3,9 @@ define([
   'underscore',
   'backbone',
   'backbone.marionette',
-  'views/LoginView',
   'views/HomeView',
+  'views/AccountView',
+  'views/LoginView',
   'views/TtsView',
   'views/PinsView',
   'views/PinEditView',
@@ -13,10 +14,20 @@ define([
   'views/TemperaturesView',
   'collections/Settings'
 ], function($, _, Backbone, Marionette, 
-	LoginView, HomeView, TtsView, PinsView, PinEditView, SocketsView, SocketView, TemperaturesView,
+	HomeView, AccountView, LoginView,  TtsView, PinsView, PinEditView, SocketsView, SocketView, TemperaturesView, 
 	Settings){
 	var Controller = Marionette.Controller.extend({
 	  initialize: function() {
+	  },
+
+	  home: function() {
+	  	console.log('home');
+		app.mainRegion.show(new HomeView());
+	  },
+	  
+	  account: function() {
+	  	console.log('account');
+		app.mainRegion.show(new AccountView());
 	  },
 
  	  login: function() {
@@ -30,11 +41,6 @@ define([
 		Settings.removeVal('uid');
 		window.location.href = app.rootUri;
  	  },  
-
-	  home: function() {
-	  	console.log('home');
-		app.mainRegion.show(new HomeView());
-	  },
 
 	  tts: function() {
 	  	console.log('tts');

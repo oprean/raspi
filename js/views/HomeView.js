@@ -3,7 +3,7 @@ define([
   'underscore',
   'backbone',
   'backbone.marionette',
-  'text!templates/home2.html',
+  'text!templates/home.html',
   
   'collections/Tiles',
   

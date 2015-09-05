@@ -6,7 +6,8 @@ define([
   'views/tiles/BaseTileView',
   'text!templates/tiles/temperature_sensor_tile.html',
   'collections/Settings',
-], function($, _, Backbone, Marionette, BaseTileView, tileTpl, Settings){
+  'modules/Utils',
+], function($, _, Backbone, Marionette, BaseTileView, tileTpl, Settings, Utils){
 	var TemperatureSensorTileView = BaseTileView.extend({
 		template : _.template(tileTpl),
 		
@@ -23,21 +24,8 @@ define([
 		
 		updateTemperature : function() {
 			var self = this;		
-			$.ajax({
-				type: "GET",
-  				dataType: "json",
+			Utils.authAjax({
 				url: 'api/temperature/now/' + this.data.type,
-				headers: {'Authorization': Settings.getVal('token')},
-				beforeSend: function() {
-					self.$('.tile-footer').html('fetching data ...');
-				},
-				error: function(jqXHR, textStatus, errorThrown) {
-					if (jqXHR.status == 401) {
-						window.location.href = app.rootUri + '#login';
-					} else {
-						console.log(jqXHR);
-					}
-				},
 				success: function(data) {
 					var temp = parseFloat(data.value).toPrecision(3);
 					var intT = parseInt(temp);

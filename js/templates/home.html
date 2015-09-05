@@ -1,27 +1,6 @@
 <div class="row">
 	 <div class="col-md-12 col-sm-12 col-xs-12">
-		<h1 class="center-block text-center">Status</h1>
-		<div class="text-center">
-			<div id="room-temperature" class="tile-container">
-				<div class="tile-header">room</div>
-				<div class="tile-content"></div>
-				<div class="tile-footer"></div>
-			</div>
-			<div id="cpu-temperature" class="tile-container">
-				<div class="tile-header">cpu</div>
-				<div class="tile-content"></div>
-				<div class="tile-footer"></div>
-			</div>
-			<span class="clearfix">&nbsp;</span>
-			<a id="power1" class="btn btn-power-switch pull-left <%=(power1.get('Value')==1?'power-on':'')%>" data-pin="23">&#xF011;</a>
-			<a id="power2" class="btn btn-power-switch pull-right <%=(power2.get('Value')==1?'power-on':'')%>" data-pin="11">&#xF011;</a>
-			<span class="clearfix">&nbsp;</span>
-		</div>
-		<div class="text-center">
-			<a class="btn btn-primary btn-block" href="#pins">Pins</a>
-			<a class="btn btn-primary btn-block" href="#tts">Text to speach</a>
-			<a class="btn btn-primary btn-block" href="#temperatures">Temperatures stats</a>
-			<a class="btn btn-primary btn-block" href="#sockets">Sockets</a>
-		</div>
+		<h1 class="center-block text-center">Raspi</h1>
+		<div class="tiles-container"></div>
 	 </div>
 </div>
