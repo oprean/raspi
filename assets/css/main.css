@@ -116,7 +116,6 @@ body {
 .bg-raspi-logo {
 	background: url('../img/background_small.jpg');
 	background-repeat: no-repeat;
-	background-attachment: fixed;
 	background-position: center;
 	background-size: contain;
 }
