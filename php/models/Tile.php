@@ -112,6 +112,15 @@ class Tile {
 				'bk_color' => '#d19f75',
 				'data' => array('url' => '#account')
 			),
+			array(
+				'id' => 12,
+				'type' => Tile::TILE_TYPE_BUTTON,
+				'name' => 'Admin',
+				'icon' => 'fa-cogs',
+				'color' => Tile::TILE_DEFAULT_COLOR,
+				'bk_color' => '#d19f75',
+				'data' => array('url' => '#admin')
+			),
 		);
 	}
 }
