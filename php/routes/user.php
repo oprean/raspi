@@ -1,4 +1,10 @@
 <?php
+$app->get('/user', function () use ($app) {
+	$items = R::findAll(USER_BEAN);
+	$app->response()->header('Content-Type', 'application/json');
+	echo json_encode(R::exportAll($items));	
+});
+
 $app->get('/user/:id', function ($id) use ($app) {
     	
     $item = R::findOne(USER_BEAN, 'id=?', array($id));
