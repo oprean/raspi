@@ -10,9 +10,12 @@ define([
 		template : _.template(statsTpl),
 		initialize : function(options) {
 			var self = this;
-			$.getJSON('api/temperatures/3', function(data){
+			Utils.authAjax({
+				url: 'api/temperatures/3',
+				success: function(data) {
 				self.temperatures = self.prepareData(data);
-				self.render(); 	
+				self.render();	
+				}  
 			});
 		},
 		
