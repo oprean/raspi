@@ -12,7 +12,7 @@ define([
 		initialize : function(options) {
 			var self = this;
 			Utils.authAjax({
-				url: 'api/temperatures/83',
+				url: 'api/temperatures/3',
 				success: function(data) {
 				self.temperatures = self.prepareData(data);
 				self.render();	
