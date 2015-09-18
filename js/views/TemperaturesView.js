@@ -5,7 +5,8 @@ define([
   'backbone.marionette',
   'text!templates/temperatures.html',
   'collections/Temperatures',
-], function($, _, Backbone, Marionette, statsTpl, Temperatures){
+  'modules/Utils'
+], function($, _, Backbone, Marionette, statsTpl, Temperatures, Utils){
 	var TemperaturesView = Backbone.Marionette.ItemView.extend({
 		template : _.template(statsTpl),
 		initialize : function(options) {
