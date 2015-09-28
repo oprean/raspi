@@ -73,7 +73,7 @@ define([
 					    },
 
 						"scaleY": {
-							"values":"20:40:4",
+							"values":"10:35:4",
 						},
 						"series": this.temperatures,
 					}
