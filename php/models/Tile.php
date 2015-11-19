@@ -38,7 +38,7 @@ class Tile {
 				'icon' => null,
 				'color' => Tile::TILE_DEFAULT_COLOR,
 				'bk_color' => '#307391',
-				'data' => array('pin' => 23)
+				'data' => array('pin' => 13)
 			),
 			array(
 				'id' => 4,
