@@ -50,7 +50,7 @@ class Tile {
 				'bk_color' => '#307391',
 				'data' => array('pin' => 11)
 			),
-			array(
+			/*array(
 				'id' => 5,
 				'type' => Tile::TILE_TYPE_TTS,
 				'name' => 'sunt la ușă',
@@ -67,7 +67,7 @@ class Tile {
 				'color' => Tile::TILE_DEFAULT_COLOR,
 				'bk_color' => '#87622d',
 				'data' => array('text' => 'te iubesc')
-			),
+			),*/
 			array(
 				'id' => 7,
 				'type' => Tile::TILE_TYPE_BUTTON,
@@ -125,11 +125,38 @@ class Tile {
 		array(
 				'id' => 13,
 				'type' => Tile::TILE_TYPE_LEDSTRIP,
+				'name' => 'white',
+				'icon' => 'fa-lightbulb-o',
+				'color' => '#ffffff',
+				'bk_color' => '#CCCCCC',
+				'data' => array('cmd'=> 'fill', 'r' => 255, 'g' => 255, 'b' => 255)
+			),
+		array(
+				'id' => 14,
+				'type' => Tile::TILE_TYPE_LEDSTRIP,
 				'name' => 'red',
 				'icon' => 'fa-lightbulb-o',
 				'color' => Tile::TILE_DEFAULT_COLOR,
 				'bk_color' => '#ff0000',
-				'data' => array('cmd'=> 'fill', 'r' => 255, 'g' => 255, 'b' => 255)
+				'data' => array('cmd'=> 'fill', 'r' => 255, 'g' => 0, 'b' => 0)
+			),
+		array(
+				'id' => 15,
+				'type' => Tile::TILE_TYPE_LEDSTRIP,
+				'name' => 'green',
+				'icon' => 'fa-lightbulb-o',
+				'color' => Tile::TILE_DEFAULT_COLOR,
+				'bk_color' => '#00ff00',
+				'data' => array('cmd'=> 'fill', 'r' => 0, 'g' => 255, 'b' => 0)
+			),
+		array(
+				'id' => 16,
+				'type' => Tile::TILE_TYPE_LEDSTRIP,
+				'name' => 'blue',
+				'icon' => 'fa-lightbulb-o',
+				'color' => Tile::TILE_DEFAULT_COLOR,
+				'bk_color' => '#0000ff',
+				'data' => array('cmd'=> 'fill', 'r' => 0, 'g' => 0, 'b' => 255)
 			),
 		);
 	}
