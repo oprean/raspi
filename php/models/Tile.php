@@ -5,6 +5,7 @@ class Tile {
 	const TILE_TYPE_SWITCH = 'switch';
 	const TILE_TYPE_TEMPERATURE_SENSOR = 'temperature_sensor';
 	const TILE_TYPE_TTS = 'tts';
+	const TILE_TYPE_LEDSTRIP = 'ledstrip';
 	
 	const TILE_DEFAULT_COLOR = '#000000';
 	const TILE_DEFAULT_BK_COLOR = '#CCCCCC';
@@ -120,6 +121,15 @@ class Tile {
 				'color' => Tile::TILE_DEFAULT_COLOR,
 				'bk_color' => '#d19f75',
 				'data' => array('url' => '#admin')
+			),
+		array(
+				'id' => 13,
+				'type' => Tile::TILE_TYPE_LEDSTRIP,
+				'name' => 'red',
+				'icon' => 'fa-lightbulb-o',
+				'color' => Tile::TILE_DEFAULT_COLOR,
+				'bk_color' => '#ff0000',
+				'data' => array('cmd'=> 'fill', 'r' => 255, 'g' => 255, 'b' => 255)
 			),
 		);
 	}

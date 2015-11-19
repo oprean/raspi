@@ -14,6 +14,7 @@ require_once(ROOT_DIR.'/php/routes/temperature.php');
 require_once(ROOT_DIR.'/php/routes/tts.php');
 require_once(ROOT_DIR.'/php/routes/tile.php');
 require_once(ROOT_DIR.'/php/routes/test.php');
+require_once(ROOT_DIR.'/php/routes/ledstrip.php');
 
 $app->run();
 R::close();
