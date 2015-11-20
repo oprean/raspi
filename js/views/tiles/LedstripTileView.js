@@ -13,10 +13,20 @@ define([
 		
 		events : {
 			'click .tile-content' : 'action',
+			//'click .color' : 'action',
 		},
 		
 		initialize : function(options) {
 			this.data = this.model.get('data');
+			this.pallete = [];
+			for(i=0;i<255;i++) {
+				color = {
+					r:this.data.r?this.data.r:i,
+					g:this.data.g?this.data.g:i,
+					b:this.data.b?this.data.b:i
+				};
+				this.pallete.push(color);
+			}
 		},
 		
 		updateLedstrip : function() {
@@ -33,12 +43,29 @@ define([
 			});
 		},
 		
+		updateLedstripColor : function(color) {
+			var self = this;	
+			Utils.authAjax({
+				type: "POST",
+				url: 'api/ledstrip',
+				data: {
+					cmd: this.data.cmd,
+					r: color.r,
+					g: color.g,
+					b: color.b
+				},  
+			});
+		},
+		
 		action : function(e) {
+			console.log($(e.target).data('r'));
+			$(e.target).css('border',1);
 			this.updateLedstrip();
 		},
 		
 		templateHelpers: function() {
 			return {
+				pallete:this.pallete
 			};
 		}
 	});

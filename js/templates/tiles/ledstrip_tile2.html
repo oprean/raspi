@@ -1,0 +1,8 @@
+<div class="tile-header"><%= name %></div>
+<div class="tile-content" style="padding-right: 5px;">
+	<% _.each(pallete, function(c) { %>
+		<div style="background-color: rgb(<%=c.r %>,<%=c.g %>,<%=c.b %>); width: 8px; height: 8px;" class="pull-right color" 
+			data-r="<%=c.r %>" data-g="<%=c.g %>" data-b="<%=c.b %>" ></div>
+	<% }) %>
+</div>
+<div class="tile-footer"></div>
