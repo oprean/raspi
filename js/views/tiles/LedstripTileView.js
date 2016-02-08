@@ -29,6 +29,10 @@ define([
 			}
 		},
 		
+		/*onRender: function() {
+			//this.$el.css('width', 488);
+		},*/
+		
 		updateLedstrip : function() {
 			var self = this;	
 			Utils.authAjax({
