@@ -6,96 +6,104 @@ import bibliopixel.colors as colors
 import time
 import sys ## for param
 
-numLeds = 25
-initialLED = 1
-totalLED = 24
-shadow = True
-driver = DriverWS2801(numLeds, c_order = ChannelOrder.RGB)
-led = LEDStrip(driver)
-
-hColor = (255, 255, 255)
-mColor = (255, 0, 0)
-sColor = (0, 255, 255)
-
-def getHourLed(hour):
-	led = initialLED + hour * 2
-	if (hour>12): led = led - totalLED
+class LED:
+	index = 0
+	color = (255, 255, 255)
+	type = ""
 	
-	led1 = led-1
-	led2 = led
-	led3 = led+1
+	def __init__(self, index, color, type):
+		self.index = index
+		self.color = color
+		self.type = type
+
+class LEDClock:
+	'LEDClock'
+
+	debug = True
+	shadow = True
 	
-	if (led1 < initialLED): led1 = totalLED
-	if (led2 > totalLED): led2 =  led2 - totalLED
-	if (led3 > totalLED): led3 =  led3 - totalLED
+	totalLED = 25 
+	startLED = 1
+	endLED = 25
 
-	led1 = [led1, (128,128,128)]
-	led2 = [led2, (255, 255, 255)]
-	led3 = [led3, (128,128,128)]
+	hour = 0
+	min = 0
+	sec = 0
 
-	return [led1, led2, led3]
+	hColor = (255, 255, 255)
+	mColor = (128, 0, 0)
+	sColor = (0, 0, 64)
+   
+	def __init__(self):
+		driver = DriverWS2801(self.totalLED, c_order = ChannelOrder.RGB)
+		self.LEDStrip = LEDStrip(driver)
+		self.aLEDs =[]
+		self.updateTime()
+       
+	def setHourLEDs(self):
+		idx = self.startLED + self.hour * 2
+		if (self.hour>=12): idx = idx - self.endLED + 1
+		if (idx > self.endLED): idx =  idx - self.endLED
+		self.aLEDs.append(LED(idx, self.hColor, "h")) 
 
-def getMinLed(min):
-	led = initialLED + min * 24/60
+	def setMinLEDs(self):
+		idx = self.startLED + self.min * 24/60
+		if (idx >= self.endLED): idx =  idx - self.endLED
+		self.aLEDs.append(LED(idx, self.mColor, "m"))
 
-	return [[led, (255, 0, 0)]]
+	def setSecLEDs(self):
+		idx = self.startLED + self.sec * 24/60
+		if (idx >= self.endLED): idx =  idx - self.endLED
+		self.aLEDs.append(LED(idx, self.sColor, "s"))        
 
-def getSecLed(sec):
-	led = initialLED + sec * 24/60
-	if (led >= totalLED): led =  led - totalLED
-	return [[led, sColor]]
+	def updateLEDs(self):
+		self.LEDStrip.all_off()
+		del self.aLEDs[:]
 
-def getMinLed1(min):
-	led = initialLED + min * 24/60
-	if (min%5 == 0): leds = [[led, (255, 255, 255)]]
-	if (min%5 == 1 or min%5 == 3): leds = [[led, (192,192,192)], [led+1, (64, 64, 64)]]
-	if (min%5 == 2 or min%5 == 4): leds = [[led, (64, 64, 64)], [led+1, (192,192,192)]]
-	
-	return leds
-	
-def getSecLed1(sec):
-	led = initialLED + sec * 24/60
-	led1 = led
-	led2 = led+1
-	if (led2 > totalLED): led2 =  led2 - totalLED
-	if (sec%5 == 0): leds = [[led, (255, 255, 255)]]
-	if (sec%5 == 1 or sec%5 == 3): leds = [[led1, (192,192,192)], [led2, (64, 64, 64)]]
-	if (sec%5 == 2 or sec%5 == 4): leds = [[led1, (64, 64, 64)], [led2, (192,192,192)]]
-	
-	return leds
+		self.setHourLEDs()
+		self.setMinLEDs()
+		self.setSecLEDs()
 
-def updateLed(hLeds):
-	for l in hLeds:
-		if (shadow == True):
-			lp = totalLED - l[0]
-		else:
-			lp = l[0]
-		led.set(lp, l[1])
-	
-def updateClock():
-	localtime = time.localtime(time.time())
-	led.all_off()
-	updateLed(getHourLed(localtime.tm_hour))
-	updateLed(getMinLed(localtime.tm_min))
-	updateLed(getSecLed(localtime.tm_sec))
-	led.update()
-	
-while True:
-	updateClock()
+		if (self.debug):
+			print self.hour,":", self.min,":",self.sec
+		
+		for led in self.aLEDs:
+			if (self.shadow):
+				print "original: ",led.index
+			led.index = self.endLED-led.index
+			self.LEDStrip.set(led.index, led.color)
+			
+			if (self.debug):
+				print led.type,":", led.index
 
-#led.all_off()	
-#s = getSecLed(0)
-#print s
-#updateLed(s)
-#led.set(1, hColor)
-#led.update()
+		
+		self.LEDStrip.update()
+		
+	def updateTime(self): 
+		t = time.localtime(time.time())
+		self.hour = t.tm_hour
+		self.min = t.tm_min
+		self.sec = t.tm_sec
+		
+	def update(self):
+		time.sleep(2)
+		self.updateTime()
+		self.updateLEDs()
 
-# print "------ HOURs: --------"
-# for h in range(0,24):
-	# print h, " hour leds: ",getHourLed(h)
-# print "------ MINs: --------"
-# for m in range(0,60):
-	# print m, " min leds: ",getMinLed(m)
-# print "------ SECs --------"
-# for s in range(0,60):
-	# print s, " sec leds: ",getSecLed(s)
+cnt = int(sys.argv[1])
+
+clock = LEDClock()
+while cnt > 0:
+	clock.update()
+	cnt -=1
+clock.LEDStrip.all_off()
+clock.LEDStrip.update()
+
+# clock.hour = 0
+# clock.min = 15
+# clock.sec = 30
+# clock.updateLEDs()
+
+# clock.LEDStrip.all_off()
+# clock.LEDStrip.set(1, clock.hColor)
+# clock.LEDStrip.update()
