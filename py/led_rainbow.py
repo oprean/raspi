@@ -36,5 +36,9 @@ def Wheel(WheelPos):
                 r = WheelPos % 128;             #red up
                 g = 0;                          #green off
         return(r,g,b)
-while True:
+cnt = 5    
+while cnt>0:
     rainbowCycle()
+    cnt -=1
+led.all_off()
+led.update()

@@ -167,6 +167,15 @@ class Tile {
 				'bk_color' => '#454545',
 				'data' => array('cmd'=> 'clock', 't' => 5)
 			),
+		array(
+				'id' => 18,
+				'type' => Tile::TILE_TYPE_LEDSTRIP,
+				'name' => 'rainbow',
+				'icon' => 'fa-clock-o',
+				'color' => Tile::TILE_DEFAULT_COLOR,
+				'bk_color' => '#004545',
+				'data' => array('cmd'=> 'rainbow')
+			),
 		);
 	}
 }

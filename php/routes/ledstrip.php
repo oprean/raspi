@@ -6,7 +6,9 @@ $app->post('/ledstrip', function () use ($app) {
 			case 'fill':
 				$cmd = 'sudo python ../py/ledstrip.py '.$post['r'].' '.$post['g'].' '.$post['b'];				
 				break;
-			
+			case 'rainbow':
+				$cmd = 'sudo python ../py/led_rainbow.py';				
+				break;
 			default:
 				$cmd = 'sudo python ../py/led_clock.py '.$post['t'];
 				break;
