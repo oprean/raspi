@@ -2,7 +2,16 @@
 $app->post('/ledstrip', function () use ($app) {
 	$post = $app->request()->post();
 	if (!empty($post['cmd'])) {
-		$cmd = 'sudo python ../py/ledstrip.py '.$post['r'].' '.$post['g'].' '.$post['b'];
+		switch ($post['cmd']) {
+			case 'fill':
+				$cmd = 'sudo python ../py/ledstrip.py '.$post['r'].' '.$post['g'].' '.$post['b'];				
+				break;
+			
+			default:
+				$cmd = 'sudo python ../py/led_clock.py '.$post['t'];
+				break;
+		}
+
 		exec($cmd,$output, $return);		
 	}
 });

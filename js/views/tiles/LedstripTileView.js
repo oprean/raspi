@@ -38,7 +38,8 @@ define([
 					cmd: this.data.cmd,
 					r: this.data.r,
 					g: this.data.g,
-					b: this.data.b
+					b: this.data.b,
+					t: this.data.t
 				},  
 			});
 		},

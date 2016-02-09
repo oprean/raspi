@@ -158,6 +158,15 @@ class Tile {
 				'bk_color' => '#0000ff',
 				'data' => array('cmd'=> 'fill', 'r' => 0, 'g' => 0, 'b' => 255)
 			),
+		array(
+				'id' => 17,
+				'type' => Tile::TILE_TYPE_LEDSTRIP,
+				'name' => 'led clock',
+				'icon' => 'fa-clock-o',
+				'color' => Tile::TILE_DEFAULT_COLOR,
+				'bk_color' => '#454545',
+				'data' => array('cmd'=> 'clock', 't' => 5)
+			),
 		);
 	}
 }
