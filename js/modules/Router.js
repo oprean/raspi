@@ -31,6 +31,7 @@ define([
 	    'sockets': 'sockets',
 	    'temperatures': 'temperatures',
 	    'socket/:id': 'socket',
+	    'ledstrip': 'ledstrip',
 	  }
 	});
   return Router;

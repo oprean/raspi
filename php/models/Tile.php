@@ -176,6 +176,15 @@ class Tile {
 				'bk_color' => '#004545',
 				'data' => array('cmd'=> 'rainbow')
 			),
+			array(
+				'id' => 19,
+				'type' => Tile::TILE_TYPE_BUTTON,
+				'name' => 'Ledstrip',
+				'icon' => 'fa-user',
+				'color' => Tile::TILE_DEFAULT_COLOR,
+				'bk_color' => '#d19f75',
+				'data' => array('url' => '#ledstrip')
+			),
 		);
 	}
 }

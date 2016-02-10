@@ -13,9 +13,10 @@ define([
   'views/SocketsView',
   'views/SocketView',
   'views/TemperaturesView',
+  'views/LedstripView',
   'collections/Settings'
 ], function($, _, Backbone, Marionette, 
-	HomeView, AdminView, AccountView, LoginView,  TtsView, PinsView, PinEditView, SocketsView, SocketView, TemperaturesView, 
+	HomeView, AdminView, AccountView, LoginView,  TtsView, PinsView, PinEditView, SocketsView, SocketView, TemperaturesView, LedstripView, 
 	Settings){
 	var Controller = Marionette.Controller.extend({
 	  initialize: function() {
@@ -78,6 +79,13 @@ define([
 	  	var view;
 		view = new SocketView({
 			socketId: id
+		});
+		app.mainRegion.show(view);
+	  },
+	  ledstrip: function() {
+	  	console.log('ledstrip');
+	  	var view;
+		view = new LedstripView({
 		});
 		app.mainRegion.show(view);
 	  },
