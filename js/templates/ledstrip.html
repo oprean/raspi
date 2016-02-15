@@ -1,5 +1,18 @@
-
-	<% _.each(pallete, function(c) { %>
-		<div class="palette-color" style="background-color: rgb(<%=c.r %>,<%=c.g %>,<%=c.b %>); height: 8px;" 
-			data-r="<%=c.r %>" data-g="<%=c.g %>" data-b="<%=c.b %>" ></div>
-	<% }) %>
+	Click to change ledstrip color ...
+<div class="row">
+<% p = Math.round(pallete.length/3); 
+for (i=0;i<p-1;i++) { 
+	i2 = p + i;	i3 = p*2 + i;
+	console.log(i + " - " + i2 + " - " + i3);
+	%>
+	<div class="palette-color pull-right" style="background-color: rgb(<%=pallete[i].r %>,<%=pallete[i].g %>,<%=pallete[i].b %>); height: 8px; width: 33%" 
+		data-r="<%=pallete[i].r %>" data-g="<%=pallete[i].g %>" data-b="<%=pallete[i].b %>" ></div>
+	<div class="palette-color pull-right" style="background-color: rgb(<%=pallete[i2].r %>,<%=pallete[i2].g %>,<%=pallete[i2].b %>); height: 8px; width: 33%" 
+		data-r="<%=pallete[i2].r %>" data-g="<%=pallete[i2].g %>" data-b="<%=pallete[i2].b %>" ></div>
+	<div class="palette-color pull-right" style="background-color: rgb(<%=pallete[i3].r %>,<%=pallete[i3].g %>,<%=pallete[i3].b %>); height: 8px; width: 33%" 
+		data-r="<%=pallete[i3].r %>" data-g="<%=pallete[i3].g %>" data-b="<%=pallete[i3].b %>" ></div>
+<% } %>
+</div>
+<div class="text-center">		
+	<a class="btn btn-primary" href="#">home</a>
+</div>

@@ -55,6 +55,11 @@ define([
 					g: $(e.target).data('g'),
 					b: $(e.target).data('b'),
 				},  
+				complete: function() {
+					self.$('.palette-color').css('border', '');
+					$(e.target).css('border-width', '1px');
+					$(e.target).css('border-style', 'solid');
+				},
 			});
 		},
 		
