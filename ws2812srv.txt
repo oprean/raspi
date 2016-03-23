@@ -1,0 +1,2 @@
+https://github.com/tom-2015/rpi-ws2812-server
+sudo ./ws2812svr -tcp 9999 > ~/ws2812svr.log 2>&1 &
